@@ -1,0 +1,11 @@
+{
+  "placeholder": true,
+  "note": "Placeholder. GIG's rules of conduct for fundraisers go here once the onboarding document is supplied.",
+  "sections": [
+    { "title": "Welcome and what to expect", "status": "Waiting on GIG's onboarding document" },
+    { "title": "Rules of conduct at the door", "status": "Waiting on GIG's onboarding document" },
+    { "title": "What you must never say or promise", "status": "Waiting on GIG's onboarding document" },
+    { "title": "Who you must not sign up", "status": "Waiting on GIG's onboarding document" },
+    { "title": "Privacy and donor details", "status": "Waiting on GIG's onboarding document" }
+  ]
+}

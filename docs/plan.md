@@ -52,6 +52,24 @@ Figures in the manual (company totals, the close-rate percentages on the impulse
 - Check every generated still and clip by eye before it ships (framework section 10).
 - Motion mock-up: https://claude.ai/artifact/J6mK6DJ4hGgqBa8Y9v8D61
 
+### What is built (12 November 2026)
+
+See `docs/build-status.md` item 6, `docs/engine.md` and `docs/ai-layer.md`. The GIG engine is simpler than the Rebuild Relief design in sections 1 to 4 below: one hidden number (impulse) with two lines, where Rebuild Relief had trust and friction. That follows GIG's own Impulse Curve.
+
+Reactions and what triggers them:
+
+| Reaction | Engine trigger |
+| --- | --- |
+| Listening (idle) | Default between the two lines |
+| Arms folded | KILL, arguing with an objection, asking again with an objection open, a genuine no |
+| Glances inside | The seeded interruption, or impulse below the Attention Line |
+| Hesitates | An objection is raised, or a close lands below the Buying Line |
+| Leans in, nods | Impulse crosses or sits above the Buying Line |
+| Laughs | A real compliment or a rapport question |
+| Sceptical | A fake compliment, "I understand", a close before the Problem and Solution |
+| Happy | Agreement and the sign-up steps |
+| Closes the door | Attention lost, or pushed after a genuine no |
+
 ### Open items
 
 - GIG website, for exact colours and fonts.
