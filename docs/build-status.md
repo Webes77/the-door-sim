@@ -10,6 +10,8 @@ Updated at the end of every session.
 
 4. 12 November 2026, James decided: GIG is the proof of concept. Rebuild Relief is paused. Read GIG's "First 4 Weeks Training Manual" (all 54 pages) and logo. Added the GIG direction to the top of `docs/plan.md` and updated `CLAUDE.md`.
 
+5. 12 November 2026, James decided the art direction: stylised 3D game characters that move. Built a motion mock-up with one animated donor (six reactions), the debrief impulse curve and the reset beat. Details and Higgsfield job ids are in `docs/plan.md`.
+
 No app code yet.
 
 ## Known issues
@@ -19,12 +21,12 @@ No app code yet.
 
 ## Next
 
-James picks an animation direction. Then phase 1 (scaffold, gate, GIG-branded dashboard shell) and phase 2 (engine core).
+James signs off the animated donor. Then phase 1 (scaffold, gate, GIG-branded dashboard shell) and phase 2 (engine core).
 
 ## Waiting on James
 
 - GIG website (colours and fonts), onboarding document (rules of conduct), campaign brief or OK for a fictional placeholder charity.
-- Animation direction.
+- Sign-off on the animated donor in the mock-up.
 - Where the GIG manual should live for future sessions.
 
 - Netlify site, with `SITE_PASSWORD` and `GATE_SECRET` set. Functions region Sydney if the plan allows. `[NEEDS CONFIRMING]`

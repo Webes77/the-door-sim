@@ -42,13 +42,23 @@ Figures in the manual (company totals, the close-rate percentages on the impulse
 - Charity: a placeholder campaign until a real GIG brief arrives. Any facts it uses are written down, agreed and marked fictional.
 - Donor personas, objections and conduct rules: drafted after the onboarding document arrives.
 
+### Art direction (decided 12 November 2026, James)
+
+- Donors are stylised 3D game characters: real proportions, painted look, like a story-driven console game cutscene. Not photo-real people, not flat drawings.
+- They must move. Each reaction is a short clip that starts on the open pose and ends on the reaction pose. Playing it backwards returns her to open. An idle clip loops while she listens.
+- How the first donor was made (Higgsfield, James's account): one base still, each reaction pose as an edit of that still (gpt_image_2_6), then one Kling 3.0 clip per reaction using the base as start frame and the pose as end frame (3 seconds, silent, standard). About 0.25 credits a still and 4.5 a clip.
+- Reactions so far and what they signal: open (listening), arms folded (talked too long, KILL), glances inside (attention dropping), hesitates (objection coming), leans in and nods (buying sign), closes the door (below the Attention Line).
+- Higgsfield job ids for donor 1: base 58134f2e-91b8-4f1a-b7e4-c32e17adb34d; poses folded 5120316f-61a3-492e-a674-99d8adb1a2db, glance 4e6cd8e1-9a77-4b29-ac30-d9b6fe09982c, lean 345e4913-cbb0-4437-8f22-e200300d4636, hesitate 3db8beb9-2fc3-45de-8720-cf7faac2ea26, closing fdce74e5-ed02-4037-b850-37ad30ea20c8; clips idle 833fe318-fad6-4ec2-b0b1-d80299b89dc4, folded 73339d2a-dba0-4611-9092-9c3a4ce4f949, glance 305ccf57-835a-4565-85d0-964d34e7c48d, lean e95dc170-f89a-4a1f-9814-0af25678d8de, hesitate 41cc47e1-b445-44c4-a2f3-fef4afdb56e2, closing d606ee95-79fd-46e4-8055-cc02f304e64c.
+- Check every generated still and clip by eye before it ships (framework section 10).
+- Motion mock-up: https://claude.ai/artifact/J6mK6DJ4hGgqBa8Y9v8D61
+
 ### Open items
 
 - GIG website, for exact colours and fonts.
 - GIG onboarding document (rules of conduct).
 - A campaign brief, or sign-off on a fictional placeholder charity.
 - Where the GIG manual should live for future sessions (Drive file id, or a private `docs/sources/` folder).
-- Animation direction: James to choose from the ideas list.
+- Sign-off on the animated donor in the mock-up, and the list of reactions each sales technique needs.
 
 ## 0. Decisions locked for this build
 
