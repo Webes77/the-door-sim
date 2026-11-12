@@ -4,6 +4,52 @@ Version 0.1, 12 November 2026. Written from `docs/brief-v0.1.md` and `docs/build
 
 Status: plan only. No app code yet.
 
+## Current direction: GIG proof of concept (12 November 2026, James)
+
+This section overrides the rest of the plan where they differ. Sections 0 to 7 below were written for Rebuild Relief. The engine design, turn pipeline, latency budget and fallbacks still hold. The Rebuild Relief content (personas, compliance list, strong lines, recorded-line counts) is paused until that pack comes back.
+
+### What we build
+
+A GIG-branded training app for new fundraisers. Black, GIG coral (#FF554D from the logo) and cream, with the GIG logo. Australian voices.
+
+1. **Dashboard.** The rep lands here and sees two sections and their progress.
+2. **Onboarding (placeholder).** Rules of conduct for fundraisers. Placeholder cards until James supplies GIG's onboarding document. These rules become the critical errors at the door.
+3. **Sales skills.** Built from GIG's "First 4 Weeks Training Manual". Interactive. The door simulator lives here.
+
+Not building yet: a full design. James wants to see animation ideas first.
+
+### How the manual maps onto the engine
+
+| Manual (page) | In the app |
+| --- | --- |
+| The 5 Steps: Introduction, Problem, Solution, Close, Consolidation (p8, p14 to p25) | The stages the engine tracks and the debrief scores |
+| Impulse Curve, Attention Line, Buying Line (p31, p32) | Hidden state: an impulse number. Below the Attention Line the donor disengages; above the Buying Line a close can land. Never shown in play; drawn in the debrief |
+| KISS vs KILL: no more than 30 seconds without a question (p12, p13) | Derived event from speech time; the donor shows it (glances away, shorter answers) |
+| Close at least three times, five methods (p22, p23) | Close attempts and methods counted and scored |
+| Deflection: Listen, Acknowledge, Confirm, Re-impulse, Re-close; "I hear you", never "I understand" (p26 to p28) | Objection handling scored step by step; "I understand" flagged |
+| GIFTS impulse factors (p29, p30) | Classifier tags which factor a line uses; layering scored |
+| Intelligence and rapport: one open question, no fake compliments, bring it back later (p38 to p40) | Scored; a compliment about something not in the scene counts as fake |
+| Consolidation self-justification question (p24) | Scored at the end of a sign-up |
+| S.E.E.N., body language, tone, matching (p10, p11, p33 to p37) | Can't be scored from words (tonality is out of scope). Taught as short read-and-check cards, and shown through the donor's poses |
+| Emotional control and reset (p41 to p43) | A short reset beat between doors |
+| 8 Step System, Law of Averages, KPIs (p6, p44 to p47) | Not in this build |
+
+Figures in the manual (company totals, the close-rate percentages on the impulse curve, KPI numbers) stay off screen.
+
+### The door for GIG
+
+- Goal: a regular-giving sign-up, monthly or annual, with the details confirmed. A "maybe" is not a sign-up.
+- Charity: a placeholder campaign until a real GIG brief arrives. Any facts it uses are written down, agreed and marked fictional.
+- Donor personas, objections and conduct rules: drafted after the onboarding document arrives.
+
+### Open items
+
+- GIG website, for exact colours and fonts.
+- GIG onboarding document (rules of conduct).
+- A campaign brief, or sign-off on a fictional placeholder charity.
+- Where the GIG manual should live for future sessions (Drive file id, or a private `docs/sources/` folder).
+- Animation direction: James to choose from the ideas list.
+
 ## 0. Decisions locked for this build
 
 These follow framework section 15. Each one changes or sharpens the brief.
