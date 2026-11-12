@@ -8,8 +8,13 @@ import skillsJson from "./clients/gig/skills.json";
 import onboardingJson from "./clients/gig/onboarding.json";
 
 // One client pack is loaded. Adding a client is a new folder and a line here, never an engine change.
+/** Site assets resolve against the build's base path. */
+export function asset(path: string): string {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+}
+
 export const pack: Pack = {
-  client,
+  client: { ...client, logo: asset(client.logo) },
   campaign,
   scenario: scenario as unknown as Scenario,
   personas: [persona as unknown as Persona],

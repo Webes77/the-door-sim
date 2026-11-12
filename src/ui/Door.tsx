@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { pack } from "../content/pack";
+import { asset, pack } from "../content/pack";
 import { suggestionKey, variantOf } from "../engine/engine";
 import { matchActions } from "../engine/match";
 import { STAGES, type Action, type State } from "../engine/types";
@@ -93,7 +93,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
 
   return (
     <main className="door">
-      <Donor reaction={state.reaction} base="/art/gig/donor1" />
+      <Donor reaction={state.reaction} base={asset("art/gig/donor1")} />
       <div className="door-top">
         <button className="chip" onClick={onQuit}>Quit</button>
         <button className={`chip ${guided ? "on" : ""}`} aria-pressed={guided} onClick={() => setGuided(!guided)}>Example lines {guided ? "on" : "off"}</button>

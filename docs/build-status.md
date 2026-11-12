@@ -24,7 +24,7 @@ Updated at the end of every session.
 
 ## Known issues
 
-- Not deployed. There is no Netlify site or password yet, so the app runs locally only.
+- Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.
 - No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key.
 - No donor voice yet. Her words are captions. Voice comes with the ElevenLabs key.
 - Speech recognition is the browser's own and has only been wired up, not tested on real phones.
