@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "attentionLine": 30,
+    "buyingLine": 70,
+    "wordsPerSecond": 2.5,
+    "killSeconds": 30,
+    "killPenalty": 12,
+    "fakePenalty": 10,
+    "understandPenalty": 4,
+    "arguePenalty": 15,
+    "driftPenalty": 4,
+    "earlyClosePenalty": 8,
+    "refusePenalty": 8,
+    "notYetPenalty": 6,
+    "sameMethodPenalty": 4,
+    "ackGain": 3,
+    "confirmGain": 8,
+    "ackInterruptionGain": 5,
+    "talkedOverPenalty": 5,
+    "maxRefusals": 3,
+    "lowStreakLimit": 2,
+    "floor": 8,
+    "interruptionTurns": [3, 4],
+    "bands": { "strong": 0.8, "partly": 0.5 }
+  },
+  "actions": [
+    { "id": "greet", "kind": "greet", "stage": "introduction", "describe": "Says hello.", "keywords": ["hi", "hey", "hello", "gday", "good morning", "good afternoon", "good evening"], "impulse": 2, "review": "pending" },
+    { "id": "say_name", "kind": "introduce", "stage": "introduction", "describe": "Gives their own name.", "keywords": ["my name is", "my names", "names", "im", "i am"], "impulse": 2, "review": "pending" },
+    { "id": "name_charity", "kind": "introduce", "stage": "introduction", "describe": "Says which charity they are out with.", "keywords": ["placeholder animal rescue", "animal rescue", "out with", "here with", "im from", "im with"], "impulse": 2, "review": "pending" },
+    { "id": "compliment_plant", "kind": "compliment", "stage": "introduction", "needsVisible": "plant", "describe": "Compliments the plant or garden by the door.", "keywords": ["bottlebrush", "love the plant", "love that plant", "beautiful plant", "lovely plant", "nice plant", "love the flowers", "love your garden", "love the garden", "lovely garden", "beautiful garden", "great garden", "nice garden"], "impulse": 6, "review": "pending" },
+    { "id": "compliment_dog", "kind": "compliment", "stage": "introduction", "needsVisible": "dog", "describe": "Compliments the dog.", "keywords": ["beautiful dog", "lovely dog", "gorgeous dog", "cute dog", "love your dog", "great dog", "sounds like a great dog", "sounds like a good guard dog"], "impulse": 6, "review": "pending" },
+    { "id": "compliment_bikes", "kind": "compliment", "stage": "introduction", "needsVisible": "bikes", "describe": "Remarks on the kids' bikes.", "keywords": ["love the bikes", "kids bikes", "bikes on the lawn", "nice bikes", "see the bikes"], "impulse": 6, "review": "pending" },
+    { "id": "compliment_car", "kind": "compliment", "stage": "introduction", "needsVisible": "car", "describe": "Compliments a car.", "keywords": ["love that car", "love the car", "nice car", "great car", "beautiful car", "love your car"], "impulse": 6, "review": "pending" },
+    { "id": "compliment_house", "kind": "compliment", "stage": "introduction", "needsVisible": "house", "describe": "Compliments the home.", "keywords": ["lovely home", "beautiful home", "lovely house", "beautiful house", "love your house", "love your home", "nice place", "lovely place", "love the door", "love that door"], "impulse": 5, "review": "pending" },
+    { "id": "ask_day", "kind": "question", "stage": "introduction", "topic": "day", "rapport": true, "asks": true, "describe": "Asks how their day is going.", "keywords": ["how is your day", "hows your day", "how are you", "how you going", "how are you going", "hows it going", "how has your day"], "impulse": 4, "review": "pending" },
+    { "id": "ask_dog", "kind": "question", "stage": "introduction", "topic": "dog", "needsVisible": "dog", "rapport": true, "asks": true, "describe": "Asks about the dog.", "keywords": ["whats their name", "whats his name", "whats her name", "dogs name", "what breed", "whos this", "is that your dog", "hear a dog", "got a dog", "have a dog"], "impulse": 5, "review": "pending" },
+    { "id": "ask_kids", "kind": "question", "stage": "introduction", "topic": "kids", "rapport": true, "asks": true, "describe": "Asks about the kids.", "keywords": ["how many kids", "how old are", "your kids", "the kids", "little ones"], "impulse": 4, "review": "pending" },
+    { "id": "ask_pets", "kind": "question", "stage": "introduction", "topic": "pets", "rapport": true, "asks": true, "describe": "Asks whether they like animals or have pets.", "keywords": ["animal lover", "like animals", "any pets", "have pets", "got pets"], "impulse": 4, "review": "pending" },
+    { "id": "ask_heard", "kind": "question", "stage": "introduction", "topic": "heard", "asks": true, "describe": "Asks whether they have heard of the charity or the issue.", "keywords": ["have you heard", "heard much", "heard of", "know much about", "familiar with"], "impulse": 4, "review": "pending" },
+
+    { "id": "problem_1", "kind": "problem", "stage": "problem", "describe": "First problem point: animals surrendered or abandoned with nowhere to go.", "keywords": ["nowhere to go", "abandoned", "surrendered", "dumped", "given up", "no home"], "impulse": 7, "review": "pending" },
+    { "id": "problem_2", "kind": "problem", "stage": "problem", "describe": "Second problem point: shelters are full and animals get turned away.", "keywords": ["shelters are full", "shelter is full", "no room", "out of room", "turned away", "overcrowded"], "impulse": 7, "review": "pending" },
+    { "id": "transition_hope", "kind": "transition", "stage": "problem", "describe": "Bridges from the problem to the solution.", "keywords": ["there is hope", "theres hope", "the good news"], "impulse": 2, "review": "pending" },
+
+    { "id": "impact_story", "kind": "solution", "stage": "solution", "describe": "Tells the impact story: rescued animals find a home.", "keywords": ["found a home", "find a home", "new home", "rehomed", "adopted", "forever home", "rescued"], "impulse": 9, "review": "pending" },
+    { "id": "progress_point", "kind": "solution", "stage": "solution", "describe": "Long-term progress: more foster carers.", "keywords": ["foster carers", "foster homes", "more foster", "foster program", "take in more"], "impulse": 6, "review": "pending" },
+    { "id": "start_small", "kind": "solution", "stage": "solution", "describe": "Says most people start small.", "keywords": ["start small", "most people start", "starting small"], "impulse": 8, "review": "pending" },
+    { "id": "factor_greed", "kind": "factor", "stage": "solution", "factor": "greed", "describe": "Makes the donor the hero.", "keywords": ["youd be directly", "you would be directly", "directly responsible", "be the reason", "youd be helping", "you would be helping", "be a hero"], "impulse": 5, "review": "pending" },
+    { "id": "factor_indifference", "kind": "factor", "stage": "solution", "factor": "indifference", "describe": "Removes pressure.", "keywords": ["completely up to you", "totally up to you", "entirely up to you", "no pressure", "no obligation", "just here to share"], "impulse": 4, "review": "pending" },
+    { "id": "factor_fear_of_loss", "kind": "factor", "stage": "solution", "factor": "fear_of_loss", "describe": "Says what happens without support.", "keywords": ["without ongoing support", "without support", "without regular", "cant continue", "cannot continue", "wont be able to", "would have to stop"], "impulse": 6, "review": "pending" },
+    { "id": "factor_jones", "kind": "factor", "stage": "solution", "factor": "jones", "describe": "Says others are already on board.", "keywords": ["your neighbours", "your neighbors", "local community", "people on this street", "on your street", "already jumped on board", "already on board", "lot of locals"], "impulse": 6, "review": "pending" },
+    { "id": "factor_urgency", "kind": "factor", "stage": "solution", "factor": "urgency", "describe": "Says the need is now.", "keywords": ["right now", "urgent", "as soon as possible", "cant wait"], "impulse": 4, "review": "pending" },
+    { "id": "checkin", "kind": "checkin", "method": "trial", "asks": true, "describe": "Trial close: a small agreement question.", "keywords": ["pretty incredible right", "incredible right", "amazing right", "terrible right", "does that make sense", "makes sense doesnt it", "that makes sense right", "see the value"], "impulse": 3, "review": "pending" },
+
+    { "id": "close_assumptive", "kind": "close", "stage": "close", "method": "assumptive", "asks": true, "describe": "Assumptive close: proceeds as if they have decided.", "keywords": ["get you started", "get you set up", "count on your support", "count on you", "pop your details", "sign you up"], "review": "pending" },
+    { "id": "ask_name", "kind": "close", "stage": "close", "method": "assumptive", "sub": "name", "asks": true, "describe": "Asks for their last name to start the sign-up.", "keywords": ["last name", "surname", "full name"], "review": "pending" },
+    { "id": "ask_frequency", "kind": "close", "stage": "close", "method": "alternative", "sub": "frequency", "asks": true, "describe": "Alternative close: monthly or annually.", "keywords": ["monthly or annual*", "monthly or yearly", "month or annual*", "what works best for you", "which works best"], "review": "pending" },
+    { "id": "close_indifferent", "kind": "close", "stage": "close", "method": "indifferent", "asks": true, "describe": "Indifferent close: gives the donor control of amount and frequency.", "keywords": ["choose an amount", "amount and frequency", "whatever amount", "any amount that works", "amount that works"], "review": "pending" },
+    { "id": "close_direct", "kind": "close", "stage": "close", "method": "direct", "asks": true, "describe": "Asks directly for their support.", "keywords": ["would you like to help", "can you help", "will you help", "like to support", "would you support", "come on board", "jump on board", "become a supporter", "sign up", "help out today"], "review": "pending" },
+
+    { "id": "acknowledge", "kind": "acknowledge", "describe": "Acknowledges without agreeing.", "keywords": ["i hear you", "hear you", "fair enough", "thats fair"], "review": "pending" },
+    { "id": "said_understand", "kind": "understand", "describe": "Says 'I understand'.", "keywords": ["i understand", "i completely understand", "i totally understand", "understand but"], "review": "pending" },
+    { "id": "confirm_cause", "kind": "confirm", "asks": true, "describe": "Confirms the donor believes in the cause.", "keywords": ["make sense to you", "does the idea", "believe in what", "like what they", "agree with what", "good cause"], "review": "pending" },
+    { "id": "argue", "kind": "argue", "describe": "Argues with the objection.", "keywords": ["but its only", "its only a", "only a small amount", "less than a coffee", "price of a coffee", "cup of coffee", "you can afford", "surely you can", "everyone can afford", "its not much"], "review": "pending" },
+    { "id": "ack_interruption", "kind": "ack_interruption", "describe": "Acknowledges an interruption.", "keywords": ["no worries", "take your time", "no rush", "all good", "go ahead", "need to get that", "ill be quick", "i can wait", "sounds like youre needed"], "review": "pending" },
+
+    { "id": "reinforce_decision", "kind": "consolidate", "sub": "reinforce", "describe": "Reinforces the donor's decision.", "keywords": ["real difference", "brilliant", "thank you so much", "thanks so much", "youre going to be", "thats fantastic"], "review": "pending" },
+    { "id": "self_justification", "kind": "consolidate", "sub": "self_justify", "asks": true, "describe": "Asks the self-justification question.", "keywords": ["main reason", "what made you", "why did you decide", "out of curiosity"], "review": "pending" },
+    { "id": "thank_and_leave", "kind": "leave", "describe": "Thanks the donor and leaves.", "keywords": ["have a great day", "have a good day", "have a lovely", "enjoy your", "see you", "take care", "thanks for your time", "thank you for your time", "appreciate your time", "bye", "goodbye", "ill let you go", "leave you to it"], "review": "pending" }
+  ],
+  "objections": [
+    { "id": "cant_afford", "label": "I don't think I can afford it.", "drop": 20, "gap": 18, "review": "pending" },
+    { "id": "think_about_it", "label": "I'd want to think about it.", "drop": 16, "gap": 12, "review": "pending" }
+  ],
+  "rubric": [
+    { "id": "introduction", "label": "Introduction", "criteria": [
+      { "id": "intro_question", "label": "Asked a question in your first turn", "when": "flag:question_first_turn", "source": "p17" },
+      { "id": "intro_who", "label": "Said who you are and who you are out with", "when": "count:2:did:say_name,did:name_charity", "source": "p16" },
+      { "id": "intro_rapport", "label": "Opened with a real observation or an open question", "when": "min:rapport:1", "source": "p39" },
+      { "id": "intro_no_fake", "label": "No fake compliment", "when": "not:flag:fake_compliment", "source": "p39" }
+    ] },
+    { "id": "problem", "label": "Problem", "criteria": [
+      { "id": "problem_two", "label": "Gave two problem points", "when": "min:problems:2", "source": "p18" },
+      { "id": "problem_q", "label": "Asked a question with a problem point", "when": "flag:problem_question", "source": "p18" },
+      { "id": "problem_bridge", "label": "Bridged to the solution", "when": "did:transition_hope", "source": "p18" }
+    ] },
+    { "id": "solution", "label": "Solution", "criteria": [
+      { "id": "solution_story", "label": "Told the impact story", "when": "did:impact_story", "source": "p21" },
+      { "id": "solution_factors", "label": "Layered at least two impulse factors", "when": "min:factors:2", "source": "p30" },
+      { "id": "solution_checkin", "label": "Checked in before closing", "when": "did:checkin", "source": "p21" }
+    ] },
+    { "id": "close", "label": "Close", "criteria": [
+      { "id": "close_three", "label": "Closed at least three times", "when": "min:closes:3", "source": "p23" },
+      { "id": "close_methods", "label": "Used more than one closing method", "when": "min:methods:2", "source": "p23" },
+      { "id": "close_above", "label": "Closed above the Buying Line", "when": "flag:close_above_line", "source": "p31" },
+      { "id": "close_not_early", "label": "Did not close before the Problem and Solution had landed", "when": "not:flag:closed_early", "source": "p15" }
+    ] },
+    { "id": "objections", "label": "Objection handling", "onlyIf": "flag:objection_raised", "criteria": [
+      { "id": "obj_ack", "label": "Acknowledged without agreeing", "when": "flag:obj_acknowledged", "source": "p28" },
+      { "id": "obj_confirm", "label": "Confirmed they believe in the cause", "when": "flag:obj_confirmed", "source": "p27" },
+      { "id": "obj_reimpulse", "label": "Re-impulsed with something new", "when": "flag:obj_reimpulsed", "source": "p26" },
+      { "id": "obj_reclose", "label": "Re-closed with a different method", "when": "flag:reclose_different", "source": "p28" },
+      { "id": "obj_no_understand", "label": "Never said \"I understand\"", "when": "not:flag:said_understand", "source": "p28" },
+      { "id": "obj_no_argue", "label": "Did not argue", "when": "not:flag:argued", "source": "p28" }
+    ] },
+    { "id": "consolidation", "label": "Consolidation", "onlyIf": "flag:agreed", "criteria": [
+      { "id": "con_reinforce", "label": "Reinforced the decision", "when": "did:reinforce_decision", "source": "p24" },
+      { "id": "con_details", "label": "Completed the sign-up details", "when": "flag:details_complete", "source": "p24" },
+      { "id": "con_why", "label": "Asked the self-justification question", "when": "flag:self_justified", "source": "p24" },
+      { "id": "con_warm", "label": "Stayed warm to the end", "when": "did:thank_and_leave", "source": "p25" }
+    ] },
+    { "id": "kiss", "label": "KISS vs KILL", "criteria": [
+      { "id": "kiss_no_kill", "label": "Never talked thirty seconds without a question", "when": "not:flag:kill", "source": "p13" },
+      { "id": "kiss_questions", "label": "Asked at least four questions", "when": "min:questions:4", "source": "p13" },
+      { "id": "kiss_interruption", "label": "Did not talk over an interruption", "when": "not:flag:talked_over", "source": "" }
+    ] }
+  ],
+  "critical": {
+    "fake_compliment": { "label": "Fake compliment. The manual calls this a non-negotiable.", "source": "p39" },
+    "pushed_after_no": { "label": "Kept asking after the donor said they genuinely could not help.", "source": "p28" }
+  },
+  "coaching": {
+    "fake_compliment": { "title": "You complimented something that was not there.", "lines": ["rapport_no_fake", "rapport_remember"] },
+    "pushed_after_no": { "title": "She had told you she genuinely could not help, and you asked again.", "lines": ["deflect_until"] },
+    "kill": { "title": "You talked for more than thirty seconds without a question.", "lines": ["kiss_remember", "kiss_focus"] },
+    "argued": { "title": "You argued with the objection.", "lines": ["deflect_strong", "deflect_ack"] },
+    "said_understand": { "title": "You said \"I understand\".", "lines": ["deflect_ack", "deflect_strong"] },
+    "closed_early": { "title": "You asked before the Problem and Solution had landed.", "lines": ["steps_order", "impulse_lines"] },
+    "close_below_line": { "title": "You closed while she was below the Buying Line.", "lines": ["impulse_lines", "impulse_remember"] },
+    "reclose_unhandled": { "title": "You asked again without dealing with her objection.", "lines": ["deflect_strong", "deflect_steps"] },
+    "reclose_same": { "title": "You re-closed with the same method that triggered the objection.", "lines": ["deflect_reclose"] },
+    "talked_over": { "title": "Something inside pulled her attention and you kept going.", "lines": [] },
+    "drift": { "title": "You talked without giving her anything to react to.", "lines": ["kiss_silence", "kiss_focus"] },
+    "lost_attention": { "title": "She dropped below the Attention Line and stayed there.", "lines": ["impulse_lines", "kiss_silence"] },
+    "genuine_no": { "title": "Three asks did not land, and she told you she could not help.", "lines": ["impulse_close_now", "deflect_steps"] },
+    "left_before_details": { "title": "She said yes, and you left before finishing the sign-up.", "lines": ["consolidation_strong"] },
+    "walked_away": { "title": "You walked away while the conversation was still alive.", "lines": ["close_ask"] },
+    "left_well": { "title": "You left without asking for the commitment enough times.", "lines": ["close_ask", "close_three"] },
+    "objection_handled": { "title": "You deflected the objection and rebuilt her impulse.", "lines": ["deflect_alive", "deflect_strong"] },
+    "buying_sign": { "title": "She crossed the Buying Line.", "lines": ["impulse_close_now"] },
+    "agreed": { "title": "You asked, and she said yes.", "lines": ["close_ask"] }
+  },
+  "eventText": {
+    "knock": "You knocked. She opened the door.",
+    "unclear": "She did not catch that. Nothing changed.",
+    "kill": "More than thirty seconds without a question. KILL.",
+    "fake_compliment": "Compliment about something that was not there.",
+    "rapport": "A real observation. She warmed up.",
+    "argued": "You argued with her objection.",
+    "said_understand": "You said \"I understand\".",
+    "closed_early": "You closed before the Problem and Solution had landed.",
+    "close_below_line": "You closed below the Buying Line.",
+    "reclose_unhandled": "You asked again with her objection still open.",
+    "reclose_same": "Same closing method as the one that triggered the objection.",
+    "objection": "You closed above the Buying Line. She raised an objection.",
+    "objection_handled": "Objection deflected: acknowledged, confirmed, re-impulsed.",
+    "agreed": "You closed above the Buying Line. She said yes.",
+    "genuine_no": "She told you she genuinely could not help.",
+    "pushed_after_no": "You asked again after a genuine no.",
+    "buying_sign": "Buying sign. She crossed the Buying Line.",
+    "interruption": "Someone called her from inside.",
+    "interruption_acked": "You acknowledged the interruption.",
+    "talked_over": "You talked over the interruption.",
+    "drift": "Nothing new and no question. Her attention slipped.",
+    "lost_attention": "Below the Attention Line for too long. She closed the door.",
+    "left_before_details": "You left before the sign-up details were done.",
+    "left_signed": "Signed up. You left on a good note.",
+    "left_well": "You thanked her and left.",
+    "walked_away": "You walked away."
+  },
+  "suggestions": {
+    "introduction": [
+      "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?"
+    ],
+    "problem": [
+      "Honestly, the part that got me is how many animals are surrendered with nowhere to go. Have you heard much about that?",
+      "And the shelters are full, so some get turned away. That's terrible, right? But there is hope."
+    ],
+    "solution": [
+      "The rescued animals stay with foster carers until they find a home. Pretty incredible, right?",
+      "A lot of your neighbours have already jumped on board, and without ongoing support the foster program can't continue."
+    ],
+    "close": [
+      "So that's the reason we are out here. The rescue relies on regular support, so I assume we can count on your support too, yeah?",
+      "What works best for you, monthly or annually?",
+      "It's completely up to you. You choose an amount that works."
+    ],
+    "objection": [
+      "I hear you. Can I ask, does the idea of what they are doing make sense to you?",
+      "Exactly, and that is why most people start small. What works best for you, monthly or annually?",
+      "You'd be directly helping an animal off the street, and it's completely up to you. You choose an amount that works."
+    ],
+    "consolidation": [
+      "Brilliant, you are going to be making a real difference. Let me get you set up. What was your last name?",
+      "And what works best for you, monthly or annually?",
+      "Out of curiosity, what was the main reason you decided to jump on board?",
+      "Thanks so much. Have a great day."
+    ],
+    "interruption": [
+      "No worries, take your time."
+    ],
+    "leave": [
+      "No worries at all. Thanks for your time, have a great day."
+    ]
+  }
+}
