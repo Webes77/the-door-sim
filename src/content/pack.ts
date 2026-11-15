@@ -4,7 +4,7 @@ import campaign from "./clients/gig/campaign.json";
 import scenario from "./clients/gig/scenario.json";
 import persona from "./clients/gig/persona.home-afternoon.json";
 import strongLines from "./clients/gig/strong-lines.json";
-import skillsJson from "./clients/gig/skills.json";
+import lessonsJson from "./clients/gig/lessons.json";
 import onboardingJson from "./clients/gig/onboarding.json";
 
 // One client pack is loaded. Adding a client is a new folder and a line here, never an engine change.
@@ -21,8 +21,22 @@ export const pack: Pack = {
   strongLines: strongLines as StrongLine[],
 };
 
-export interface Skill { id: string; part: string; title: string; what: string; remember: string; source: string; practice: boolean; appliedBy: string; review: string }
-export const skills = skillsJson as Skill[];
+export type Block =
+  | { type: "list"; title: string; intro?: string; items: string[]; outro?: string }
+  | { type: "table"; title: string; cols: string[]; rows: string[][] }
+  | { type: "text"; title: string; paras: string[] };
+
+/** One system from the client's training manual, in the manual's own words. */
+export interface Lesson {
+  id: string; group: string; title: string; stageNo?: number; source: string;
+  practice: boolean; drill: string; appliedBy: string;
+  what: string[]; why: { callout: string; text: string };
+  blocks: Block[];
+  sounds: string; weak: string[]; strong: string[];
+  avoid: string[]; focus: string[]; remember: string; target: string; tryToday: string[];
+  review: string;
+}
+export const lessons = lessonsJson as unknown as Lesson[];
 export const onboarding = onboardingJson;
 
 /** On-screen text never shows an em dash, whatever the source text holds. */

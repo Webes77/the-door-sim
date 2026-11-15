@@ -34,7 +34,10 @@ function words(text: string): number {
 
 export function debrief(s: State, pack: Pack): Debrief {
   const { bands } = pack.scenario.meta;
-  const stages: StageResult[] = pack.scenario.rubric.map((r) => {
+  // A stage practice is judged on its own stages and its own turns only.
+  const drill = s.drill ? pack.scenario.drills[s.drill] : null;
+  const live = s.turns.filter((t) => !t.prelude);
+  const stages: StageResult[] = pack.scenario.rubric.filter((r) => !drill || drill.stages.includes(r.id)).map((r) => {
     const criteria = r.criteria.map((c) => ({ id: c.id, label: c.label, met: evaluate(c.when, s), source: c.source }));
     if (r.onlyIf && !evaluate(r.onlyIf, s)) return { id: r.id, label: r.label, band: "not_tested", criteria };
     const share = criteria.filter((c) => c.met).length / criteria.length;
@@ -61,15 +64,15 @@ export function debrief(s: State, pack: Pack): Debrief {
   if (s.criticalErrors.length) {
     tp = s.turns[s.criticalErrors[0].turn] ?? null;
     event = s.criticalErrors[0].id;
-  } else if (s.outcome === "signed_up") {
-    const handled = s.turns.filter((t) => t.events.includes("objection_handled"));
-    const buying = s.turns.filter((t) => t.events.includes("buying_sign"));
-    const agreed = s.turns.filter((t) => t.events.includes("agreed"));
+  } else if (s.outcome === "signed_up" || (s.outcome === "drill_done" && s.agreed)) {
+    const handled = live.filter((t) => t.events.includes("objection_handled"));
+    const buying = live.filter((t) => t.events.includes("buying_sign"));
+    const agreed = live.filter((t) => t.events.includes("agreed"));
     tp = handled.at(-1) ?? buying.at(-1) ?? agreed.at(-1) ?? null;
     event = handled.length ? "objection_handled" : buying.length ? "buying_sign" : "agreed";
   } else {
     // A planned objection is not the rep's mistake, so it is never the turning point of a lost door.
-    const own = s.turns.filter((t) => !t.events.includes("objection"));
+    const own = live.filter((t) => !t.events.includes("objection"));
     tp = own.find((t) => t.events.includes("left_before_details")) ?? null;
     if (!tp) {
       let worst = 0;
@@ -78,7 +81,7 @@ export function debrief(s: State, pack: Pack): Debrief {
         if (d < worst) { worst = d; tp = t; }
       }
     }
-    if (!tp) tp = s.turns.at(-1) ?? null;
+    if (!tp && !drill) tp = live.at(-1) ?? null;
     event = tp ? ORDER.find((e) => tp!.events.includes(e)) ?? tp.events[0] ?? "" : "";
   }
   const coach = pack.scenario.coaching[event];
@@ -93,14 +96,14 @@ export function debrief(s: State, pack: Pack): Debrief {
       }
     : null;
 
-  const repWords = s.turns.reduce((n, t) => n + (t.rep?.words ?? 0), 0);
-  const donorWords = s.turns.reduce((n, t) => n + t.donor.reduce((k, d) => k + words(d.text), 0), 0);
+  const repWords = live.reduce((n, t) => n + (t.rep?.words ?? 0), 0);
+  const donorWords = live.reduce((n, t) => n + t.donor.reduce((k, d) => k + words(d.text), 0), 0);
 
   return {
     stages, performance, criticalErrors, turningPoint,
     repWords, donorWords,
     talkShare: repWords + donorWords ? repWords / (repWords + donorWords) : 0,
-    questions: s.counters.questions,
-    closes: s.counters.closes,
+    questions: live.filter((t) => t.rep && (t.rep.text.includes("?") || t.rep.ids.some((id) => pack.scenario.actions.find((a) => a.id === id)?.asks))).length,
+    closes: s.closes.filter((c) => !s.turns[c.turn]?.prelude && c.turn >= (live[0]?.n ?? 0)).length,
   };
 }

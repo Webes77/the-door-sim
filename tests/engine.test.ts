@@ -40,10 +40,11 @@ describe("content pack", () => {
     for (const a of pack.scenario.actions) expect(KINDS, a.id).toContain(a.kind);
   });
   it("uses only conditions the engine understands", () => {
-    const problems = pack.scenario.rubric.flatMap((r) => [
+    const problems: string[] = pack.scenario.rubric.flatMap((r) => [
       ...(r.onlyIf ? validate(r.onlyIf, pack) : []),
       ...r.criteria.flatMap((c) => validate(c.when, pack)),
     ]);
+    for (const d of Object.values(pack.scenario.drills)) problems.push(...validate(d.endWhen, pack), ...validate(d.preludeUntil, pack));
     expect(problems).toEqual([]);
   });
   it("has a donor line for every key the engine can ask for", () => {
@@ -63,8 +64,53 @@ describe("content pack", () => {
     for (const c of Object.values(pack.scenario.coaching)) for (const l of c.lines) expect(ids.has(l), l).toBe(true);
   });
   it("puts no em dash in donor lines or rubric labels", () => {
-    const text = JSON.stringify([pack.personas, pack.scenario.rubric, pack.scenario.suggestions, pack.scenario.eventText, pack.campaign]);
+    const text = JSON.stringify([pack.personas, pack.scenario.rubric, pack.scenario.suggestions, pack.scenario.eventText, pack.campaign, pack.scenario.drills]);
     expect(text.includes("—")).toBe(false);
+  });
+});
+
+describe("stage practice", () => {
+  const drills = pack.scenario.drills;
+  it("names only rubric stages that exist", () => {
+    const ids = pack.scenario.rubric.map((r) => r.id);
+    for (const d of Object.values(drills)) for (const st of d.stages) expect(ids).toContain(st);
+  });
+  it("starts the Introduction practice before the knock", () => {
+    const s = start(pack, P, 7, "introduction");
+    expect(s.turns.length).toBe(0);
+    expect(s.reaction).toBe("closed");
+  });
+  it("ends the Introduction practice once the rep has said who they are and asked a question", () => {
+    const s = replay(pack, P, 7, [{ type: "knock" }, say(S.introduction[0])], "introduction");
+    expect(s.outcome).toBe("drill_done");
+    expect(debrief(s, pack).stages.map((x) => [x.id, x.band])).toEqual([["introduction", "strong"]]);
+  });
+  it("plays the earlier stages for the rep, the same way for every seed", () => {
+    for (const seed of [1, 2, 7]) {
+      const p = start(pack, P, seed, "problem");
+      expect(p.stage).toBe("introduction");
+      expect(p.turns.every((t) => t.prelude)).toBe(true);
+      expect(p.outcome).toBe("in_play");
+      const sol = start(pack, P, seed, "solution");
+      expect(sol.counters.problems).toBe(2);
+      const c = start(pack, P, seed, "close");
+      expect(c.impulse).toBeGreaterThanOrEqual(pack.scenario.meta.buyingLine);
+      expect(c.flags).not.toContain("talked_over");
+      const con = start(pack, P, seed, "consolidation");
+      expect(con.agreed).toBe(true);
+      expect(con.outcome).toBe("in_play");
+    }
+  });
+  it("finishes each practice with a strong band on the pack's own lines", () => {
+    const run = (drill: string, lines: string[]) => lines.reduce((s, l) => reduce(s, say(l), pack), start(pack, P, 7, drill));
+    expect(debrief(run("problem", S.problem), pack).stages[0].band).toBe("strong");
+    expect(debrief(run("solution", S.solution), pack).stages[0].band).toBe("strong");
+    const close = run("close", [S.close[0], S.objection[0], S.objection[1], S.objection[0], S.objection[2]]);
+    expect(close.outcome).toBe("drill_done");
+    expect(debrief(close, pack).stages.map((x) => x.band)).toEqual(["strong", "strong"]);
+    const con = run("consolidation", S.consolidation);
+    expect(con.outcome).toBe("signed_up");
+    expect(debrief(con, pack).stages[0].band).toBe("strong");
   });
 });
 

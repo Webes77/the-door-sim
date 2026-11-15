@@ -22,11 +22,23 @@ Updated at the end of every session.
    - Tests: 17 engine and pack tests (`npm test`). Headless playthroughs of a good door and a poor door (`npm run e2e`).
    - `docs/engine.md` and `docs/ai-layer.md` written.
 
+7. 15 November 2026, James said the door did not feel real: no walk to the door, no script, not enough of the manual. Changed:
+   - The approach: a street view, a walk up the path, the closed door, "what you notice", a knock sound, then the door opens. New clips `walk.mp4` and `opening.mp4`.
+   - Every system in the manual is now a lesson in the manual's own words (`lessons.json`, 18 lessons, p8 to p47): what it is, why it matters, weak and strong examples, what to avoid, focus points, remember, daily target, try this today, and the Taught, Understood, Applied sign-off. Obvious typos in the manual were corrected. The KPI page and the figures on the Impulse Curve are left out, as agreed.
+   - Stage practice: each of the five stages can be practised on its own at the door. The engine plays the earlier stages first so the donor is in the right place. Introduction starts with the walk-up.
+   - A "Keys" button at the door shows the daily target, strong example, what to avoid and the remember line for the stage the rep is in.
+   - The pitch script: example lines for each stage for the placeholder charity.
+   - Dashboard now leads with "Week 1: Learn the pitch before hitting the field" and the five stages.
+   - Voice: six Australian-accent samples made for James to choose from (https://claude.ai/artifact/PSF9jKwZqwM5mUm9na1GaH). The app can play recorded donor lines from `public/voice/gig/donor1/manifest.json`. The manifest is empty until a voice is chosen.
+   - Tests: 22 engine and pack tests. Headless playthroughs now include the walk-up, the Introduction practice, the Close practice and the lesson pages.
+
 ## Known issues
 
 - Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.
 - No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key.
-- No donor voice yet. Her words are captions. Voice comes with the ElevenLabs key.
+- No donor voice yet. Her words are captions. Waiting on James to pick a voice from the samples. I cannot hear audio, so I cannot confirm any sample sounds Australian.
+- The door-opening clip has a moment where the door hardware looks wrong mid-swing. Check it by eye.
+- The lesson examples are the manual's own (Children's Hospital, Humane Society). The campaign lines are drafts for the placeholder charity.
 - Speech recognition is the browser's own and has only been wired up, not tested on real phones.
 - The donor's mouth does not move when she speaks. Moving between two reactions always passes back through the open pose, which takes about four seconds.
 - The charity is a placeholder and the conduct rules are placeholders. The only critical errors so far come from the sales manual: a fake compliment (p39) and asking again after a genuine no (p28).
@@ -37,7 +49,8 @@ Updated at the end of every session.
 
 ## Next
 
-1. James plays it and says what feels wrong.
+1. James picks a voice. Then record every donor line and fill the manifest.
+1a. James plays it and says what feels wrong.
 2. Deploy to Netlify behind the password gate.
 3. AI classifier (`/api/turn`), then recorded donor voice with Australian voices.
 4. More donors (two more situations), and real conduct rules from the onboarding document.

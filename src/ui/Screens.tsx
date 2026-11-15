@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
-import { clean, onboarding, pack, skills, type Skill } from "../content/pack";
+import { clean, lessons, onboarding, pack, type Block, type Lesson } from "../content/pack";
 import type { Progress } from "./store";
 
-export function Header({ onHome, right }: { onHome?: () => void; right?: React.ReactNode }) {
+const MANUAL = "GIG First 4 Weeks Training Manual";
+export const STAGE_LESSONS = lessons.filter((l) => l.stageNo).sort((a, b) => a.stageNo! - b.stageNo!);
+const SCRIPT_ORDER: [string, string][] = [
+  ["introduction", "1. Introduction"], ["problem", "2. Problem"], ["solution", "3. Solution"],
+  ["close", "4. Close"], ["objection", "When she objects"], ["consolidation", "5. Consolidation"],
+];
+
+export function Header({ onHome }: { onHome?: () => void }) {
   return (
     <header className="bar">
       <button className="logo" onClick={onHome} aria-label="Home" disabled={!onHome}>
         <img src={pack.client.logo} alt={pack.client.name} />
       </button>
       <span className="bar-tag">The GIG Academy</span>
-      <span className="bar-right">{right}</span>
     </header>
   );
 }
 
-function Badges({ p }: { p?: { taught?: boolean; understood?: boolean; applied?: boolean } }) {
+type P3 = { taught?: boolean; understood?: boolean; applied?: boolean } | undefined;
+
+function Badges({ p }: { p: P3 }) {
   return (
     <span className="badges" aria-label="Progress">
       <i className={p?.taught ? "on" : ""}>Taught</i>
@@ -25,7 +33,7 @@ function Badges({ p }: { p?: { taught?: boolean; understood?: boolean; applied?:
 }
 
 export function Dashboard({ progress, go }: { progress: Progress; go: (v: string) => void }) {
-  const applied = skills.filter((s) => progress.skills[s.id]?.applied).length;
+  const next = STAGE_LESSONS.find((l) => !progress.skills[l.id]?.applied) ?? null;
   return (
     <main className="page">
       <Header />
@@ -33,24 +41,50 @@ export function Dashboard({ progress, go }: { progress: Progress; go: (v: string
       <h1>Your first four weeks</h1>
       <p className="callout">Master the basics. Everything is built on them.</p>
 
-      <button className="card dark" onClick={() => go("brief")}>
+      <section className="card dark">
+        <span className="card-k">Week 1 · Learn and execute</span>
+        <strong>Learn the pitch before hitting the field</strong>
+        <ol className="stepper">
+          {STAGE_LESSONS.map((l) => {
+            const p = progress.skills[l.id];
+            return (
+              <li key={l.id}>
+                <button onClick={() => go(`lesson:${l.id}`)} className={p?.applied ? "done" : p?.taught ? "seen" : ""}>
+                  <b>{l.stageNo}</b>
+                  <span>{l.title}</span>
+                  <em>{p?.applied ? "Applied" : p?.understood ? "Understood" : p?.taught ? "Taught" : ""}</em>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+        <button className="btn primary" onClick={() => go(next ? `lesson:${next.id}` : "brief")}>
+          {next ? `${progress.skills[next.id]?.taught ? "Continue" : "Start"}: ${next.title}` : "Run the full pitch"}
+        </button>
+      </section>
+
+      <button className="card" onClick={() => go("brief")}>
         <span className="card-k">Practise</span>
-        <strong>Knock on a door</strong>
-        <span>Talk to a donor. Read her. Ask for the sign-up. Then see where it turned.</span>
+        <strong>The full pitch at a door</strong>
+        <span>All five stages with a donor, start to finish. Then see where it turned.</span>
         <span className="card-meta">{progress.doors} doors practised · {progress.signUps} sign-ups</span>
       </button>
 
+      <button className="card" onClick={() => go("script")}>
+        <span className="card-k">Your campaign</span>
+        <strong>The pitch script</strong>
+        <span>What to say at each stage for {pack.campaign.charity}.</span>
+      </button>
+
       <button className="card" onClick={() => go("skills")}>
-        <span className="card-k">Section 2</span>
-        <strong>Sales skills</strong>
-        <span>The systems from your training manual, one at a time.</span>
-        <span className="card-meta">{applied} of {skills.filter((s) => s.practice).length} applied at the door</span>
+        <span className="card-k">Sales skills</span>
+        <strong>Every system in the manual</strong>
+        <span>{lessons.length} systems, in the manual's own words.</span>
       </button>
 
       <button className="card" onClick={() => go("onboarding")}>
-        <span className="card-k">Section 1</span>
-        <strong>Onboarding</strong>
-        <span>Rules of conduct for fundraisers.</span>
+        <span className="card-k">Onboarding</span>
+        <strong>Rules of conduct</strong>
         <span className="card-meta draft">Placeholder</span>
       </button>
 
@@ -63,8 +97,8 @@ export function Onboarding({ go }: { go: (v: string) => void }) {
   return (
     <main className="page">
       <Header onHome={() => go("home")} />
-      <p className="eyebrow">Section 1</p>
-      <h1>Onboarding</h1>
+      <p className="eyebrow">Onboarding</p>
+      <h1>Rules of conduct</h1>
       <p>{onboarding.note}</p>
       <ul className="list">
         {onboarding.sections.map((s) => (
@@ -80,21 +114,21 @@ export function Onboarding({ go }: { go: (v: string) => void }) {
 }
 
 export function Skills({ progress, go }: { progress: Progress; go: (v: string) => void }) {
-  const parts = Array.from(new Set(skills.map((s) => s.part)));
+  const groups = Array.from(new Set(lessons.map((s) => s.group)));
   return (
     <main className="page">
       <Header onHome={() => go("home")} />
-      <p className="eyebrow">Section 2</p>
-      <h1>Sales skills</h1>
-      <p>Each one gives you a tool for the doors. Read it, then apply it with a donor.</p>
-      {parts.map((part) => (
-        <section key={part}>
-          <h2>{part}</h2>
+      <p className="eyebrow">Sales skills</p>
+      <h1>Your core systems</h1>
+      <p>Each one gives you a specific tool for the doors. Read it, then apply it with a donor.</p>
+      {groups.map((g) => (
+        <section key={g}>
+          <h2>{g}</h2>
           <ul className="list">
-            {skills.filter((s) => s.part === part).map((s) => (
+            {lessons.filter((s) => s.group === g).map((s) => (
               <li key={s.id}>
-                <button className="row" onClick={() => go(`skill:${s.id}`)}>
-                  <strong>{s.title}</strong>
+                <button className="row" onClick={() => go(`lesson:${s.id}`)}>
+                  <strong>{s.stageNo ? `${s.stageNo}. ` : ""}{s.title}</strong>
                   <Badges p={progress.skills[s.id]} />
                 </button>
               </li>
@@ -107,26 +141,178 @@ export function Skills({ progress, go }: { progress: Progress; go: (v: string) =
   );
 }
 
-export function SkillPage({ skill, progress, mark, go }: { skill: Skill; progress: Progress; mark: (id: string, k: "taught" | "understood") => void; go: (v: string) => void }) {
-  useEffect(() => { mark(skill.id, "taught"); }, [skill.id]); // eslint-disable-line
-  const p = progress.skills[skill.id];
+function BlockView({ b }: { b: Block }) {
+  if (b.type === "list") {
+    return (
+      <section>
+        {b.title && <h3>{b.title}</h3>}
+        {b.intro && <p>{clean(b.intro)}</p>}
+        <ul className="ticklist">{b.items.map((i) => <li key={i}>{clean(i)}</li>)}</ul>
+        {b.outro && <p>{clean(b.outro)}</p>}
+      </section>
+    );
+  }
+  if (b.type === "table") {
+    return (
+      <section>
+        {b.title && <h3>{b.title}</h3>}
+        <div className="mtable">
+          {b.rows.map((r) => (
+            <div key={r[0]} className="mrow">
+              <strong>{clean(r[0])}</strong>
+              {r.slice(1).map((c, i) => <p key={i}><span>{b.cols[i + 1]}</span>{clean(c)}</p>)}
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
   return (
-    <main className="page">
+    <section>
+      {b.title && <h3>{b.title}</h3>}
+      {b.paras.map((p) => <p key={p}>{clean(p)}</p>)}
+    </section>
+  );
+}
+
+/** The keys for one system, in the order the manual teaches them. */
+export function Keys({ lesson, compact }: { lesson: Lesson; compact?: boolean }) {
+  return (
+    <>
+      <div className="target">
+        <h4>Daily target</h4>
+        <p>{clean(lesson.target)}</p>
+      </div>
+      {lesson.strong.length > 0 && (
+        <div className="sounds">
+          {!compact && lesson.weak.length > 0 && (
+            <div className="ex weak"><b>Weak</b><p>{clean(lesson.weak[0])}</p><p className="why">{clean(lesson.weak[1])}</p></div>
+          )}
+          <div className="ex strong"><b>Strong</b><p>{clean(lesson.strong[0])}</p><p className="why">{clean(lesson.strong[1])}</p></div>
+        </div>
+      )}
+      <h3>What to avoid</h3>
+      <ul className="bullets">{lesson.avoid.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
+      {lesson.focus.length > 0 && (
+        <>
+          <h3>Focus on these two things</h3>
+          <ul className="bullets">{lesson.focus.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
+        </>
+      )}
+      <h3>Remember</h3>
+      <p>{clean(lesson.remember)}</p>
+    </>
+  );
+}
+
+export function LessonPage({ lesson, progress, mark, go }: { lesson: Lesson; progress: Progress; mark: (id: string, k: "taught" | "understood") => void; go: (v: string) => void }) {
+  useEffect(() => { mark(lesson.id, "taught"); }, [lesson.id]); // eslint-disable-line
+  const p = progress.skills[lesson.id];
+  const script = lesson.stageNo ? pack.scenario.suggestions[lesson.id] ?? [] : lesson.id === "objections" ? pack.scenario.suggestions.objection : [];
+  const drill = lesson.drill ? pack.scenario.drills[lesson.drill] : null;
+  const i = STAGE_LESSONS.findIndex((l) => l.id === lesson.id);
+  const nextStage = i >= 0 ? STAGE_LESSONS[i + 1] : null;
+  return (
+    <main className="page lesson">
       <Header onHome={() => go("home")} />
-      <p className="eyebrow">{skill.part}</p>
-      <h1>{skill.title}</h1>
+      <p className="eyebrow">{lesson.stageNo ? `Stage ${lesson.stageNo} of 5` : lesson.group}</p>
+      <h1>{lesson.title}</h1>
+
       <h3>What it is</h3>
-      <p>{clean(skill.what)}</p>
-      <p className="callout">{clean(skill.remember)}</p>
-      <p className="cite">GIG First 4 Weeks Training Manual, {skill.source}</p>
-      <Badges p={p} />
-      {!skill.practice && (
+      {lesson.what.map((w) => <p key={w}>{clean(w)}</p>)}
+
+      <h3>Why it matters</h3>
+      <p className="callout">{clean(lesson.why.callout)}</p>
+      <p>{clean(lesson.why.text)}</p>
+
+      {lesson.blocks.map((b, k) => <BlockView key={k} b={b} />)}
+
+      {lesson.strong.length > 0 && (
+        <>
+          <h3>What it sounds like</h3>
+          <p>{clean(lesson.sounds)}</p>
+          <div className="sounds">
+            <div className="ex weak"><b>Weak</b><p>{clean(lesson.weak[0])}</p><p className="why">{clean(lesson.weak[1])}</p></div>
+            <div className="ex strong"><b>Strong</b><p>{clean(lesson.strong[0])}</p><p className="why">{clean(lesson.strong[1])}</p></div>
+          </div>
+        </>
+      )}
+
+      <h3>What to avoid</h3>
+      <ul className="bullets">{lesson.avoid.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
+
+      {lesson.focus.length > 0 && (
+        <>
+          <h3>Focus on these two things</h3>
+          <ul className="bullets">{lesson.focus.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
+        </>
+      )}
+
+      <h3>Remember</h3>
+      <p>{clean(lesson.remember)}</p>
+
+      <div className="target">
+        <h4>Daily target</h4>
+        <p>{clean(lesson.target)}</p>
+      </div>
+
+      <div className="try">
+        <h4>Try this today</h4>
+        <ul className="ticklist">{lesson.tryToday.map((t) => <li key={t}>{clean(t)}</li>)}</ul>
+      </div>
+      <p className="cite">{MANUAL}, from {lesson.source}</p>
+
+      {script.length > 0 && (
+        <section className="scriptbox">
+          <h3>Your lines for {pack.campaign.charity}</h3>
+          <p className="draft">Draft. Built on the manual's strong examples.</p>
+          {script.map((s) => <p key={s} className="line">{s}</p>)}
+        </section>
+      )}
+
+      <div className="signoff" aria-label="Sign-off">
+        <div className={p?.taught ? "on" : ""}><span>Taught</span><b>{p?.taught ? "✓" : ""}</b></div>
+        <div className={p?.understood ? "on" : ""}><span>Understood</span><b>{p?.understood ? "✓" : ""}</b></div>
+        <div className={p?.applied ? "on" : ""}><span>Applied</span><b>{p?.applied ? "✓" : ""}</b></div>
+      </div>
+
+      {!lesson.practice && (
         <p className="note">This one is about how you carry yourself and how you sound. The practice door can't score it yet. Watch how the donor's body changes, and ask your trainer for a note.</p>
       )}
       <div className="stack">
-        {!p?.understood && <button className="btn" onClick={() => mark(skill.id, "understood")}>I understand this</button>}
-        <button className="btn primary" onClick={() => go("brief")}>Apply it at a door</button>
-        <button className="btn ghost" onClick={() => go("skills")}>Back</button>
+        {!p?.understood && <button className="btn" onClick={() => mark(lesson.id, "understood")}>I understand this</button>}
+        {drill && <button className="btn primary" onClick={() => go(`drill:${lesson.drill}`)}>{drill.label}</button>}
+        {!drill && lesson.practice && <button className="btn primary" onClick={() => go("brief")}>Apply it in a full pitch</button>}
+        {nextStage && <button className="btn" onClick={() => go(`lesson:${nextStage.id}`)}>Next stage: {nextStage.title}</button>}
+        <button className="btn ghost" onClick={() => go("skills")}>All systems</button>
+      </div>
+    </main>
+  );
+}
+
+export function Script({ go }: { go: (v: string) => void }) {
+  const s = pack.scenario.suggestions;
+  return (
+    <main className="page">
+      <Header onHome={() => go("home")} />
+      <p className="eyebrow">Your campaign</p>
+      <h1>The pitch script</h1>
+      <p className="draft pill">Draft for a placeholder charity</p>
+      <p>The five stages are not a script. They are the shape your conversation needs to take. These lines show the shape for this campaign. Make them yours.</p>
+      {SCRIPT_ORDER.map(([key, label]) => {
+        const l = lessons.find((x) => x.id === (key === "objection" ? "objections" : key));
+        return (
+          <section key={key} className="scriptbox">
+            <h3>{label}</h3>
+            {l && <p className="small ink">{clean(l.target)}</p>}
+            {(s[key] ?? []).map((line) => <p key={line} className="line">{line}</p>)}
+            {l && <button className="btn ghost left" onClick={() => go(`lesson:${l.id}`)}>The keys to this stage</button>}
+          </section>
+        );
+      })}
+      <div className="stack">
+        <button className="btn primary" onClick={() => go("door")}>Run the full pitch at a door</button>
+        <button className="btn ghost" onClick={() => go("home")}>Back</button>
       </div>
     </main>
   );
@@ -150,10 +336,11 @@ export function Brief({ go }: { go: (v: string) => void }) {
       <p>{c.ask}</p>
       <div className="target">
         <h4>Daily target</h4>
-        <p>Run all five stages, in order. Ask a question every two to three sentences. Close at least three times.</p>
+        <p>Run all five stages, in order, in every full pitch. Ask a question every two to three sentences. Close confidently at least three times.</p>
       </div>
       <div className="stack">
-        <button className="btn primary" onClick={() => go("door")}>Walk up to the door</button>
+        <button className="btn primary" onClick={() => go("door")}>Head to the door</button>
+        <button className="btn" onClick={() => go("script")}>Read the pitch script first</button>
         <button className="btn ghost" onClick={() => go("home")}>Back</button>
       </div>
     </main>

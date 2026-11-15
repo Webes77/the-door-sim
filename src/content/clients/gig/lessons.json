@@ -1,0 +1,1301 @@
+[
+ {
+  "id": "pitch",
+  "group": "The pitch",
+  "title": "Pitch Foundation",
+  "source": "p8",
+  "practice": true,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "The Pitch Foundation is the shape of the pitch — the five stages every conversation runs through: Introduction, Problem, Solution, Close, Consolidation. Before you layer in delivery, impulse, deflection, or rapport, you need to know the shape."
+  ],
+  "why": {
+   "callout": "Sales creates opportunity. Nothing else.",
+   "text": "Most beginners try to remember everything and sound perfect on the first day. That is the fastest way to freeze. Learn the structure first, and the delivery improves on its own with reps."
+  },
+  "blocks": [
+   {
+    "type": "list",
+    "title": "How it works",
+    "intro": "Five stages, in this order:",
+    "items": [
+     "Introduction — earn attention. Lower defensiveness. Start a real conversation",
+     "Problem — give them a reason to care. Two strong issues from your campaign brief",
+     "Solution — show the impact. A real story or win, plus progress toward long-term change",
+     "Close — ask for the commitment. More than once. Different methods",
+     "Consolidation — make the commitment stick. Reinforce the decision in the donor's own words"
+    ],
+    "outro": "Get the shape automatic first. Polish the delivery second. Layer in advanced systems third."
+   }
+  ],
+  "sounds": "Two ways to handle a fumble on the first day.",
+  "weak": [
+   "Rep tries to remember the perfect line. Pauses, restarts, apologises. The donor loses patience and walks away.",
+   "Trying to be perfect breaks the rhythm. The pitch never completes."
+  ],
+  "strong": [
+   "Rep stumbles on a line but keeps going to the end. The pitch finishes. Trainer debriefs after.",
+   "The pitch completed. The rep got the rep. That is the only goal at this stage."
+  ],
+  "avoid": [
+   "Talking too fast because of nerves",
+   "Restarting the whole pitch after a small slip",
+   "Trying to sound perfect too early",
+   "Overthinking instead of repeating",
+   "Treating a question as a no"
+  ],
+  "remember": "Mistakes do not break a pitch. Stopping does. Trust the structure to hold you.",
+  "target": "Complete every pitch you start, even the rough ones. Five to fifteen full pitches a day while you learn the shape.",
+  "tryToday": [
+   "Run the full pitch out loud three times before your first door",
+   "Aim to complete every pitch you start today, even when it gets rough",
+   "After each conversation, write down which stage you nailed and which you fumbled"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "introduction",
+  "group": "The pitch",
+  "title": "Introduction",
+  "stageNo": 1,
+  "source": "p16",
+  "practice": true,
+  "drill": "introduction",
+  "appliedBy": "introduction",
+  "what": [
+   "The Introduction is the first stage of your conversation. Your job is to get the donor's attention, build trust, and earn the right to keep talking. This is where the donor decides whether you're worth their time."
+  ],
+  "why": {
+   "callout": "The donor decides in the first few seconds whether they like you and want to listen.",
+   "text": "Before you can talk about the cause or ask for anything, you need to remove their natural defensiveness. A strong Introduction sets the tone for everything that follows. Get this right and the rest of the conversation flows. Get it wrong and nothing else matters."
+  },
+  "sounds": "Two ways to open the same door.",
+  "weak": [
+   "Hi, my name is Sarah, I am from the Children's Hospital Foundation, we are out today looking for people who might be interested in supporting the work we do, and basically what we do is provide funding for...",
+   "Too long, no question, no personality. The donor has already checked out."
+  ],
+  "strong": [
+   "Hey, how is your day going? I love that car, by the way. I am Sarah, I am out with the Children's Hospital today, have you heard much about what they are doing?",
+   "Warm, genuine, a real compliment, short, and it ends with a question. The donor is now talking back."
+  ],
+  "avoid": [
+   "Talking too much before asking a question",
+   "Being stiff or scripted",
+   "Jumping straight into the cause before they're comfortable",
+   "Standing too close or too far away",
+   "Ignoring their body language and facial expressions"
+  ],
+  "remember": "The Introduction is the most important stage because it sets up everything else. If the donor doesn't trust you and feel comfortable, nothing you say about the cause or the Solution will land.",
+  "target": "Create a two-way conversation within the first ten seconds of every approach.",
+  "tryToday": [
+   "Practice with the biggest smile you can muster",
+   "Lead with one observation you can see — garden, dog, weather",
+   "Ask a question within the first ten seconds of every approach"
+  ],
+  "blocks": [],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "problem",
+  "group": "The pitch",
+  "title": "Problem",
+  "stageNo": 2,
+  "source": "p18",
+  "practice": true,
+  "drill": "problem",
+  "appliedBy": "problem",
+  "what": [
+   "The Problem stage is where you give the donor a reason to care. You introduce the two key issues your campaign addresses and make them feel why it matters."
+  ],
+  "why": {
+   "callout": "People buy on emotion and justify on logic.",
+   "text": "The donor needs to understand the problem before they can value the Solution. Stage 1 made them want to talk to you. Stage 2 makes them want to find a solution. If you skip this or rush it, the Solution won't land. Without a strong Problem stage, the donor has no emotional reason to act."
+  },
+  "blocks": [
+   {
+    "type": "list",
+    "title": "How it works",
+    "intro": "Present each issue simply. Two to three sentences, then ask a question. Use emotion to create the feeling, and logic to back it up.",
+    "items": [
+     "Lead with the two most powerful issues from your campaign brief",
+     "Pause after key points to let the message land",
+     "Paint the picture — make them see and feel the reality of the problem",
+     "Use power words that trigger a response",
+     "By the end of this stage, the donor should be thinking: \"That's a real problem. I want to know what's being done about it\""
+    ]
+   },
+   {
+    "type": "text",
+    "title": "The transition",
+    "paras": [
+     "The transition to Solution sounds like: \"That's terrible, right? But there is hope.\""
+    ]
+   }
+  ],
+  "sounds": "Presenting the same issue two ways.",
+  "weak": [
+   "Thousands of children are struggling because of funding shortages, and the programs are really underfunded, and there is a lot of work still to do...",
+   "An information dump. No pause, no emotion, no question. The donor hears words but feels nothing."
+  ],
+  "strong": [
+   "Honestly, the part that shocked me most was how many kids are waiting months just to get basic support. Have you heard much about this before?",
+   "Personal, emotional, it pauses for effect, and it ends with a question. The donor is now feeling the problem."
+  ],
+  "avoid": [
+   "Overloading them with facts",
+   "Sounding like you're reading from a script",
+   "Forgetting to ask questions and listen to the answers between points",
+   "Moving to the Solution before the problem has landed emotionally"
+  ],
+  "remember": "Emotion first, logic second. The donor doesn't need to know every statistic — they need to feel the weight of the problem.",
+  "target": "Create genuine emotional engagement before moving into the Solution.",
+  "tryToday": [
+   "Pick the two strongest issues from your campaign brief and rehearse delivering them out loud",
+   "After each problem point, ask one question and wait. Do not fill the silence",
+   "Watch the donor's face — if they look unmoved, slow down explain another point"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "solution",
+  "group": "The pitch",
+  "title": "Solution",
+  "stageNo": 3,
+  "source": "p20",
+  "practice": true,
+  "drill": "solution",
+  "appliedBy": "solution",
+  "what": [
+   "The Solution stage is where you present the answer — the organisation's mission, programs, and impact. But you're also building impulse: the emotional momentum that moves donors from \"that sounds good\" to \"I want to be part of this.\""
+  ],
+  "why": {
+   "callout": "A flat presentation of facts won't move anyone — you need emotion, energy, and impulse factors working together.",
+   "text": "Presenting the Solution is only half the job. You also need to build the donor's desire to act."
+  },
+  "blocks": [
+   {
+    "type": "text",
+    "title": "Building impulse through the Solution",
+    "paras": [
+     "This is where your Impulse Factors do their heaviest work. Use Greed to make the donor feel like a hero. Use Jones Theory to show them others are already on board. Use Fear of Loss to show what happens without support.",
+     "Watch the donor's body language. Nodding, leaning in, or asking questions about how to help — those are buying signs. That's impulse building above the Buyer's Line."
+    ]
+   }
+  ],
+  "sounds": "Presenting the same charity two ways.",
+  "weak": [
+   "So the charity runs several programs, including outreach, community support, education initiatives, and emergency response...",
+   "A list of programs. No emotion, no impulse. The donor nods politely but feels nothing."
+  ],
+  "strong": [
+   "The reason so many of your neighbors are jumping on board today is because last year alone we rescued thousands of animals that had nowhere else to go, and every single one found a home. Pretty incredible, right?",
+   "Specific, emotional, a real personal reaction, and it ends with a check-in question. The donor feels the impact."
+  ],
+  "avoid": [
+   "Dumping information without checking in",
+   "Relying on facts alone without building emotion",
+   "Missing the moment when the donor is ready to move forward",
+   "Forgetting to use your Impulse Factors"
+  ],
+  "remember": "The Solution is where you connect the donor's emotion from the Problem to a way they can make a difference. Your campaign brief will give you the specific impact stories and results. Deliver them with genuine passion and the donor will feel it.",
+  "target": "Build enough genuine momentum that the donor starts asking how they can help.",
+  "tryToday": [
+   "Memorise one specific impact story and one long-term progress point from your campaign brief",
+   "Watch for buying signs after every point you make — nodding, leaning in, asking questions",
+   "Confirm the impact before closing: \"Pretty incredible, right?\" Wait for the acknowledgment"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "close",
+  "group": "The pitch",
+  "title": "Close",
+  "stageNo": 4,
+  "source": "p22",
+  "practice": true,
+  "drill": "close",
+  "appliedBy": "close",
+  "what": [
+   "The Close is where the conversation becomes a commitment."
+  ],
+  "why": {
+   "callout": "Closing is not a single moment — it's a process.",
+   "text": "You spot buying signs, ask for the donation, and give the donor the chance to say yes. Most sign-ups happen on the second or third attempt."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The five closing methods",
+    "cols": [
+     "Method",
+     "What it is",
+     "Example on the doors"
+    ],
+    "rows": [
+     [
+      "Trial Close",
+      "Small agreement questions during the pitch that build momentum toward the final yes.",
+      "\"That makes sense, doesn't it?\" / \"You can see the value in that, right?\""
+     ],
+     [
+      "Assumptive Close",
+      "Proceed as if the donor has already decided to commit. Move naturally into sign-up.",
+      "\"So what I'll do is just get you started, what was your last name?\""
+     ],
+     [
+      "Alternative Close",
+      "Give two options — both lead to a yes. Shifts the decision from yes/no to which option.",
+      "\"Would monthly or annually work best for you?\""
+     ],
+     [
+      "Indifferent Close",
+      "Remove all pressure. Give complete control to the donor.",
+      "\"It's completely up to you — you choose an amount and frequency that works.\""
+     ],
+     [
+      "Silent Close",
+      "Ask for the commitment, then stop talking. Let silence do the work.",
+      "Ask your closing question, then: silence. Don't fill the gap."
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "title": "",
+    "paras": [
+     "Watch for buying signs — verbal and non-verbal signals that the donor is ready. When you spot one, move to a Close. If they say no, don't argue. Use the Deflection model: acknowledge, confirm they believe in the cause, re-impulse with something new, then Close again with a different method."
+    ]
+   }
+  ],
+  "sounds": "Asking for the commitment two ways.",
+  "weak": [
+   "So... would you maybe want to help out today, if that is okay?",
+   "Tentative and apologetic. It hands the donor every reason to say no."
+  ],
+  "strong": [
+   "So that is the reason we are out here, the charity relies on regular support to do this work, so I assume we can count on your support too yeah?",
+   "It bridges naturally from the pitch and frames the ask as logical, not pushy. The donor is choosing how, not whether."
+  ],
+  "avoid": [
+   "Closing before the donor is ready",
+   "Arguing with objections",
+   "Using the same Close method every time",
+   "Filling the silence after an ask — most reps talk themselves out of a Close"
+  ],
+  "remember": "If you do not ask, the donor cannot say yes.",
+  "target": "Close confidently at least three times in every full conversation.",
+  "tryToday": [
+   "Use a different closing method on each of the first three closes today",
+   "After the ask, count to three in silence before speaking again",
+   "Close at least three times on every full conversation, no exceptions"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "consolidation",
+  "group": "The pitch",
+  "title": "Consolidation",
+  "stageNo": 5,
+  "source": "p24",
+  "practice": true,
+  "drill": "consolidation",
+  "appliedBy": "consolidation",
+  "what": [
+   "Consolidation is where you make the commitment stick. You complete the sign-up professionally, reinforce the donor's decision, and leave them confident about what they just did."
+  ],
+  "why": {
+   "callout": "People stay committed to decisions they justify in their own words.",
+   "text": "A strong Close means nothing if the donor cancels the next day. Consolidation turns a sign-up into a lasting supporter. This stage protects your numbers and the charity's relationship with the donor."
+  },
+  "blocks": [
+   {
+    "type": "text",
+    "title": "Why the self-justification question matters",
+    "paras": [
+     "When the donor explains their decision in their own words, they're no longer your sign-up — they're their own decision.",
+     "If a friend asks them later why they signed up, they'll repeat the reason they gave you, not \"because a fundraiser asked me to.\" This dramatically reduces cancellations."
+    ]
+   }
+  ],
+  "sounds": "Finishing the conversation two ways.",
+  "weak": [
+   "\"Okay, thanks a lot for jumping on board, have a good day\"",
+   "Transactional and cold. The donor starts second-guessing because it suddenly feels like a sales process."
+  ],
+  "strong": [
+   "Brilliant, you are going to be making a real difference. Let me get you set up. [Completes the sign-up smoothly.] Out of curiosity, what was the main reason you decided to jump on board?",
+   "Warm, it reinforces the decision, the transition is smooth, and the self-justification question lands naturally."
+  ],
+  "avoid": [
+   "Rushing through sign-up and making mistakes",
+   "Leaving without reinforcing the decision",
+   "Skipping the self-justification question",
+   "Breaking rapport by becoming transactional at the end",
+   "Celebrating too early — stay professional until you've walked away and well out of sight of the donor"
+  ],
+  "remember": "If you go cold the second they say yes, they will go cold the second you leave.",
+  "target": "Walk away from every sign-up knowing, in the donor's own words, why they chose to support.",
+  "tryToday": [
+   "Practise the self-justification question out loud before your shift",
+   "Hold the same warmth from the close all the way through the sign-up",
+   "Ask the self-justification question on every sign-up today, no exceptions"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "seen",
+  "group": "Core systems",
+  "title": "S.E.E.N.",
+  "source": "p10",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "Your baseline. These four factors — Smile, Eye Contact, Enthusiasm, Nodding — run from the moment you approach until you walk away. Think of S.E.E.N. as the engine running in the background. Everything else is built on top of it. All four used together is what makes the difference — one on its own is not enough."
+  ],
+  "why": {
+   "callout": "S.E.E.N. is the most important system in your toolkit. When sales drop, it is almost always because one of the four factors has gone missing.",
+   "text": "People respond to your energy and delivery far more than to your words. When all your attention goes into remembering the pitch, you stop noticing the delivery, and the conversation goes cold without you knowing why."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The four factors",
+    "cols": [
+     "Factor",
+     "Communicates",
+     "The donor feels"
+    ],
+    "rows": [
+     [
+      "Smile",
+      "Warmth, safety, openness",
+      "\"This person feels friendly.\""
+     ],
+     [
+      "Eye contact",
+      "Confidence, presence, certainty",
+      "\"This person feels genuine.\""
+     ],
+     [
+      "Enthusiasm",
+      "Belief, energy, passion",
+      "\"This person believes in this.\""
+     ],
+     [
+      "Nodding",
+      "Listening, agreement, engagement",
+      "\"This person is listening to me.\""
+     ]
+    ]
+   }
+  ],
+  "sounds": "Same pitch, two physical deliveries.",
+  "weak": [
+   "Rep approaches with a flat expression, glances away while making key points, speaks in monotone, and stands rigid.",
+   "The donor does not engage. The conversation feels transactional and dies quickly."
+  ],
+  "strong": [
+   "Rep smiles on the approach, holds steady eye contact on key points, speaks with life and energy, and nods gently while the donor talks.",
+   "The donor relaxes, opens up, and starts talking back. The conversation flows."
+  ],
+  "avoid": [
+   "Fake smiles, staring without blinking, over-the-top enthusiasm, or nervous nodding",
+   "Dropping S.E.E.N. the moment a donor pushes back",
+   "Going flat or stiff during the close",
+   "Treating S.E.E.N. as a starting move, not the whole conversation"
+  ],
+  "focus": [
+   "Hold all four factors through the full pitch — especially through objections and the close",
+   "Check yourself after every conversation: which of the four did you drop?"
+  ],
+  "remember": "S.E.E.N. is not something you switch on and off. It runs the entire time. When the conversation gets hard — during objections, during the Close — that's when most reps drop their S.E.E.N. and that's exactly when you need it the most.",
+  "target": "Hold strong S.E.E.N. through every full pitch, especially through objections and the close.",
+  "tryToday": [
+   "Pick one factor (smile, eye contact, enthusiasm, or nodding) to focus on for the first hour",
+   "After every conversation, mentally check which factor you held strongest and which you dropped",
+   "Ask your trainer for one S.E.E.N. note after every set of pitches"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "kiss",
+  "group": "Core systems",
+  "title": "KISS vs KILL",
+  "source": "p12",
+  "practice": true,
+  "drill": "",
+  "appliedBy": "kiss",
+  "what": [
+   "Two ways of delivering your pitch. KISS = Keep It Short & Simple. KILL = Keep It Long & Lethal."
+  ],
+  "why": {
+   "callout": "A pitch that generates questions is working. Polite silence means you have lost them.",
+   "text": "Adult attention drops fast — most people only stay engaged for a couple of sentences before they need something to react to. After that, they're waiting for you to stop talking. Talking too much is the most common mistake fundraisers make — you can talk someone out of a sign-up even when they were interested."
+  },
+  "sounds": "The same campaign, delivered two ways.",
+  "weak": [
+   "So what we do is work with the charity to raise funds through face-to-face conversations, and the money goes toward programs that help children who need medical treatment, and the programs have been running for fifteen years and have been really successful...",
+   "One long block. No question, no pause. The donor is waiting for it to end."
+  ],
+  "strong": [
+   "We are out today supporting the Children's Hospital, have you heard much about what they do? [Donor responds.] So last year alone they treated thousands of kids, pretty incredible, right?",
+   "Short, punchy, two-way. The donor is engaged and talking back."
+  ],
+  "avoid": [
+   "Talking for more than 30 seconds without a question",
+   "Filling silence when the donor is thinking",
+   "Treating the pitch like a speech instead of a conversation",
+   "Only using KISS in the introduction and dropping it later"
+  ],
+  "focus": [
+   "Keep every block to two or three sentences, then ask a question",
+   "If you've been talking for thirty seconds straight, you're already at KILL — stop and check in"
+  ],
+  "remember": "If you have been talking for thirty seconds, you are already in KILL. Stop and ask a question.",
+  "target": "Ask a question every two to three sentences in every conversation.",
+  "tryToday": [
+   "Count sentences in your head up to three. If you have not asked a question yet, ask one",
+   "Time yourself on the next full pitch. If you talk for more than thirty seconds straight, you are at KILL",
+   "Practise three question stems: \"Does that make sense?\" / \"Have you heard?\" / \"Can you imagine that?\""
+  ],
+  "blocks": [],
+  "review": "pending"
+ },
+ {
+  "id": "steps",
+  "group": "Core systems",
+  "title": "The 5 Steps",
+  "source": "p14",
+  "practice": true,
+  "drill": "",
+  "appliedBy": "close",
+  "what": [
+   "The five-stage structure of every conversation: Introduction, Problem, Solution, Close, Consolidation. Each stage has its own job. Each one builds on the one before. Skip a stage and the next one will not land."
+  ],
+  "why": {
+   "callout": "The 5 Steps are the spine of every conversation. Everything else hangs off them.",
+   "text": "Once you can run the 5 Steps cleanly, every other system layers on top: S.E.E.N. for delivery, KISS for pacing, Impulse Factors for emotional momentum, Deflection for objections."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "What each stage builds",
+    "cols": [
+     "Stage",
+     "Your job",
+     "The donor"
+    ],
+    "rows": [
+     [
+      "1. Introduction",
+      "Earn attention and trust.",
+      "Low trust. They are cautious and assessing."
+     ],
+     [
+      "2. Problem",
+      "Create emotional engagement.",
+      "Emotion. They feel the importance."
+     ],
+     [
+      "3. Solution",
+      "Build impulse and belief.",
+      "Impulse. They see a way to make a difference."
+     ],
+     [
+      "4. Close",
+      "Ask with certainty.",
+      "Commitment. They decide to take action."
+     ],
+     [
+      "5. Consolidation",
+      "Reinforce the decision.",
+      "Ownership. They feel good about their decision."
+     ]
+    ]
+   }
+  ],
+  "sounds": "",
+  "weak": [],
+  "strong": [],
+  "avoid": [
+   "Trying to close before the Problem and Solution have landed",
+   "Jumping into the cause before any rapport",
+   "Skipping the Consolidation and losing the donor next day",
+   "Treating each stage as separate instead of one flowing conversation"
+  ],
+  "focus": [
+   "Run every stage in order — no skipping, no shortcuts",
+   "Be present in each stage. When you're introducing yourself, don't be thinking about the close. When you're explaining the solution, focus on impulse and passion."
+  ],
+  "remember": "The five stages are not a script. They are the shape your conversation needs to take.",
+  "target": "Run all five stages, in order, in every full pitch.",
+  "tryToday": [
+   "Mentally name the stage you are in before you move to the next one",
+   "Run all five stages in order on the next ten pitches, no shortcuts",
+   "After each pitch, ask which stage was strongest and which was weakest"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "objections",
+  "group": "Advanced systems",
+  "title": "Objection Handling",
+  "source": "p26",
+  "practice": true,
+  "drill": "close",
+  "appliedBy": "objections",
+  "what": [
+   "A five-step model for responding to objections without losing momentum."
+  ],
+  "why": {
+   "callout": "Almost every first objection is automatic — not a real reason. It's the donor's reflex, not their decision.",
+   "text": "Arguing validates the objection. Deflecting with questions finds out where the donor actually stands."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The Deflect Model",
+    "cols": [
+     "Step",
+     "What you do"
+    ],
+    "rows": [
+     [
+      "1. Listen",
+      "Let them speak. Don't interrupt."
+     ],
+     [
+      "2. Acknowledge",
+      "Show you understand their concern."
+     ],
+     [
+      "3. Confirm",
+      "Get clarity and ensure they feel heard."
+     ],
+     [
+      "4. Re-impulse",
+      "Rebuild value and desire."
+     ],
+     [
+      "5. Re-close",
+      "Ask for commitment again."
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "title": "Example in action",
+    "paras": [
+     "\"I don't think I can afford it.\"",
+     "\"I hear you. Can I ask — does the idea of what [charity] is doing make sense to you?\" (Yes.) \"Exactly. The true beauty is [new point]. So the real question is, what works best for you — monthly or annually?\""
+    ]
+   }
+  ],
+  "sounds": "Responding to the same objection two ways.",
+  "weak": [
+   "I understand, but it is only a small amount and it really does make a difference...",
+   "It says I understand, which you should never say, and it argues with the objection. The donor shuts down."
+  ],
+  "strong": [
+   "I hear you. Can I ask, does the idea of what they are doing make sense to you? [Yes.] Exactly, and that is why most people start small. What works best for you, monthly or annually?",
+   "It acknowledges without agreeing, confirms belief in the cause, re-impulses, and re-closes with a different method."
+  ],
+  "avoid": [
+   "Arguing with objections",
+   "Skipping acknowledgment",
+   "Repeating your pitch word for word",
+   "Giving up after one objection — the conversation is not over until the donor tells you they genuinely don't want to or are unable to help"
+  ],
+  "focus": [
+   "Acknowledge without agreeing — \"I hear you,\" never \"I understand\"",
+   "Always re-close with a different method than the one that triggered the objection"
+  ],
+  "remember": "An objection means the conversation is still alive. Treat it that way.",
+  "target": "Stay calm and keep the conversation going after every objection.",
+  "tryToday": [
+   "Practise saying \"I hear you\" or \"that's fair enough\" instead of \"I understand\" for the first hour",
+   "After every objection, run all five steps in order — do not skip Confirm",
+   "Re-close with a different method than the one that triggered the objection"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "gifts",
+  "group": "Advanced systems",
+  "title": "Impulse Factors (GIFTS)",
+  "source": "p29",
+  "practice": true,
+  "drill": "solution",
+  "appliedBy": "solution",
+  "what": [
+   "Six psychological triggers that increase a donor's impulse to act."
+  ],
+  "why": {
+   "callout": "Information alone doesn't create action — impulse does.",
+   "text": "The best reps layer multiple factors through the conversation."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The six triggers",
+    "cols": [
+     "Trigger",
+     "What it does",
+     "Example"
+    ],
+    "rows": [
+     [
+      "G — Greed",
+      "Appeals to the desire to be part of something meaningful.",
+      "Make them feel like a hero: \"You'd be directly responsible for changing a child's life.\""
+     ],
+     [
+      "I — Indifference",
+      "Removes pressure. When donors feel no obligation, they relax and engage.",
+      "\"It's completely up to you — I'm just here to share what we're doing.\""
+     ],
+     [
+      "F — Fear of Loss",
+      "Highlights what happens if nothing changes. People respond more to loss than gain.",
+      "\"Without ongoing support, these programs simply can't continue.\""
+     ],
+     [
+      "T — Jones Theory",
+      "Social proof — others are doing this. Makes the decision feel safer.",
+      "\"A lot of the local community have already jumped on board today.\""
+     ],
+     [
+      "S — Sense of Urgency",
+      "Creates time-based motivation. The need is now, not later.",
+      "From your campaign brief."
+     ],
+     [
+      "Passion & Emotion",
+      "Your genuine belief in the cause. Not a technique — the foundation.",
+      "Speak from real conviction. If you don't believe it, neither will they."
+     ]
+    ]
+   }
+  ],
+  "sounds": "Answering \"so what do you guys do\" two ways.",
+  "weak": [
+   "So they need donations to keep the programs running. Would you be able to help out today?",
+   "One vague trigger and nothing layered. Easy to say no to."
+  ],
+  "strong": [
+   "Right now the community is really rallying behind this, a lot of your neighbours have already jumped on board today. The truth is, without that ongoing support these programs cannot continue. What works best for you, monthly or annually?",
+   "Jones Theory and Fear of Loss layered naturally, with a close built in. The donor feels momentum, not pressure."
+  ],
+  "avoid": [
+   "Using only one factor",
+   "Faking indifference",
+   "Inventing urgency that doesn't exist",
+   "Forgetting that Passion is the foundation, not a bonus"
+  ],
+  "focus": [
+   "Layer every trigger naturally in every full pitch",
+   "Lead with your own genuine passion — that's the trigger that makes the others land"
+  ],
+  "remember": "Your own passion is the most powerful trigger of all. Passion is not a technique — it is the foundation under the other five.",
+  "target": "Layer each impulse factor two or three times naturally in every full conversation.",
+  "tryToday": [
+   "Pick two factors to focus on for the first half of the day",
+   "Notice which impulse factor lands with which kind of donor and adjust on the next door",
+   "Track which factor gets you the most buying signs and lean into it tomorrow"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "curve",
+  "group": "Advanced systems",
+  "title": "The Impulse Curve",
+  "source": "p31",
+  "practice": true,
+  "drill": "close",
+  "appliedBy": "close",
+  "what": [
+   "A model of the donor's emotional journey through your pitch. It maps how their willingness to act rises and falls as you talk."
+  ],
+  "why": {
+   "callout": "If impulse drops below the Attention Line, you've lost them. If it rises above the Buying Line, it's time to close.",
+   "text": "Even a strong conversation fails when the timing is wrong. Impulse rises and falls throughout the pitch, and your job is to read where the curve is, not where you wish it was."
+  },
+  "blocks": [
+   {
+    "type": "list",
+    "title": "Reading the curve",
+    "intro": "",
+    "items": [
+     "Attention Line — minimum engagement needed to keep them listening. Keep impulse above this line at all times",
+     "Buying Line — close when impulse is above this line",
+     "Buying signs build impulse. Look for them and build",
+     "Objections cause an immediate drop. Deflect at the bottom. Re-impulse to rise again",
+     "Objections cause dips. That's normal. What matters is recovery"
+    ]
+   }
+  ],
+  "sounds": "Reading the curve two ways.",
+  "weak": [
+   "Rep delivers a long monologue. The donor's impulse peaked three minutes ago, but the rep missed it and kept talking. By the time they try to close, the donor has checked out.",
+   "Impulse rose above the Buying Line and the rep talked it back down. The timing was missed."
+  ],
+  "strong": [
+   "Rep makes a powerful point. The donor nods, leans in, and says that's amazing. The rep recognises the buying sign and moves straight to the close.",
+   "The rep read the curve, saw it cross the Buyer's Line, and closed at the right moment."
+  ],
+  "avoid": [
+   "Talking too long without checking in",
+   "Ignoring signals that impulse has fallen",
+   "Panicking after objections",
+   "Trying to Close before impulse has reached the Buying Line (unless using the close as a qualifier)"
+  ],
+  "focus": [
+   "Read the donor's signals constantly — nodding, leaning in, asking questions",
+   "Close the moment impulse crosses the Buyer's Line — don't wait, don't keep selling"
+  ],
+  "remember": "If you cannot tell where the curve is, you are not asking enough questions.",
+  "target": "Recognise emotional momentum and close during a genuine high-engagement moment.",
+  "tryToday": [
+   "After every full pitch, ask yourself: did the donor cross the Buying Line, and when?",
+   "Practise closing the moment a donor leans in or nods strongly",
+   "If you miss a peak, note where you noticed impulse dropping and recover with something new"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "body",
+  "group": "Advanced systems",
+  "title": "Body Language & Tone of Voice",
+  "source": "p33",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "How you say something matters at least as much as what you say. The donor reads your body and your tone before they process your words — if your delivery is off, your content never lands."
+  ],
+  "why": {
+   "callout": "If your delivery is off, the donor will not hear what you're saying.",
+   "text": "Your S.E.E.N. system — Smile, Eye Contact, Enthusiasm, Nodding — is the engine running underneath. Body Language and Tone of Voice are the basics layered on top. Get the basics consistent and your delivery becomes effortless."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The body language basics",
+    "cols": [
+     "Basic",
+     "What it looks like"
+    ],
+    "rows": [
+     [
+      "Posture",
+      "Stand at a slight angle to the donor, never square-on. Square-on reads as confrontational; angled reads as conversational."
+     ],
+     [
+      "Hands",
+      "Out of your pockets. Let them move naturally with your words — open palms when you make a point."
+     ],
+     [
+      "Eye Contact",
+      "Hold it on the key lines. Break it briefly when you ask a question (it gives the donor room to think)."
+     ],
+     [
+      "Distance",
+      "An arm's length back from the doorway. Close enough to feel personal, far enough that they don't feel crowded."
+     ],
+     [
+      "Stillness",
+      "Stop moving when you make the most important point. Stillness signals certainty."
+     ],
+     [
+      "Open Posture",
+      "Don't cross your arms, don't clutch a clipboard to your chest. Keep your body open even when theirs isn't."
+     ]
+    ]
+   },
+   {
+    "type": "table",
+    "title": "The tone of voice basics",
+    "cols": [
+     "Basic",
+     "What it sounds like"
+    ],
+    "rows": [
+     [
+      "Pace",
+      "Slow down at the close. Speed up slightly during stories. A fast pitch reads as nervous; a deliberate pace reads as confident."
+     ],
+     [
+      "Volume",
+      "Drop your voice — not raise it — before the most important lines. Quiet pulls people in."
+     ],
+     [
+      "Pitch",
+      "Lift your voice at the end of a question. Drop it at the end of a statement. Flat pitch reads as a script."
+     ],
+     [
+      "Pauses",
+      "Pause after a powerful point. Let it land. New reps fill silence; experienced reps use it."
+     ],
+     [
+      "Energy",
+      "Match the donor's energy in the first three seconds, then bring it up slightly through the Solution."
+     ],
+     [
+      "Warmth",
+      "Smile through the tone — donors can hear it. A warm tone makes any line easier to receive."
+     ]
+    ]
+   }
+  ],
+  "sounds": "The same pitch, two physical deliveries.",
+  "weak": [
+   "Rep stands square-on to the donor with crossed arms, hands clutching a clipboard, and speaks in a flat monotone at the same pace throughout.",
+   "The donor feels processed, not spoken to. They are looking for an exit within seconds."
+  ],
+  "strong": [
+   "Rep stands at a slight angle, hands out and moving naturally, pauses before the key line, drops their voice on the impact stat, then lifts pitch on the closing question.",
+   "The donor feels comfortable, the key point lands, and the close feels natural."
+  ],
+  "avoid": [
+   "Standing square-on — angle yourself slightly",
+   "Hands in pockets or clutched in front — keep them visible and moving naturally",
+   "Monotone delivery — every pitch needs at least one deliberate tone change",
+   "Speaking at the same pace throughout — slow down at the close, never speed up under pressure",
+   "Trying to do all twelve basics at once — pick one or two body language and two tone basics per shift"
+  ],
+  "focus": [
+   "Pick one body language basic and one tone basic to focus on per shift — rotate through them as they become automatic",
+   "Let S.E.E.N. carry the rest — when smile, eye contact, enthusiasm, and nodding are strong, your body and voice naturally follow"
+  ],
+  "remember": "If your body is closed, the donor's mind closes with it. If you sound flat, the donor feels flat. Master the basics one at a time — once they're automatic, your trainer will introduce the more advanced layers.",
+  "target": "Hold one body language basic and one tone basic deliberately through every full pitch.",
+  "tryToday": [
+   "Pick one body language basic (posture, hands, eye contact, distance, stillness, or open posture) for the morning",
+   "Pick one tone basic (pace, volume, pitch, pauses, energy, or warmth) for the afternoon",
+   "After each conversation, ask yourself: did I hold the two I chose, or did I drop them under pressure?"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "matching",
+  "group": "Advanced systems",
+  "title": "Matching and Mirroring",
+  "source": "p36",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "When a donor feels mirrored, they feel understood — even if they cannot explain why. Matching and Mirroring is how you make a stranger feel familiar in three seconds."
+  ],
+  "why": {
+   "callout": "People trust people who feel familiar.",
+   "text": "Donors make decisions based on how they feel about you, not just what you say. The fastest way to feel familiar to a stranger is to match the energy they bring to the door."
+  },
+  "blocks": [
+   {
+    "type": "list",
+    "title": "Match their energy",
+    "intro": "Read the donor in the first three seconds:",
+    "items": [
+     "If they're quiet and tired, bring your energy down. Speak softer, slower, calmer",
+     "If they're upbeat and chatty, match that energy. Lift your voice, move quicker",
+     "If they're guarded, stay open and relaxed. Do not match the defensiveness"
+    ],
+    "outro": "When you get the energy right, your tone, pace, and body language usually follow without effort. Once that is automatic, your trainer will teach you how to mirror tone, pace, and posture deliberately."
+   }
+  ],
+  "sounds": "Meeting a quiet donor two ways.",
+  "weak": [
+   "Rep delivers the same pitch at the same energy to every person — loud and upbeat to a quiet elderly donor, rushed and fast to someone who likes to take their time.",
+   "The donor feels like the rep is not listening. There is a disconnect and the conversation dies early."
+  ],
+  "strong": [
+   "A quiet, reserved donor opens the door. The rep brings their energy down slightly, speaks calmly, leans back a little. The donor relaxes. A few minutes later both are engaged, and the donor is opening up.",
+   "The donor feels understood without knowing why. Mirroring built the trust invisibly."
+  ],
+  "avoid": [
+   "Using the same energy for everyone — a loud, upbeat pitch lands badly with a quiet donor",
+   "Mirroring negative body language — if they cross their arms, stay open. Match comfort, not defensiveness",
+   "Forgetting to read the donor in the first few seconds",
+   "Trying to consciously mirror everything at once — start with energy and the rest follows"
+  ],
+  "focus": [
+   "Read the donor's energy in the first three seconds and adjust your own to match",
+   "Match comfort, never defensiveness — if they close off, you stay open"
+  ],
+  "remember": "A loud pitch at a quiet person is a closed door.",
+  "target": "Adjust your energy to every donor in the first three seconds of the conversation.",
+  "tryToday": [
+   "Take three seconds at every door to read the donor's energy while you speak",
+   "If you misread the energy, adjust your next sentence and keep going",
+   "After every pitch, ask: did I match them, or did I run my default?"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "rapport",
+  "group": "Advanced systems",
+  "title": "Gathering Intelligence & Building Rapport",
+  "source": "p38",
+  "practice": true,
+  "drill": "introduction",
+  "appliedBy": "introduction",
+  "what": [
+   "Intelligence is finding out who you are talking to. Rapport is the genuine connection that makes a donor want to keep talking. The best fundraisers do not pitch at people, they have conversations with people."
+  ],
+  "why": {
+   "callout": "Donors will often tell you exactly why they might want to help — if you listen for it.",
+   "text": "Without intelligence, you are guessing what will move this donor. Without rapport, the donor does not trust you — and people do not give money to people they do not trust."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "Observe, ask, listen, connect, then make the pitch about them",
+    "cols": [
+     "Step",
+     "What you do"
+    ],
+    "rows": [
+     [
+      "Observe",
+      "Notice their world."
+     ],
+     [
+      "Ask",
+      "Ask open questions."
+     ],
+     [
+      "Listen",
+      "Listen actively."
+     ],
+     [
+      "Connect",
+      "Find common ground."
+     ],
+     [
+      "Personalise",
+      "Make the pitch about them."
+     ]
+    ]
+   },
+   {
+    "type": "table",
+    "title": "Areas to explore",
+    "cols": [
+     "Area",
+     "Why"
+    ],
+    "rows": [
+     [
+      "Pets",
+      "Dogs open doors."
+     ],
+     [
+      "Home & garden",
+      "Pride in their home."
+     ],
+     [
+      "Family",
+      "Kids, partner, family."
+     ],
+     [
+      "Work & life",
+      "What they do, their world."
+     ],
+     [
+      "Interests",
+      "Sport, fitness, hobbies."
+     ],
+     [
+      "Local",
+      "Neighbourhood, community."
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "title": "Non-negotiable: no fake compliments",
+    "paras": [
+     "If there is no genuine compliment to give, do not force one. Fake rapport is worse than no rapport.",
+     "Donors can feel a fake compliment instantly — and the moment they do, you've broken trust before you've earned it. A neutral opener and a real question always beats a hollow line about a garden that's actually dead. If you can't see anything to genuinely compliment, skip the compliment and lead with curiosity instead."
+    ]
+   }
+  ],
+  "sounds": "Opening the same door two ways.",
+  "weak": [
+   "Rep launches straight into the pitch without asking a single question. They use the same script regardless of who is at the door.",
+   "The donor feels like a number. There is no connection and the pitch does not land because it is not personalised."
+  ],
+  "strong": [
+   "\"Oh wow, beautiful dog — what's their name?\" (Donor responds, relaxes.) \"I can tell they're well looked after. That's actually why I'm here — I'm out with the Humane Society today.\"",
+   "Natural, observant, ties the rapport directly into the campaign. The donor feels seen and the pitch flows from the connection."
+  ],
+  "avoid": [
+   "Jumping into the pitch with no question and no observation",
+   "Asking intrusive questions — start with what you can see, not what you have to ask",
+   "Forcing a compliment when nothing genuine comes to mind — fake reads as fake",
+   "Ignoring what the donor tells you — if they mention something personal, bring it back later",
+   "Faking interest — if you do not care, they will know"
+  ],
+  "focus": [
+   "Intelligence: ask one or two open questions early, listen to the answer, and bring what they tell you back later in the pitch",
+   "Rapport: if — and only if — you can see something to genuinely compliment, give one real compliment about it (a garden, a dog, the kids' bikes on the lawn). If you can't see one, skip it and lead with a question"
+  ],
+  "remember": "If the pitch fits everyone, it was built for no one. A real question always beats a forced compliment.",
+  "target": "Open questions — and genuine compliments, only if it's truly genuine — in every conversation.",
+  "tryToday": [
+   "Before knocking, look at the door, garden, car, or window for one thing you could genuinely compliment — if nothing stands out, skip the compliment and get straight to the pitch",
+   "Open with the compliment if you have one, otherwise open with a question",
+   "Bring whatever they tell you back when you pitch the cause"
+  ],
+  "review": "pending"
+ },
+ {
+  "id": "state",
+  "group": "Advanced systems",
+  "title": "Emotional Control & State Management",
+  "source": "p41",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "Your ability to manage your emotional state throughout the day — especially after rejection, slow patches, and tough conversations. This is the difference between a strong fundraiser and a struggling one.",
+   "Your biggest challenge in the first few weeks will not be the pitch. It will be how you handle what happens between pitches."
+  ],
+  "why": {
+   "callout": "Confidence is not the absence of nerves. Confidence is emotional regulation — the ability to reset, refocus, and show up fully at every door.",
+   "text": "A bad interaction at door 12 can ruin doors 13 through 50 if you let it. The donor at the next door has no idea what happened at the last one. They deserve your full attention and energy, no matter what just happened."
+  },
+  "blocks": [
+   {
+    "type": "list",
+    "title": "What beginners need to know",
+    "intro": "",
+    "items": [
+     "Rejection is not personal — donors reject the interruption, the timing, or the discomfort of being approached. They are not rejecting you as a person",
+     "A good day can feel terrible — you can do everything right and still have a slow patch. That is the LOAs at work. Results come in clusters, not evenly",
+     "Nervousness is normal — every rep feels it in the first few weeks. It does not mean you are bad at this. It means you are learning",
+     "You do not need everyone to like you — some doors will go badly. That is part of the maths. Your job is volume and consistency, not perfection",
+     "Calm beats hype — you do not need to psych yourself up. You need to be calm, present, and steady. Donors trust calm certainty more than high energy"
+    ]
+   },
+   {
+    "type": "list",
+    "title": "The Reset Process",
+    "intro": "When a conversation goes badly, use this before the next door:",
+    "items": [
+     "Breathe — one deep breath. Reset your nervous system.",
+     "Reset your posture — shoulders back, chin up. Your body tells your brain how to feel.",
+     "Smile reset — put a genuine smile back on before you approach. This is S.E.E.N. resetting.",
+     "Move — do not stand and replay what just happened. Walk to the next door. Motion creates momentum.",
+     "Never carry one door to the next — the next donor is a completely fresh start. Treat them that way."
+    ],
+    "outro": "The next door does not know what happened at the last one. Show up fresh every time."
+   }
+  ],
+  "sounds": "Handling a bad door two ways.",
+  "weak": [
+   "Rep gets snapped at on door twelve. Walks slowly to door thirteen, replaying it in their head. Approaches the next donor with low energy and a tight jaw.",
+   "The next ten doors are now contaminated by one. Sales drop for the rest of the day."
+  ],
+  "strong": [
+   "Rep gets snapped at on door twelve. Breathes, resets posture and smile, walks immediately to door thirteen. Approaches with full energy.",
+   "The next door is a fresh start. The slump never happens."
+  ],
+  "avoid": [
+   "Mentally replaying bad interactions — this poisons the next conversation. Reset and move",
+   "Letting one objection change your energy — if a donor is rude, it is about them, not you. Do not let one person decide how your day goes",
+   "Waiting for confidence before acting — confidence comes from doing the reps, not from feeling ready. Action first, confidence follows",
+   "Comparing yourself to experienced reps — they were where you are. Focus on your own progression, not theirs"
+  ],
+  "remember": "Every top performer in this company started as a nervous beginner. The difference is not talent — it is the ability to manage your state, reset between doors, and keep showing up at full energy.",
+  "target": "Run the Reset Process between every hard conversation and never carry one door to the next.",
+  "tryToday": [
+   "Run the Reset Process between every hard conversation — breathe, posture, smile, move",
+   "After a tough door, walk with intention before knocking the next one",
+   "At the end of the day, write down which doors made you smile, and forget the ones that didn't."
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "eight",
+  "group": "Daily habits",
+  "title": "The 8 Step System",
+  "source": "p44",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "Eight work habits that form the foundation of your success."
+  ],
+  "why": {
+   "callout": "Simple concepts — but executing them at a high level every day is what separates top performers.",
+   "text": "Miss one and the rest start to slip."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "The eight steps",
+    "cols": [
+     "Step",
+     "What it means",
+     "What it looks like"
+    ],
+    "rows": [
+     [
+      "1. Have a Great Attitude",
+      "Your attitude determines your sales, not the other way around.",
+      "Go above and beyond. Choose positivity before you start the day. Donors sense your energy instantly."
+     ],
+     [
+      "2. Maintain Your Attitude",
+      "Starting positive is easy. Keeping it up all day is the challenge.",
+      "Door 1 and door 50 deserve the same attitude. The donor at door 50 doesn't know they're door 50 — to them, you're the first person they've met today. Show up that way."
+     ],
+     [
+      "3. Be on Time",
+      "Every time. No exceptions.",
+      "Be early, not just on time. Arrive ready to work before your shift begins. Punctuality shows respect."
+     ],
+     [
+      "4. Be Prepared",
+      "Know your campaign, pitch, and territory.",
+      "Study your material. Have all tools ready. A prepared fundraiser delivers a smoother conversation."
+     ],
+     [
+      "5. 100% Work Ethic",
+      "Not most of the day. The full day. Maximum effort.",
+      "The last few hours are where results come. Don't quit — that's when qualified donors appear."
+     ],
+     [
+      "6. Maximise Territory",
+      "Cover it properly. Knock every door.",
+      "Move systematically. Follow the plan. Don't cluster in one spot or cherry-pick."
+     ],
+     [
+      "7. Know Why You're Here",
+      "Know what this role can do for you and what's expected.",
+      "Recognise the career growth, earning potential, and skills you're building. Clarity fuels motivation."
+     ],
+     [
+      "8. Take Control",
+      "Don't wait for things to happen.",
+      "Own your results. Own your attitude. Make things happen — don't wait for permission."
+     ]
+    ]
+   }
+  ],
+  "sounds": "The same shift, two days apart.",
+  "weak": [
+   "Rep arrives five minutes late, hasn't reviewed the brief, cherry-picks the doors that look easy, and leaves twenty minutes early because it was quiet.",
+   "All eight steps drop. The numbers drop with them."
+  ],
+  "strong": [
+   "Rep arrives ten minutes early, reviews the brief, works the territory in order, and stays the full day. Door 80 gets the exact same energy as door 1.",
+   "All eight steps held. The sales follow."
+  ],
+  "avoid": [
+   "Starting the day with a bad attitude",
+   "Letting one bad conversation affect the next",
+   "Arriving late or unprepared",
+   "Cutting effort during slow periods or cherry-picking territory",
+   "Blaming external factors for poor results"
+  ],
+  "remember": "Skills get a good day. Habits get a good month.",
+  "target": "Execute all eight steps consistently across the entire day.",
+  "tryToday": [
+   "Pick the one step you struggle with most and focus on it all day",
+   "At lunch, check yourself against all eight steps",
+   "At the end of the day, give yourself a 1 to 10 score on each step and pick tomorrow's focus"
+  ],
+  "focus": [],
+  "review": "pending"
+ },
+ {
+  "id": "loas",
+  "group": "Daily habits",
+  "title": "LOAs: Law of Averages",
+  "source": "p46",
+  "practice": false,
+  "drill": "",
+  "appliedBy": "",
+  "what": [
+   "The more people you speak to, the more people sign up."
+  ],
+  "why": {
+   "callout": "It's that simple. The majority of your sales success comes from mastering this: Every \"no\" gets you closer to a \"yes.\"",
+   "text": "The Law of Averages means that over time, your results will match your effort — if you keep the volume up."
+  },
+  "blocks": [
+   {
+    "type": "table",
+    "title": "How to work the maths",
+    "cols": [
+     "Type of day",
+     "What happens",
+     "What to do"
+    ],
+    "rows": [
+     [
+      "Fast start, slow finish",
+      "Early results, then it goes quiet.",
+      "Don't become complacent. Keep pushing — the day isn't over."
+     ],
+     [
+      "Consistent all day",
+      "Steady flow of results throughout.",
+      "Maintain energy and focus. Don't coast."
+     ],
+     [
+      "Slow start, fast finish",
+      "Quiet start, results come later. Most common.",
+      "Trust the LOAs. Stay positive. The last few hours are where it happens."
+     ]
+    ]
+   },
+   {
+    "type": "text",
+    "title": "",
+    "paras": [
+     "Attitude drives activity. Activity drives results."
+    ]
+   }
+  ],
+  "sounds": "Handling a slow morning two ways.",
+  "weak": [
+   "Rep has done thirty doors before lunch with no sales. Drops energy, walks slower, considers leaving early.",
+   "The slow start is the most common pattern. By dropping effort, the rep guarantees a bad day instead of recovering one."
+  ],
+  "strong": [
+   "Rep has done thirty doors before lunch with no sales. Treats the next door exactly the same as door one. Stays the full shift. Closes four in the last two hours.",
+   "Trust the LOAs. The maths works if you keep the volume up."
+  ],
+  "avoid": [
+   "Dropping your effort when results are slow",
+   "Blaming the territory instead of trusting the numbers",
+   "Stopping early because the first few hours were quiet — that's exactly when you should be pushing harder",
+   "Treating volume as optional"
+  ],
+  "focus": [
+   "Keep the volume up — every door is one closer to the next yes",
+   "Work in 55-minute blocks of 100% effort with a 5-minute reset"
+  ],
+  "remember": "Never carry one door to the next. The next donor is a completely fresh start. Stay focused. Trust the LOAs.",
+  "target": "Hold consistent effort and emotional control regardless of short-term results.",
+  "tryToday": [
+   "Treat every door identically for the first three hours, no matter what happened at the last one",
+   "Work in 55-minute focused blocks with a 5-minute reset",
+   "Count your numbers at every break — if effort is up, trust that results will follow"
+  ],
+  "review": "pending"
+ }
+]

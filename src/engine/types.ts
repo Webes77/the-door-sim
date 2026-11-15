@@ -6,7 +6,7 @@ export type Stage = (typeof STAGES)[number];
 export type Reaction =
   | "open" | "folded" | "glance" | "hesitate" | "lean" | "laugh" | "sceptical" | "happy" | "closed";
 
-export type Outcome = "in_play" | "signed_up" | "door_closed" | "left_well" | "walked_away";
+export type Outcome = "in_play" | "signed_up" | "door_closed" | "left_well" | "walked_away" | "drill_done";
 
 export const KINDS = [
   "greet", "introduce", "compliment", "question", "problem", "transition", "solution", "factor",
@@ -82,9 +82,21 @@ export interface Scenario {
   eventText: Record<string, string>;
   suggestions: Record<string, string[]>;
   critical: Record<string, { label: string; source: string }>;
+  drills: Record<string, Drill>;
 }
 
-export interface Variant { name: string; last: string; dog: string; visible: string[]; notice: string; objections: string[] }
+/** A practice of one stage. The prelude lines are played for the rep so the donor is in the right place. */
+export interface Drill {
+  label: string;
+  brief: string;
+  prelude: string[];
+  preludeUntil: string;
+  maxTurns: number;
+  endWhen: string;
+  stages: string[];
+}
+
+export interface Variant { name: string; last: string; dog: string; visible: string[]; notice: string[]; objections: string[] }
 
 export interface Persona {
   id: string;
@@ -119,6 +131,7 @@ export interface Turn {
   impulseAfter: number;
   stage: Stage;
   events: string[];
+  prelude?: boolean;
 }
 
 export interface OpenObjection { id: string; method: string; ack: boolean; confirm: boolean; reimpulse: boolean }
@@ -127,6 +140,8 @@ export interface State {
   seed: number;
   personaId: string;
   variant: number;
+  drill: string | null;
+  preludeRepTurns: number;
   interruptAt: number;
   objectionQueue: string[];
   stage: Stage;

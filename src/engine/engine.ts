@@ -1,5 +1,6 @@
 import { mulberry32 } from "./rng";
-import { countWords } from "./match";
+import { evaluate } from "./conditions";
+import { countWords, matchActions } from "./match";
 import {
   STAGES, type Action, type ActionDef, type Counter, type DonorLine, type Flag, type Pack,
   type Persona, type Reaction, type Stage, type State, type Turn, type Variant,
@@ -18,15 +19,17 @@ export function variantOf(pack: Pack, s: State): Variant {
   return personaOf(pack, s).variants[s.variant];
 }
 
-export function start(pack: Pack, personaId: string, seed: number): State {
+export function start(pack: Pack, personaId: string, seed: number, drill: string | null = null): State {
   const persona = pack.personas.find((p) => p.id === personaId);
   if (!persona) throw new Error(`unknown persona ${personaId}`);
   const rand = mulberry32(seed);
   const variant = Math.floor(rand() * persona.variants.length);
   const [lo, hi] = pack.scenario.meta.interruptionTurns;
   const interruptAt = lo + Math.floor(rand() * (hi - lo + 1));
-  return {
-    seed, personaId, variant, interruptAt,
+  const def = drill ? pack.scenario.drills[drill] : null;
+  if (drill && !def) throw new Error(`unknown drill ${drill}`);
+  let s: State = {
+    seed, personaId, variant, drill, preludeRepTurns: 0, interruptAt,
     objectionQueue: [...persona.variants[variant].objections],
     stage: "introduction",
     impulse: persona.startImpulse,
@@ -44,17 +47,29 @@ export function start(pack: Pack, personaId: string, seed: number): State {
     agreed: false,
     details: { frequency: false, name: false },
     interruptionActive: false,
-    interruptionDone: false,
+    // A stage practice has no interruption, so the prelude always lands the same way.
+    interruptionDone: !!def,
     cursors: {},
     reaction: "closed",
     outcome: "in_play",
     criticalErrors: [],
     turns: [],
   };
+  // The prelude plays the earlier stages for the rep, through the same rules as any other turn.
+  if (def && def.prelude.length) {
+    s = reduce(s, { type: "knock" }, pack);
+    for (const line of def.prelude) {
+      if (evaluate(def.preludeUntil, s)) break;
+      s = reduce(s, { type: "rep_turn", text: line, ids: matchActions(line, pack.scenario.actions) }, pack, true);
+    }
+    s.turns.forEach((t) => { t.prelude = true; });
+    s.preludeRepTurns = s.repTurns;
+  }
+  return s;
 }
 
-export function replay(pack: Pack, personaId: string, seed: number, actions: Action[]): State {
-  return actions.reduce((s, a) => reduce(s, a, pack), start(pack, personaId, seed));
+export function replay(pack: Pack, personaId: string, seed: number, actions: Action[], drill: string | null = null): State {
+  return actions.reduce((s, a) => reduce(s, a, pack), start(pack, personaId, seed, drill));
 }
 
 function fill(text: string, pack: Pack, v: Variant): string {
@@ -69,7 +84,7 @@ function clamp(n: number): number {
   return Math.max(0, Math.min(100, Math.round(n)));
 }
 
-export function reduce(state: State, action: Action, pack: Pack): State {
+export function reduce(state: State, action: Action, pack: Pack, inPrelude = false): State {
   if (state.outcome !== "in_play") return state;
   const s: State = structuredClone(state);
   const persona = personaOf(pack, s);
@@ -96,7 +111,7 @@ export function reduce(state: State, action: Action, pack: Pack): State {
 
   if (action.type === "walk_away") {
     const signed = s.agreed && s.details.frequency && s.details.name;
-    s.outcome = signed ? "signed_up" : "walked_away";
+    s.outcome = signed ? "signed_up" : s.drill ? "drill_done" : "walked_away";
     push({ rep: null, donor: [], reaction: s.reaction, impulseBefore: s.impulse, impulseAfter: s.impulse, stage: s.stage, events: [signed ? "left_signed" : "walked_away"] });
     return s;
   }
@@ -363,6 +378,12 @@ export function reduce(state: State, action: Action, pack: Pack): State {
   if (s.outcome === "in_play" && !s.agreed && !s.interruptionDone && s.repTurns === s.interruptAt && !s.openObjection && !closeAct) {
     s.interruptionDone = true; s.interruptionActive = true;
     donor.push(say("interruption")); events.push("interruption"); reaction = "glance";
+  }
+
+  // A stage practice ends when its goal is met or its turns run out.
+  if (s.drill && !inPrelude && s.outcome === "in_play") {
+    const d = pack.scenario.drills[s.drill];
+    if (evaluate(d.endWhen, s) || s.repTurns - s.preludeRepTurns >= d.maxTurns) { s.outcome = "drill_done"; events.push("drill_done"); }
   }
 
   s.reaction = reaction;

@@ -6,7 +6,8 @@ Status: not built yet. The app runs in scripted mode.
 
 - The rep's words go through the keyword matcher (`src/engine/match.ts`). Keyword lists live in the pack.
 - The rep can type, tap an example line, or speak. Speech uses the browser's own recognition where it exists (`en-AU`), sends itself at the end of speech, and passes real speech seconds to the engine.
-- The donor has no voice yet. Her words show as captions over her animation.
+- The donor has no voice yet. Her words show as captions over her animation. `src/ui/sound.ts` plays a recorded file for a donor line when `public/voice/gig/donor1/manifest.json` maps that exact line to a file. The manifest is empty until a voice is chosen.
+- A knock sound is made in the browser when the rep knocks.
 - Reply time is logged to the browser console on every turn as `latency_ms`.
 
 ## Next (needs keys in Netlify)

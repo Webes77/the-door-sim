@@ -50,6 +50,10 @@ The pack lists the action ids. Each id has one kind. A test fails the build if a
 8. The donor's line and reaction are picked. First match wins.
 9. Low attention can close the door. The seeded interruption may fire.
 
+## Stage practice
+
+`start(pack, personaId, seed, drill)` starts a practice of one stage. The pack's `drills` block names the lines to play first (the prelude), when the practice ends and which rubric stages it is judged on. The prelude runs through the same reducer as any other turn, with no interruption, so it lands the same way for every seed. Prelude turns are marked and left out of the practice result.
+
 ## Scoring
 
 - Rubric in `scenario.json`: criteria per stage, one point each, written in the condition language (`src/engine/conditions.ts`): `always`, `not:x`, `a|b`, `count:n:a,b`, `did:<action>`, `flag:<flag>`, `min:<counter>:<n>`.
