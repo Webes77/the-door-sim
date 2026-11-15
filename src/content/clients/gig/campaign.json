@@ -1,0 +1,13 @@
+{
+  "charity": "Placeholder Animal Rescue",
+  "placeholder": true,
+  "cause": "A made-up animal rescue, used until GIG supplies a real campaign brief. Nothing here is a real charity or a real figure.",
+  "problems": [
+    "Animals are surrendered or abandoned with nowhere to go.",
+    "Shelters are full, so some animals get turned away."
+  ],
+  "impact": "Rescued animals stay with foster carers until they find a home.",
+  "progress": "The rescue is signing up more foster carers so more animals can be taken in.",
+  "ask": "Regular giving, monthly or annually. The donor chooses the amount.",
+  "review": "pending"
+}
