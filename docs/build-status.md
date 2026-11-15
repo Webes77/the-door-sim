@@ -32,27 +32,34 @@ Updated at the end of every session.
    - Voice: six Australian-accent samples made for James to choose from (https://claude.ai/artifact/PSF9jKwZqwM5mUm9na1GaH). The app can play recorded donor lines from `public/voice/gig/donor1/manifest.json`. The manifest is empty until a voice is chosen.
    - Tests: 22 engine and pack tests. Headless playthroughs now include the walk-up, the Introduction practice, the Close practice and the lesson pages.
 
+8. 15 November 2026, James asked for Australian voices and said Isla, Imogen and Nora all sound good. Done:
+   - Donor 1 now speaks. All 109 of her lines are recorded in the Imogen voice (`public/voice/gig/donor1/`, 2.1 MB). Isla and Nora are kept for the next two donors.
+   - Each recording was trimmed and levelled so the lines start promptly and sit at the same volume.
+   - Playback was rebuilt for phones: sound is unlocked by the rep's own taps, the recordings are fetched when the door opens, and two lines in one turn play one after the other.
+   - A "Voice on / off" chip at the door. Captions always show.
+   - Tests: 24 engine and pack tests, including one that fails if any donor line has no recording. The headless playthrough now checks that the recorded voice plays.
+   - Cost: about 34 Higgsfield credits for the 109 lines (0.23 or 0.46 a line). Account balance afterwards: 272.7 credits.
+
 ## Known issues
 
 - Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.
 - No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key.
-- No donor voice yet. Her words are captions. Waiting on James to pick a voice from the samples. I cannot hear audio, so I cannot confirm any sample sounds Australian.
+- The donor's voice has not been heard by the builder, which cannot hear audio. Lengths and volume were checked by measurement. James needs to listen for any line that sounds like a different person, has the wrong accent, or says a name badly (Nguyen, Petrakis). Those lines can be re-recorded one at a time.
 - The door-opening clip has a moment where the door hardware looks wrong mid-swing. Check it by eye.
 - The lesson examples are the manual's own (Children's Hospital, Humane Society). The campaign lines are drafts for the placeholder charity.
 - Speech recognition is the browser's own and has only been wired up, not tested on real phones.
 - The donor's mouth does not move when she speaks. Moving between two reactions always passes back through the open pose, which takes about four seconds.
 - The charity is a placeholder and the conduct rules are placeholders. The only critical errors so far come from the sales manual: a fake compliment (p39) and asking again after a genuine no (p28).
 - One coaching moment has no line in the manual: talking over an interruption.
-- Reply latency is logged to the browser console only. With no AI or voice in the loop it is the 650 ms caption beat.
+- Reply latency is logged to the browser console only (`latency_ms` for the caption, `voice_latency_ms` for her first sound). With no AI in the loop it is the 650 ms caption beat plus a few milliseconds to start the recording.
 - S.E.E.N., body language, tone and matching cannot be scored from words. They are read-only skill pages.
 - Rebuild Relief items (paused): latency budget and four manual gaps, see `docs/plan.md` sections 3 and 5.
 
 ## Next
 
-1. James picks a voice. Then record every donor line and fill the manifest.
-1a. James plays it and says what feels wrong.
+1. James plays it with the voice on and says what feels wrong, including any line that needs re-recording.
 2. Deploy to Netlify behind the password gate.
-3. AI classifier (`/api/turn`), then recorded donor voice with Australian voices.
+3. AI classifier (`/api/turn`).
 4. More donors (two more situations), and real conduct rules from the onboarding document.
 5. Presenter mode and the review pack for GIG.
 

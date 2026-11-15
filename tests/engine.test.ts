@@ -5,6 +5,7 @@ import { reduce, replay, start } from "../src/engine/engine";
 import { matchActions } from "../src/engine/match";
 import { debrief } from "../src/engine/score";
 import { KINDS, type Action, type State } from "../src/engine/types";
+import voiceManifest from "../public/voice/gig/donor1/manifest.json";
 
 const P = "home-afternoon";
 const say = (text: string, seconds?: number): Action => ({ type: "rep_turn", text, ids: matchActions(text, pack.scenario.actions), seconds });
@@ -66,6 +67,31 @@ describe("content pack", () => {
   it("puts no em dash in donor lines or rubric labels", () => {
     const text = JSON.stringify([pack.personas, pack.scenario.rubric, pack.scenario.suggestions, pack.scenario.eventText, pack.campaign, pack.scenario.drills]);
     expect(text.includes("—")).toBe(false);
+  });
+});
+
+describe("recorded voice", () => {
+  const manifest: Record<string, string> = voiceManifest;
+  const files = Object.keys(import.meta.glob("../public/voice/gig/donor1/*.mp3")).map((p) => p.split("/").pop());
+
+  it("has a recording for every line the donor can say, for every variant", () => {
+    const persona = pack.personas[0];
+    const missing: string[] = [];
+    for (const v of persona.variants) {
+      for (const list of Object.values(persona.lines)) {
+        for (const raw of list) {
+          if (raw.includes("{{dog}}") && !v.dog) continue;
+          const text = raw.replaceAll("{{name}}", v.name).replaceAll("{{last}}", v.last).replaceAll("{{dog}}", v.dog);
+          if (!manifest[text]) missing.push(text);
+        }
+      }
+    }
+    expect(missing).toEqual([]);
+  });
+
+  it("points only at files that exist", () => {
+    expect(files.length).toBeGreaterThan(0);
+    expect(Object.values(manifest).filter((f) => !files.includes(f))).toEqual([]);
   });
 });
 

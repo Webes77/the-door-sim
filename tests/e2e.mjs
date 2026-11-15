@@ -28,9 +28,13 @@ async function open(w, h) {
   const page = await browser.newPage({ viewport: { width: w, height: h } });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+  const voice = []; // one entry per donor reply that played as recorded sound
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(m.text());
+    if (m.text().startsWith("voice_latency_ms")) voice.push(Number(m.text().split(" ")[1]));
+  });
   await page.goto(`${BASE}/?seed=${SEED}`);
-  return { page, errors };
+  return { page, errors, voice };
 }
 
 async function toDoor(page) {
@@ -85,7 +89,7 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
 
 // ---- Poor path: fake compliment, rambling, early close ----
 {
-  const { page, errors } = await open(390, 844);
+  const { page, errors, voice } = await open(390, 844);
   await page.getByRole("button", { name: /The full pitch at a door/ }).click();
   await page.getByRole("button", { name: "Head to the door" }).click();
   await toDoor(page);
@@ -104,7 +108,8 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   await page.waitForTimeout(2900);
   await page.screenshot({ path: "tests/shots/debrief-poor-390.png", fullPage: true });
   if (errors.length) fail(`poor path errors: ${errors.join(" | ")}`);
-  console.log("ok poor path 390x844");
+  if (!voice.length) fail("the donor's recorded voice did not play");
+  console.log("ok poor path 390x844", "voice replies", voice.length, "slowest ms", Math.max(0, ...voice));
   await page.close();
 }
 

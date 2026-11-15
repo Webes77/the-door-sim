@@ -5,7 +5,7 @@ import { matchActions } from "../engine/match";
 import { STAGES, type Action, type State } from "../engine/types";
 import { Donor, type Approach } from "./Donor";
 import { Keys } from "./Screens";
-import { hasVoice, hush, knock, speak } from "./sound";
+import { hasVoice, hush, knock, speak, unlock, warm } from "./sound";
 
 type Recognition = { start: () => void; stop: () => void; lang: string; interimResults: boolean; continuous: boolean; onresult: ((e: any) => void) | null; onend: (() => void) | null; onerror: ((e: any) => void) | null };
 
@@ -40,7 +40,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
   const last = state.turns.at(-1);
   const v = variantOf(pack, state);
 
-  useEffect(() => { void hasVoice().then(setVoiceReady); return hush; }, []);
+  useEffect(() => { void hasVoice().then((ok) => { setVoiceReady(ok); if (ok) void warm(); }); return hush; }, []);
 
   // The donor's words follow her movement by a beat, so the two arrive together.
   useEffect(() => {
@@ -50,11 +50,14 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
       const line = last.donor.map((d) => d.text).join(" ");
       setCaption(line);
       setShownTurn(last.n);
-      if (voiceOn) last.donor.forEach((d) => void speak(d.text));
-      if (sentAt.current) {
-        // Reply latency: end of the rep's turn to the donor's reply showing.
-        console.info("latency_ms", Math.round(performance.now() - sentAt.current), "turn", last.n);
-        sentAt.current = 0;
+      // Reply latency: end of the rep's turn to the donor's reply showing, then to her first sound.
+      const sent = sentAt.current;
+      sentAt.current = 0;
+      if (sent) console.info("latency_ms", Math.round(performance.now() - sent), "turn", last.n);
+      if (voiceOn) {
+        void speak(last.donor.map((d) => d.text)).then((ms) => {
+          if (ms !== null && sent) console.info("voice_latency_ms", Math.round(performance.now() - sent), "turn", last.n);
+        });
       }
     }, wait);
     return () => window.clearTimeout(t);
@@ -63,6 +66,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
   const send = (line: string, seconds?: number) => {
     const t = line.trim();
     if (!t || over || !knocked) return;
+    unlock();
     sentAt.current = performance.now();
     dispatch({ type: "rep_turn", text: t, ids: matchActions(t, pack.scenario.actions), seconds });
     setText("");
@@ -76,6 +80,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
 
   const toggleMic = () => {
     if (listening) { rec.current?.stop(); return; }
+    unlock();
     const r = makeRecognition();
     if (!r) return;
     rec.current = r;
@@ -127,7 +132,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
         <button className="chip" onClick={onQuit}>Quit</button>
         <button className="chip" onClick={() => setKeysOpen(true)}>Keys</button>
         <button className={`chip ${guided ? "on" : ""}`} aria-pressed={guided} onClick={() => setGuided(!guided)}>Lines {guided ? "on" : "off"}</button>
-        {voiceReady && <button className={`chip ${voiceOn ? "on" : ""}`} aria-pressed={voiceOn} onClick={() => { if (voiceOn) hush(); setVoiceOn(!voiceOn); }}>Voice {voiceOn ? "on" : "off"}</button>}
+        {voiceReady && <button className={`chip ${voiceOn ? "on" : ""}`} aria-pressed={voiceOn} onClick={() => { if (voiceOn) hush(); else unlock(); setVoiceOn(!voiceOn); }}>Voice {voiceOn ? "on" : "off"}</button>}
         {knocked && !over && ready && <button className="chip" onClick={() => dispatch({ type: "walk_away" })}>Walk away</button>}
       </div>
 
@@ -149,7 +154,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
           <h2>Walk up to the door</h2>
           {drill && <p>{drill.brief}</p>}
           <p className="small">S.E.E.N. starts now. Smile on the approach. Look for one thing you could genuinely compliment.</p>
-          <button className="btn primary" onClick={() => setApproach("walking")}>Walk up</button>
+          <button className="btn primary" onClick={() => { unlock(); setApproach("walking"); }}>Walk up</button>
         </div>
       )}
 
@@ -169,7 +174,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
           <h2>Where you are</h2>
           <p>{drill.brief}</p>
           <p className="small">She just said: "{caption}"</p>
-          <button className="btn primary" onClick={() => setReady(true)}>Start</button>
+          <button className="btn primary" onClick={() => { unlock(); setReady(true); }}>Start</button>
         </div>
       )}
 

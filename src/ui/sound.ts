@@ -13,6 +13,14 @@ function audio(): AudioContext | null {
   } catch { return null; }
 }
 
+/**
+ * Phones only allow sound that starts from a tap. Call this from every tap that leads to the
+ * donor speaking (walk up, knock, start, send, microphone), so her reply can play a beat later.
+ */
+export function unlock(): void {
+  audio();
+}
+
 /** Three knocks on a timber door, made in the browser. Call it from a tap. */
 export function knock(): void {
   const a = audio();
@@ -33,33 +41,83 @@ export function knock(): void {
 }
 
 // Recorded donor lines, looked up by their exact text. An empty manifest means captions only.
+const DIR = "voice/gig/donor1";
+const GAP = 0.25; // seconds between two lines in the same turn
 let manifest: Record<string, string> | null = null;
 let loading: Promise<void> | null = null;
-let playing: HTMLAudioElement | null = null;
+const bytes = new Map<string, Promise<ArrayBuffer | null>>();
+let sources: AudioBufferSourceNode[] = [];
+let run = 0; // a newer call to speak() or hush() cancels an older one
 
 function load(): Promise<void> {
-  loading ??= fetch(asset("voice/gig/donor1/manifest.json"))
+  loading ??= fetch(asset(`${DIR}/manifest.json`))
     .then((r) => (r.ok ? r.json() : {}))
     .then((m) => { manifest = m; })
     .catch(() => { manifest = {}; });
   return loading;
 }
 
+function fetchBytes(file: string): Promise<ArrayBuffer | null> {
+  let p = bytes.get(file);
+  if (!p) {
+    p = fetch(asset(`${DIR}/${file}`)).then((r) => (r.ok ? r.arrayBuffer() : null)).catch(() => null);
+    bytes.set(file, p);
+  }
+  return p;
+}
+
 export function hasVoice(): Promise<boolean> {
   return load().then(() => Object.keys(manifest ?? {}).length > 0);
 }
 
-export async function speak(text: string): Promise<void> {
+/** Fetch the recordings ahead of time so a reply starts without a network wait. */
+export async function warm(texts?: string[]): Promise<void> {
   await load();
-  const file = manifest?.[text];
-  if (!file) return;
+  const files = texts ? texts.map((t) => manifest?.[t]).filter((f): f is string => !!f) : Object.values(manifest ?? {});
+  for (const f of files) void fetchBytes(f);
+}
+
+/**
+ * Say the donor's lines for one turn, one after another.
+ * Resolves with the milliseconds it took to start the first sound, or null if nothing played.
+ */
+export async function speak(texts: string[]): Promise<number | null> {
+  const asked = performance.now();
+  const mine = ++run;
+  stop();
+  await load();
+  const a = audio();
+  if (!a) return null;
+  const files = texts.map((t) => manifest?.[t]).filter((f): f is string => !!f);
+  if (!files.length) return null;
   try {
-    playing?.pause();
-    playing = new Audio(asset(`voice/gig/donor1/${file}`));
-    await playing.play();
-  } catch { /* blocked or missing: captions carry on */ }
+    const buffers: AudioBuffer[] = [];
+    for (const f of files) {
+      const raw = await fetchBytes(f);
+      if (!raw) continue;
+      // decodeAudioData empties the buffer it is given, so hand it a copy.
+      buffers.push(await a.decodeAudioData(raw.slice(0)));
+    }
+    if (mine !== run || !buffers.length) return null;
+    let at = a.currentTime + 0.02;
+    for (const b of buffers) {
+      const s = a.createBufferSource();
+      s.buffer = b;
+      s.connect(a.destination);
+      s.start(at);
+      sources.push(s);
+      at += b.duration + GAP;
+    }
+    return Math.round(performance.now() - asked);
+  } catch { return null; /* blocked or broken: captions carry on */ }
+}
+
+function stop(): void {
+  for (const s of sources) { try { s.stop(); } catch { /* already ended */ } }
+  sources = [];
 }
 
 export function hush(): void {
-  playing?.pause();
+  run++;
+  stop();
 }
