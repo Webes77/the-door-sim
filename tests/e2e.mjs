@@ -67,11 +67,11 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   if (w === 390) await page.screenshot({ path: "tests/shots/street-390.png" });
   await toDoor(page);
   if (w === 390) await page.screenshot({ path: "tests/shots/door-open-390.png" });
-  for (const line of ["Hey, how is your day", "Honestly, the part", "And the shelters", "No worries, take", "The rescued animals", "A lot of your neighbours", "So that's the reason", "I hear you", "Exactly, and that", "I hear you", "You'd be directly", "Brilliant, you are", "And what works best", "Out of curiosity", "Thanks so much"]) {
+  for (const line of ["Hello, how are you", "Good, thank you", "The reason we're raising", "No worries, take", "And the hard part", "The good news is", "It's simple", "That's the reason I'm out", "I hear you. Can I ask", "Exactly. That's why", "That's fair, I hear you", "Then here's the thing", "Brilliant. You're going", "Lovely. And did you", "Easy. Just out of", "Love that. Thanks"]) {
     const has = await page.locator(".tips button", { hasText: line }).count();
     if (!has && line.startsWith("No worries")) continue; // the interruption turn depends on the seed
     await sayTip(page, line);
-    if (w === 390 && line.startsWith("So that's")) { await page.waitForTimeout(2500); await page.screenshot({ path: "tests/shots/door-objection-390.png" }); }
+    if (w === 390 && line.startsWith("That's the reason")) { await page.waitForTimeout(2500); await page.screenshot({ path: "tests/shots/door-objection-390.png" }); }
   }
   await page.getByRole("button", { name: "See what happened" }).click();
   await page.fill("#read", "It turned when I deflected the money objection.");
@@ -128,7 +128,8 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   await page.getByRole("button", { name: "Keys", exact: true }).click();
   await page.screenshot({ path: "tests/shots/keys-390.png" });
   await page.getByRole("button", { name: "Back to the door" }).click();
-  await sayTip(page, "Hey, how is your day");
+  await sayTip(page, "Hello, how are you");
+  await sayTip(page, "Good, thank you");
   await page.getByRole("button", { name: "See how you went" }).click();
   if ((await page.locator("h1").textContent()) !== "Strong.") fail("Introduction practice did not score strong");
   await page.screenshot({ path: "tests/shots/drill-intro-390.png", fullPage: true });
@@ -137,7 +138,7 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   await page.getByRole("button", { name: /Next stage: Close/ }).click();
   await page.getByRole("button", { name: "Practise the Close and the deflect" }).click();
   await page.getByRole("button", { name: "Start", exact: true }).click();
-  for (const line of ["So that's the reason", "I hear you", "Exactly, and that", "I hear you", "You'd be directly"]) await sayTip(page, line);
+  for (const line of ["That's the reason I'm out", "I hear you. Can I ask", "Exactly. That's why", "That's fair, I hear you", "Then here's the thing"]) await sayTip(page, line);
   await page.getByRole("button", { name: "See how you went" }).click();
   if ((await page.locator("h1").textContent()) !== "Strong.") fail("Close practice did not score strong");
   if (errors.length) fail(`stage practice errors: ${errors.join(" | ")}`);
@@ -154,10 +155,13 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   await page.locator(".tips button").first().waitFor({ timeout: 8000 });
   if ((await page.locator(".tips button").count()) !== 3) fail("the door did not offer three choices");
   await page.screenshot({ path: "tests/shots/choices-390.png" });
-  const weak = page.locator(".tips button").filter({ hasNotText: "Hey, how is your day" }).first();
+  const weak = page.locator(".tips button").filter({ hasNotText: "Hello, how are you" }).first();
   await weak.click();
   await page.waitForTimeout(3200);
-  if (!(await page.getByRole("button", { name: "See how you went" }).count())) await sayTip(page, "Hey, how is your day");
+  for (const line of ["Hello, how are you", "Good, thank you", "Good, thank you"]) {
+    if (await page.getByRole("button", { name: "See how you went" }).count()) break;
+    if (await page.locator(".tips button", { hasText: line }).count()) await sayTip(page, line);
+  }
   await page.getByRole("button", { name: "See how you went" }).click();
   if ((await page.locator("h1").textContent()) === "Strong.") fail("a weak choice still scored strong");
   if (!(await page.locator(".manual").count())) fail("the debrief did not explain the weak choice");

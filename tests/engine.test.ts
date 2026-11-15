@@ -16,21 +16,23 @@ const S = pack.scenario.suggestions;
 const good: Action[] = [
   { type: "knock" },
   say(S.introduction[0]),
+  say(S.introduction[1]),
   say(S.problem[0]),
-  say(S.problem[1]),
   say(S.interruption[0]),
+  say(S.problem[1]),
   say(S.solution[0]),
   say(S.solution[1]),
   say(S.close[0]),
   say(S.objection[0]),
   say(S.objection[1]),
-  say(S.objection[0]),
   say(S.objection[2]),
+  say(S.objection[3]),
   say(S.consolidation[0]),
   say(S.consolidation[1]),
   say(S.consolidation[2]),
   say(S.consolidation[3]),
 ];
+const CLOSE_AT = good.findIndex((a) => a.type === "rep_turn" && a.text === S.close[0]); // the first ask
 
 function seedFor(variant: number): number {
   for (let seed = 1; seed < 500; seed++) if (start(pack, P, seed).variant === variant) return seed;
@@ -170,7 +172,7 @@ describe("what would you say", () => {
     // The later closes only come up after an ask that did not land.
     const S2 = suggestions;
     let s = replay(pack, P, seedFor(0), [{ type: "knock" }]);
-    for (const line of [S2.introduction[0], S2.problem[0], S2.solution[0], "It's a really big problem.", "They do a lot of important work.", S2.close[0], S2.problem[1], S2.solution[1]]) {
+    for (const line of [...S2.introduction, S2.problem[0], S2.solution[0], "It's a really big problem.", "They do a lot of important work in the community.", S2.close[0], S2.problem[1], S2.solution[1]]) {
       if (s.interruptionActive) s = play(s, S2.interruption[0]);
       s = play(s, line);
     }
@@ -182,13 +184,13 @@ describe("what would you say", () => {
     expect(probe(s).strong).toBe(S2.close[2]);
     // After a genuine no, the only strong move is to leave well.
     let no = replay(pack, P, seedFor(0), [{ type: "knock" }]);
-    for (const line of [S2.introduction[0], S2.problem[0], S2.solution[0]]) {
+    for (const line of [...S2.introduction, S2.problem[0], S2.solution[0]]) {
       if (no.interruptionActive) no = play(no, S2.interruption[0]);
       no = play(no, line);
     }
     if (no.interruptionActive) no = play(no, S2.interruption[0]);
     no = play(no, "It's a really big problem.");
-    no = play(no, "They do a lot of important work.");
+    no = play(no, "They do a lot of important work in the community.");
     for (const line of ["Would you like to help out today?", "Can I sign you up?", "So will you come on board?", "Can I get you started?"]) {
       if (!no.genuineNo) no = play(no, line);
     }
@@ -201,7 +203,7 @@ describe("what would you say", () => {
 
   it("brings a rep who jumps ahead back to what they skipped", () => {
     let s = replay(pack, P, 5, [{ type: "knock" }]);
-    s = play(s, choices.introduction[0].weak[2].text); // straight to the cause and the ask
+    s = play(s, choices.introduction[1].weak[1].text); // name, charity and the ask in one breath
     expect(s.turns.at(-1)!.events).toContain("closed_early");
     expect(nextMoment(s, pack)!.strong).toBe(suggestions.problem[0]);
   });
@@ -227,7 +229,7 @@ describe("stage practice", () => {
     expect(s.reaction).toBe("closed");
   });
   it("ends the Introduction practice once the rep has said who they are and asked a question", () => {
-    const s = replay(pack, P, 7, [{ type: "knock" }, say(S.introduction[0])], "introduction");
+    const s = replay(pack, P, 7, [{ type: "knock" }, say(S.introduction[0]), say(S.introduction[1])], "introduction");
     expect(s.outcome).toBe("drill_done");
     expect(debrief(s, pack).stages.map((x) => [x.id, x.band])).toEqual([["introduction", "strong"]]);
   });
@@ -251,7 +253,7 @@ describe("stage practice", () => {
     const run = (drill: string, lines: string[]) => lines.reduce((s, l) => reduce(s, say(l), pack), start(pack, P, 7, drill));
     expect(debrief(run("problem", S.problem), pack).stages[0].band).toBe("strong");
     expect(debrief(run("solution", S.solution), pack).stages[0].band).toBe("strong");
-    const close = run("close", [S.close[0], S.objection[0], S.objection[1], S.objection[0], S.objection[2]]);
+    const close = run("close", [S.close[0], ...S.objection]);
     expect(close.outcome).toBe("drill_done");
     expect(debrief(close, pack).stages.map((x) => x.band)).toEqual(["strong", "strong"]);
     const con = run("consolidation", S.consolidation);
@@ -277,7 +279,7 @@ describe("engine", () => {
   });
 
   it("does not count a sign-up if the rep leaves before the details are done", () => {
-    const early = [...good.slice(0, 13), good[15]];
+    const early = [...good.slice(0, CLOSE_AT + 6), good.at(-1)!]; // agreed, name given, then straight out
     const s = replay(pack, P, seedFor(0), early);
     expect(s.agreed).toBe(true);
     expect(s.outcome).toBe("left_well");
@@ -285,7 +287,7 @@ describe("engine", () => {
   });
 
   it("does not sign up on a 'maybe'", () => {
-    const s = replay(pack, P, seedFor(0), [...good.slice(0, 8), { type: "walk_away" }]);
+    const s = replay(pack, P, seedFor(0), [...good.slice(0, CLOSE_AT + 1), { type: "walk_away" }]);
     expect(s.outcome).toBe("walked_away");
   });
 
@@ -318,7 +320,7 @@ describe("engine", () => {
   });
 
   it("drops impulse when the rep argues with an objection", () => {
-    const upToObjection = good.slice(0, 8);
+    const upToObjection = good.slice(0, CLOSE_AT + 1);
     const before = replay(pack, P, seedFor(0), upToObjection);
     expect(before.openObjection?.id).toBe("cant_afford");
     const after = reduce(before, say("But it's only a small amount, less than a coffee."), pack);
@@ -327,7 +329,7 @@ describe("engine", () => {
   });
 
   it("ends with a critical error if the rep asks again after a genuine no", () => {
-    let s = replay(pack, P, seedFor(0), good.slice(0, 8));
+    let s = replay(pack, P, seedFor(0), good.slice(0, CLOSE_AT + 1));
     for (let i = 0; i < 3; i++) s = reduce(s, say("Would you like to help out today?"), pack);
     expect(s.genuineNo).toBe(true);
     s = reduce(s, say("Would you like to help out today?"), pack);

@@ -52,6 +52,15 @@ Updated at the end of every session.
    - The brand is one build setting. `VITE_BRAND=gig` brings the GIG Academy look back.
    - The house style checker flags one line in `src/brand-magnum.css`: the rule that removes rounded corners and shadows. That is a false positive.
 
+11. 15 November 2026, James said the wording of the rep's lines was terrible and gave the introduction the way it is really said. Done:
+   - The whole rep script is rewritten in plain door language. The introduction is James's own wording: "Hello, how are you?", then name, "here on behalf of", "the reason I'm in your area today is that we're just raising some awareness", "have you, like many other people, heard of them before?".
+   - No bottlebrush. The strong lines carry no compliment. The scene now shows "A tidy front garden." A rep can still choose to give a genuine compliment, and a fake one is still a critical error (manual p39).
+   - Every line was read as a conversation against the donor's replies, so her answer fits the question she was asked.
+   - Objection lines now come in pairs, one pair for each objection, so the rep does not repeat the same line twice.
+   - The donor no longer laughs at small talk. She laughs only at a genuine compliment.
+   - Her starting impulse is 30 (was 28) so her first reaction to the problem is interest.
+   - The weak lines were rewritten to match. 35 weak lines.
+
 ## Known issues
 
 - Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.

@@ -2,7 +2,7 @@
   "id": "home-afternoon",
   "title": "Home on a weekday afternoon",
   "situation": "She is home with a child inside and a few things on the go. She will listen if you are short and real. She has been knocked on before.",
-  "startImpulse": 28,
+  "startImpulse": 30,
   "review": "pending",
   "variants": [
     {
@@ -16,7 +16,7 @@
         "house"
       ],
       "notice": [
-        "A bottlebrush in a pot by the door.",
+        "A tidy front garden.",
         "Two kids' bikes on the lawn.",
         "A dog barking somewhere inside."
       ],
@@ -35,7 +35,7 @@
         "house"
       ],
       "notice": [
-        "A bottlebrush in a pot by the door.",
+        "A tidy front garden.",
         "Two kids' bikes on the lawn.",
         "No car in the driveway."
       ],
@@ -55,7 +55,7 @@
         "house"
       ],
       "notice": [
-        "A bottlebrush in a pot by the door.",
+        "A tidy front garden.",
         "Two kids' bikes on the lawn.",
         "A dog barking inside."
       ],

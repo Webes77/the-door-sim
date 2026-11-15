@@ -1,5 +1,5 @@
 import { evaluate } from "./conditions";
-import { suggestionKey } from "./engine";
+import { suggestionKey, variantOf } from "./engine";
 import { mulberry32 } from "./rng";
 import { STAGES, type Pack, type State, type WeakLine } from "./types";
 
@@ -39,11 +39,13 @@ export function nextMoment(s: State, pack: Pack): Moment | null {
   if (key === "interruption" || key === "leave") return at(key, 0);
   if (key === "consolidation") return firstOpen(key);
   if (key === "objection") {
-    // First acknowledge and confirm. After that, re-impulse and re-close with a line not used yet.
+    // The lines come in pairs, one pair for each objection she raises:
+    // acknowledge and confirm, then re-impulse and re-close a different way.
     const o = s.openObjection;
-    if (!o || !o.ack || !o.confirm) return at(key, 0);
-    const rest = (suggestions[key] ?? []).map((_, k) => k).filter((k) => k > 0);
-    return at(key, rest.find((k) => !used.has(suggestions[key][k])) ?? rest[0] ?? 0);
+    const lines = suggestions[key] ?? [];
+    const raised = variantOf(pack, s).objections.length - s.objectionQueue.length;
+    const pair = Math.min(Math.max(raised - 1, 0), Math.max(Math.ceil(lines.length / 2) - 1, 0)) * 2;
+    return at(key, !o || !o.ack || !o.confirm ? pair : Math.min(pair + 1, lines.length - 1));
   }
 
   // A pitch stage. Go back to the earliest thing not yet done, so a rep who jumps ahead is brought back.

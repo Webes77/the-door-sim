@@ -190,7 +190,12 @@
         "how you going",
         "how are you going",
         "hows it going",
-        "how has your day"
+        "how has your day",
+        "hows your afternoon",
+        "how is your afternoon",
+        "hows your morning",
+        "hows your arvo",
+        "hows your evening"
       ],
       "impulse": 4,
       "review": "pending"
@@ -267,7 +272,10 @@
         "heard much",
         "heard of",
         "know much about",
-        "familiar with"
+        "familiar with",
+        "come across",
+        "heard of them",
+        "heard of us"
       ],
       "impulse": 4,
       "review": "pending"
@@ -312,7 +320,8 @@
       "keywords": [
         "there is hope",
         "theres hope",
-        "the good news"
+        "the good news",
+        "there is good news"
       ],
       "impulse": 2,
       "review": "pending"
@@ -329,7 +338,9 @@
         "rehomed",
         "adopted",
         "forever home",
-        "rescued"
+        "rescued",
+        "finds a home",
+        "find homes"
       ],
       "impulse": 9,
       "review": "pending"
@@ -410,7 +421,9 @@
         "cant continue",
         "cannot continue",
         "wont be able to",
-        "would have to stop"
+        "would have to stop",
+        "without that support",
+        "without that"
       ],
       "impulse": 6,
       "review": "pending"
@@ -463,7 +476,10 @@
         "does that make sense",
         "makes sense doesnt it",
         "that makes sense right",
-        "see the value"
+        "see the value",
+        "isnt it",
+        "doesnt it",
+        "pretty amazing right"
       ],
       "impulse": 3,
       "review": "pending"
@@ -481,7 +497,8 @@
         "count on your support",
         "count on you",
         "pop your details",
-        "sign you up"
+        "sign you up",
+        "count you in"
       ],
       "review": "pending"
     },
@@ -529,7 +546,9 @@
         "amount and frequency",
         "whatever amount",
         "any amount that works",
-        "amount that works"
+        "amount that works",
+        "choose the amount",
+        "pick an amount"
       ],
       "review": "pending"
     },
@@ -589,7 +608,8 @@
         "believe in what",
         "like what they",
         "agree with what",
-        "good cause"
+        "good cause",
+        "like what theyre"
       ],
       "review": "pending"
     },
@@ -639,7 +659,8 @@
         "thank you so much",
         "thanks so much",
         "youre going to be",
-        "thats fantastic"
+        "thats fantastic",
+        "make a real difference"
       ],
       "review": "pending"
     },
@@ -674,7 +695,11 @@
         "bye",
         "goodbye",
         "ill let you go",
-        "leave you to it"
+        "leave you to it",
+        "enjoy the rest",
+        "have a great afternoon",
+        "have a good one",
+        "back to your afternoon"
       ],
       "review": "pending"
     },
@@ -1166,46 +1191,48 @@
   },
   "suggestions": {
     "introduction": [
-      "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?"
+      "Hello, how are you?",
+      "Good, thank you. My name is Alex and I'm here on behalf of Placeholder Animal Rescue. The reason I'm in your area today is that we're just raising some awareness for the rescue. Have you, like many other people, heard of them before?"
     ],
     "problem": [
-      "Honestly, the part that got me is how many animals are surrendered with nowhere to go. Have you heard much about that?",
-      "And the shelters are full, so some get turned away. That's terrible, right? But there is hope."
+      "The reason we're raising awareness is simple. Every week, pets are surrendered to the rescue with nowhere else to go. A lot of them through no fault of their own. Did you know it was that common?",
+      "And the hard part is, the shelters are full. When there's no room, animals get turned away. That's pretty tough to hear, isn't it? But there is good news."
     ],
     "solution": [
-      "The rescued animals stay with foster carers until they find a home. Pretty incredible, right?",
-      "A lot of your neighbours have already jumped on board, and without ongoing support the foster program can't continue."
+      "The good news is, every animal the rescue takes in stays with a foster carer until it finds a home. Pretty amazing, right?",
+      "It's simple. Local people give a small amount each month, and that keeps the foster carers going. A lot of your neighbours are already on board. Without that support, the rescue has to start saying no. It's a pretty good system, isn't it?"
     ],
     "close": [
-      "So that's the reason we are out here. The rescue relies on regular support, so I assume we can count on your support too, yeah?",
-      "What works best for you, monthly or annually?",
-      "It's completely up to you. You choose an amount that works."
+      "That's the reason I'm out today. The rescue relies on regular supporters, so I'm assuming we can count on your support as well?",
+      "So which works better for you, monthly or annually?",
+      "It's completely up to you. You choose the amount and how often."
     ],
     "objection": [
-      "I hear you. Can I ask, does the idea of what they are doing make sense to you?",
-      "Exactly, and that is why most people start small. What works best for you, monthly or annually?",
-      "You'd be directly helping an animal off the street, and it's completely up to you. You choose an amount that works."
+      "I hear you. Can I ask, though, does what the rescue is doing make sense to you?",
+      "Exactly. That's why most people start small. It's less about the amount and more about it being regular. So what suits you better, monthly or annually?",
+      "That's fair, I hear you. Just so I've got it right, you do like what they're doing for the animals?",
+      "Then here's the thing. You'd be the reason an animal gets off the street and into a home. And it's completely up to you. You pick an amount that works for you."
     ],
     "consolidation": [
-      "Brilliant, you are going to be making a real difference. Let me get you set up. What was your last name?",
-      "And what works best for you, monthly or annually?",
-      "Out of curiosity, what was the main reason you decided to jump on board?",
-      "Thanks so much. Have a great day."
+      "Brilliant. You're going to make a real difference to those animals. Let's get you set up. What's your last name?",
+      "Lovely. And did you want that monthly or annually?",
+      "Easy. Just out of curiosity, what made you want to jump on board today?",
+      "Love that. Thanks so much, and enjoy the rest of your afternoon."
     ],
     "interruption": [
       "No worries, take your time."
     ],
     "leave": [
-      "No worries at all. Thanks for your time, have a great day."
+      "No worries at all. Thanks for your time, and have a great day."
     ]
   },
   "drills": {
     "introduction": {
       "label": "Practise the Introduction",
-      "brief": "Walk up, knock and introduce yourself. Get her talking within the first ten seconds.",
+      "brief": "Walk up, knock and introduce yourself. Say who you are and who you are with, and get her talking within the first ten seconds.",
       "prelude": [],
       "preludeUntil": "not:always",
-      "maxTurns": 2,
+      "maxTurns": 4,
       "endWhen": "count:3:did:say_name,did:name_charity,min:questions:1",
       "stages": [
         "introduction"
@@ -1215,10 +1242,11 @@
       "label": "Practise the Problem",
       "brief": "You have introduced yourself and she is listening. Give her the two problem points, a question with each, then bridge to the solution.",
       "prelude": [
-        "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?"
+        "Hello, how are you?",
+        "Good, thank you. My name is Alex and I'm here on behalf of Placeholder Animal Rescue. The reason I'm in your area today is that we're just raising some awareness for the rescue. Have you, like many other people, heard of them before?"
       ],
       "preludeUntil": "not:always",
-      "maxTurns": 3,
+      "maxTurns": 4,
       "endWhen": "did:transition_hope",
       "stages": [
         "problem"
@@ -1228,9 +1256,10 @@
       "label": "Practise the Solution",
       "brief": "She has heard the problem. Tell the impact story, layer two impulse factors and check in. Watch for the buying sign.",
       "prelude": [
-        "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?",
-        "Honestly, the part that got me is how many animals are surrendered with nowhere to go. Have you heard much about that?",
-        "And the shelters are full, so some get turned away. That's terrible, right? But there is hope."
+        "Hello, how are you?",
+        "Good, thank you. My name is Alex and I'm here on behalf of Placeholder Animal Rescue. The reason I'm in your area today is that we're just raising some awareness for the rescue. Have you, like many other people, heard of them before?",
+        "The reason we're raising awareness is simple. Every week, pets are surrendered to the rescue with nowhere else to go. A lot of them through no fault of their own. Did you know it was that common?",
+        "And the hard part is, the shelters are full. When there's no room, animals get turned away. That's pretty tough to hear, isn't it? But there is good news."
       ],
       "preludeUntil": "not:always",
       "maxTurns": 3,
@@ -1243,11 +1272,12 @@
       "label": "Practise the Close and the deflect",
       "brief": "She is above the Buying Line. Ask for the commitment. When she objects, deflect: acknowledge, confirm, re-impulse, then re-close a different way.",
       "prelude": [
-        "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?",
-        "Honestly, the part that got me is how many animals are surrendered with nowhere to go. Have you heard much about that?",
-        "And the shelters are full, so some get turned away. That's terrible, right? But there is hope.",
-        "The rescued animals stay with foster carers until they find a home. Pretty incredible, right?",
-        "A lot of your neighbours have already jumped on board, and without ongoing support the foster program can't continue."
+        "Hello, how are you?",
+        "Good, thank you. My name is Alex and I'm here on behalf of Placeholder Animal Rescue. The reason I'm in your area today is that we're just raising some awareness for the rescue. Have you, like many other people, heard of them before?",
+        "The reason we're raising awareness is simple. Every week, pets are surrendered to the rescue with nowhere else to go. A lot of them through no fault of their own. Did you know it was that common?",
+        "And the hard part is, the shelters are full. When there's no room, animals get turned away. That's pretty tough to hear, isn't it? But there is good news.",
+        "The good news is, every animal the rescue takes in stays with a foster carer until it finds a home. Pretty amazing, right?",
+        "It's simple. Local people give a small amount each month, and that keeps the foster carers going. A lot of your neighbours are already on board. Without that support, the rescue has to start saying no. It's a pretty good system, isn't it?"
       ],
       "preludeUntil": "not:always",
       "maxTurns": 9,
@@ -1261,16 +1291,17 @@
       "label": "Practise the Consolidation",
       "brief": "She has just said yes. Reinforce her decision, finish the sign-up, ask the self-justification question and leave warm.",
       "prelude": [
-        "Hey, how is your day going? I love the bottlebrush by the door. I'm Alex, out with Placeholder Animal Rescue today. Have you heard much about what they do?",
-        "Honestly, the part that got me is how many animals are surrendered with nowhere to go. Have you heard much about that?",
-        "And the shelters are full, so some get turned away. That's terrible, right? But there is hope.",
-        "The rescued animals stay with foster carers until they find a home. Pretty incredible, right?",
-        "A lot of your neighbours have already jumped on board, and without ongoing support the foster program can't continue.",
-        "So that's the reason we are out here. The rescue relies on regular support, so I assume we can count on your support too, yeah?",
-        "I hear you. Can I ask, does the idea of what they are doing make sense to you?",
-        "Exactly, and that is why most people start small. What works best for you, monthly or annually?",
-        "I hear you. Can I ask, does the idea of what they are doing make sense to you?",
-        "You'd be directly helping an animal off the street, and it's completely up to you. You choose an amount that works."
+        "Hello, how are you?",
+        "Good, thank you. My name is Alex and I'm here on behalf of Placeholder Animal Rescue. The reason I'm in your area today is that we're just raising some awareness for the rescue. Have you, like many other people, heard of them before?",
+        "The reason we're raising awareness is simple. Every week, pets are surrendered to the rescue with nowhere else to go. A lot of them through no fault of their own. Did you know it was that common?",
+        "And the hard part is, the shelters are full. When there's no room, animals get turned away. That's pretty tough to hear, isn't it? But there is good news.",
+        "The good news is, every animal the rescue takes in stays with a foster carer until it finds a home. Pretty amazing, right?",
+        "It's simple. Local people give a small amount each month, and that keeps the foster carers going. A lot of your neighbours are already on board. Without that support, the rescue has to start saying no. It's a pretty good system, isn't it?",
+        "That's the reason I'm out today. The rescue relies on regular supporters, so I'm assuming we can count on your support as well?",
+        "I hear you. Can I ask, though, does what the rescue is doing make sense to you?",
+        "Exactly. That's why most people start small. It's less about the amount and more about it being regular. So what suits you better, monthly or annually?",
+        "That's fair, I hear you. Just so I've got it right, you do like what they're doing for the animals?",
+        "Then here's the thing. You'd be the reason an animal gets off the street and into a home. And it's completely up to you. You pick an amount that works for you."
       ],
       "preludeUntil": "flag:agreed",
       "maxTurns": 5,
@@ -1283,10 +1314,10 @@
   "choices": {
     "introduction": [
       {
-        "doneWhen": "count:3:did:say_name,did:name_charity,min:questions:1",
+        "doneWhen": "min:questions:1|did:say_name|did:name_charity",
         "weak": [
           {
-            "text": "Hi, my name is Alex, I am from Placeholder Animal Rescue, we are out today looking for people who might be interested in supporting the work we do, and basically what we do is provide funding for...",
+            "text": "Hi, sorry to bother you, I know you're probably busy, I'll be really quick. I'm just in the area today on behalf of Placeholder Animal Rescue and we're speaking to everyone about the work the rescue does and how people can get involved and...",
             "seconds": 35,
             "shows": "Talking too much before asking a question",
             "source": "p16",
@@ -1294,14 +1325,34 @@
             "review": "pending"
           },
           {
-            "text": "Hi, I love that car in the driveway. I'm Alex from Placeholder Animal Rescue.",
+            "text": "Hi! Wow, love the car. Is that new?",
             "shows": "Forcing a compliment when nothing genuine comes to mind — fake reads as fake",
             "source": "p38",
             "expect": "fake_compliment",
             "review": "pending"
           },
           {
-            "text": "Hi, I'm Alex from Placeholder Animal Rescue. The shelters are full and animals are getting turned away. Can you help out today?",
+            "text": "Hi, I'm from Placeholder Animal Rescue. We're signing people up today to help the animals. Can I sign you up?",
+            "shows": "Jumping straight into the cause before they're comfortable",
+            "source": "p16",
+            "expect": "closed_early",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "doneWhen": "count:2:did:say_name,did:name_charity",
+        "weak": [
+          {
+            "text": "Good. So, I'm Alex from Placeholder Animal Rescue and we're a charity that looks after animals, and we've been in the area all week talking to people about what we do and how the community can help, and what we're hoping is...",
+            "seconds": 35,
+            "shows": "Treating the pitch like a speech instead of a conversation",
+            "source": "p12",
+            "expect": "kill",
+            "review": "pending"
+          },
+          {
+            "text": "I'm Alex from Placeholder Animal Rescue. Can I sign you up to help the animals today?",
             "shows": "Jumping straight into the cause before they're comfortable",
             "source": "p16",
             "expect": "closed_early",
@@ -1315,7 +1366,7 @@
         "doneWhen": "did:problem_1",
         "weak": [
           {
-            "text": "So many animals are surrendered because of funding shortages, and the shelters are stretched, and the vet bills keep going up, and the volunteers are worn out, and it gets worse every year...",
+            "text": "So basically what happens is pets get surrendered for all sorts of reasons, like people moving house or having a baby or not being able to pay the vet, and then the pounds fill up, and then the rescues fill up, and it just keeps going...",
             "seconds": 35,
             "shows": "Overloading them with facts",
             "source": "p18",
@@ -1323,7 +1374,7 @@
             "review": "pending"
           },
           {
-            "text": "It's a really big problem, and the rescue does a lot of important work in the community.",
+            "text": "Look, animal welfare is a really big problem, and the rescue does a lot of important work in the community.",
             "shows": "Forgetting to ask questions and listen to the answers between points",
             "source": "p18",
             "expect": "vague",
@@ -1342,9 +1393,9 @@
             "review": "pending"
           },
           {
-            "text": "And the shelters are full, and it costs a lot to run a shelter, and the staff are flat out, and there is never enough food or bedding or space, and every week there are more...",
+            "text": "And it's not just that. The shelters are full, and the vet bills are huge, and food costs have gone up, and there aren't enough volunteers, and every week more animals come in than go out...",
             "seconds": 35,
-            "shows": "Treating the pitch like a speech instead of a conversation",
+            "shows": "Talking for more than 30 seconds without a question",
             "source": "p12",
             "expect": "kill",
             "review": "pending"
@@ -1357,7 +1408,7 @@
         "doneWhen": "did:impact_story",
         "weak": [
           {
-            "text": "So the rescue runs several programs, including outreach, community support, education and emergency response...",
+            "text": "So the rescue runs several programs. There's outreach, community support, education and an emergency response team...",
             "shows": "Dumping information without checking in",
             "source": "p20",
             "expect": "program_list",
@@ -1376,14 +1427,14 @@
         "doneWhen": "min:factors:2",
         "weak": [
           {
-            "text": "So yeah, the rescued animals find a home. It's a really good program.",
+            "text": "Well, like I said, they find homes for rescued animals. It's a really good program.",
             "shows": "Forgetting to use your Impulse Factors",
             "source": "p20",
             "expect": "drift",
             "review": "pending"
           },
           {
-            "text": "Well, there are other programs as well. There are education initiatives, and there is an emergency response team...",
+            "text": "Well, there are a few different programs. There are the education initiatives, and there's the emergency response side of things...",
             "shows": "Missing the moment when the donor is ready to move forward",
             "source": "p20",
             "expect": "program_list",
@@ -1403,7 +1454,7 @@
             "review": "pending"
           },
           {
-            "text": "Anyway, that is what they do. Thanks for your time, have a great day.",
+            "text": "Anyway, that's what they do. I'll let you get back to your afternoon. Thanks for your time.",
             "shows": "If you do not ask, the donor cannot say yes.",
             "source": "p23",
             "expect": "left_well",
@@ -1459,14 +1510,14 @@
             "review": "pending"
           },
           {
-            "text": "So would monthly or annually work best for you?",
+            "text": "So would monthly or annually be easier?",
             "shows": "Skipping acknowledgment",
             "source": "p26",
             "expect": "reclose_unhandled",
             "review": "pending"
           },
           {
-            "text": "Okay, no worries. Thanks for your time, have a great day.",
+            "text": "Oh, okay. No worries. Thanks for your time, have a good one.",
             "shows": "Giving up after one objection — the conversation is not over until the donor tells you they genuinely don't want to or are unable to help",
             "source": "p26",
             "expect": "left_well",
@@ -1477,14 +1528,14 @@
       {
         "weak": [
           {
-            "text": "Like I said, the rescued animals stay with foster carers until they find a home. So can I sign you up?",
+            "text": "Like I said, every animal stays with a foster carer until it finds a home. So can I sign you up?",
             "shows": "Repeating your pitch word for word",
             "source": "p26",
             "expect": "reclose_unhandled",
             "review": "pending"
           },
           {
-            "text": "It's less than a cup of coffee a week. Surely you can afford that.",
+            "text": "Come on, it's not much. Surely you can afford a few dollars.",
             "shows": "Arguing with objections",
             "source": "p26",
             "expect": "argued",
@@ -1495,17 +1546,35 @@
       {
         "weak": [
           {
-            "text": "Honestly, everyone can afford a few dollars. It's not much.",
+            "text": "I understand. But honestly, it's less than a cup of coffee a week.",
             "shows": "Arguing with objections",
             "source": "p26",
             "expect": "argued",
             "review": "pending"
           },
           {
-            "text": "Okay, I'll leave it there then. Thanks for your time, take care.",
+            "text": "That's okay, I'll leave it with you. Have a great day.",
             "shows": "Giving up after one objection — the conversation is not over until the donor tells you they genuinely don't want to or are unable to help",
             "source": "p26",
             "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "Honestly, everyone can afford a little bit. It's not much.",
+            "shows": "Arguing with objections",
+            "source": "p26",
+            "expect": "argued",
+            "review": "pending"
+          },
+          {
+            "text": "Well, like I said before, the shelters are full and animals get turned away. So will you come on board?",
+            "shows": "Repeating your pitch word for word",
+            "source": "p26",
+            "expect": "reclose_unhandled",
             "review": "pending"
           }
         ]

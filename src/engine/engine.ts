@@ -357,7 +357,7 @@ export function reduce(state: State, action: Action, pack: Pack, inPrelude = fal
     else if (ackedInterruption) { key = "interruption_thanks"; reaction = "open"; }
     else if (goodCompliment) { key = `compliment:${goodCompliment.needsVisible}`; reaction = "laugh"; }
     else if (crossedBuying) { key = "buying_sign"; reaction = "lean"; }
-    else if (topic) { key = `topic:${topic.topic}`; reaction = topic.rapport ? "laugh" : "open"; }
+    else if (topic) { key = `topic:${topic.topic}`; reaction = "open"; }
     else if (noTopic) { key = `no_topic:${noTopic.topic}`; reaction = "open"; }
     else if (kinds.has("checkin")) { key = s.impulse >= 50 ? "checkin_yes" : "checkin_flat"; }
     else if (kinds.has("problem") || kinds.has("solution") || kinds.has("factor") || kinds.has("transition")) {

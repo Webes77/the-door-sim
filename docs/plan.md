@@ -81,10 +81,14 @@ Reactions and what triggers them:
 James said the door gave the rep only one line to pick and needed bad choices too. Now, at every step of the pitch, the rep is offered three lines in a mixed order: the pack's strong line and up to two weak ones. The donor reacts to whichever they pick, and the debrief shows the manual's own words beside any weak line they tapped.
 
 - Weak lines live in `scenario.json` under `choices`, beside each example line. Each one carries the manual wording it shows (`shows`), the page (`source`) and the event it must cause (`expect`). They are drafts for the placeholder charity, built from the manual's weak examples and "what to avoid" lists. `review: pending`.
-- 31 weak lines across the introduction, problem, solution, close, objections, consolidation, the interruption and the genuine no.
+- 35 weak lines across the introduction, problem, solution, close, objections, consolidation, the interruption and the genuine no.
 - `src/engine/guide.ts` picks the moment and mixes the options from the door's seed. It only reads state. It never changes the rules.
 - A rep who jumps ahead (for example, asks for the sign-up in the first line) is brought back to the step they skipped.
 - The rep can still speak or type their own words. "Choices off" hides the options.
+
+### The script (rewritten 15 November 2026, James)
+
+The first script copied the manual's strong examples with the placeholder charity swapped in. James said the wording was terrible and gave the introduction as it is really said. The rep's lines in `scenario.json` (`suggestions` and `choices`) are now written in that register. The introduction is James's wording. The other stages are drafts in the same style for James to mark up. The manual's own examples still show on the lesson pages, word for word, because they are GIG's.
 
 ### Open items
 
