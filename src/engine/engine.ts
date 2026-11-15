@@ -166,12 +166,17 @@ export function reduce(state: State, action: Action, pack: Pack, inPrelude = fal
     return a.impulse;
   };
 
+  // On a KILL turn she has stopped listening, so nothing in it lands or counts.
+  const lost = new Set(["greet", "introduce", "question", "problem", "transition", "solution", "factor", "checkin"]);
+
   let fake = false, argued = false, understood = false, confirmed = false, acknowledged = false;
+  let slip: ActionDef | null = null;
   let goodCompliment: ActionDef | null = null, topic: ActionDef | null = null, noTopic: ActionDef | null = null;
   let closeAct: ActionDef | null = null, leaving = false, gainedSomething = false;
   const subs: string[] = [];
 
   for (const a of acts) {
+    if (kill && (lost.has(a.kind) || (a.kind === "compliment" && !!a.needsVisible && v.visible.includes(a.needsVisible)))) continue;
     if (!s.did.includes(a.id)) s.did.push(a.id);
     if (a.stage && !s.agreed) {
       const now = STAGES.indexOf(s.stage), next = STAGES.indexOf(a.stage);
@@ -242,11 +247,15 @@ export function reduce(state: State, action: Action, pack: Pack, inPrelude = fal
         break;
       case "ack_interruption":
         break;
+      case "slip":
+        // A weak habit the pack names. It costs a little every time.
+        slip = a; delta += a.impulse ?? 0; events.push(a.mark ?? a.id);
+        break;
     }
   }
 
   // Talking without moving anything forward loses a little attention.
-  const drift = !gainedSomething && !hasQuestion && !s.agreed && !kill && !acknowledged && !confirmed && !leaving && !ackedInterruption;
+  const drift = !gainedSomething && !hasQuestion && !s.agreed && !kill && !acknowledged && !confirmed && !leaving && !ackedInterruption && !slip;
   if (drift) { delta -= m.driftPenalty; events.push("drift"); }
 
   s.impulse = clamp(before + delta);
@@ -340,6 +349,7 @@ export function reduce(state: State, action: Action, pack: Pack, inPrelude = fal
     } else if (kill) { key = "kill"; reaction = "folded"; }
     else if (fake) { key = "fake_compliment"; reaction = "sceptical"; }
     else if (argued) { key = "argued"; reaction = "folded"; }
+    else if (slip) { key = slip.line ?? "drift"; reaction = s.agreed ? "hesitate" : "glance"; }
     else if (subKey) { key = subKey; reaction = "happy"; }
     else if (understood) { key = "understand"; reaction = "sceptical"; }
     else if (confirmed) { key = "confirm_yes"; reaction = "open"; }

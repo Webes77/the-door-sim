@@ -2,7 +2,7 @@ import { COUNTERS, FLAGS, type Counter, type Flag, type Pack, type State } from 
 
 // Condition language used by the rubric.
 //   always | not:<cond> | <cond>|<cond> | count:<n>:<atom>,<atom>,...
-//   atoms: did:<actionId> | flag:<flag> | min:<counter>:<n>
+//   atoms: did:<actionId> | flag:<flag> | min:<counter>:<n> | detail:<name|frequency>
 
 export function evaluate(cond: string, s: State): boolean {
   const c = cond.trim();
@@ -15,6 +15,7 @@ export function evaluate(cond: string, s: State): boolean {
   }
   if (c.startsWith("did:")) return s.did.includes(c.slice(4));
   if (c.startsWith("flag:")) return s.flags.includes(c.slice(5) as Flag);
+  if (c.startsWith("detail:")) return s.details[c.slice(7) as "name" | "frequency"] === true;
   if (c.startsWith("min:")) {
     const [, name, n] = c.split(":");
     return (s.counters[name as Counter] ?? 0) >= Number(n);
@@ -39,6 +40,7 @@ export function validate(cond: string, pack: Pack): string[] {
   if (c.startsWith("flag:")) {
     return (FLAGS as readonly string[]).includes(c.slice(5)) ? [] : [`unknown flag: ${c}`];
   }
+  if (c.startsWith("detail:")) return ["name", "frequency"].includes(c.slice(7)) ? [] : [`unknown detail: ${c}`];
   if (c.startsWith("min:")) {
     const [, name, n] = c.split(":");
     return (COUNTERS as readonly string[]).includes(name) && /^\d+$/.test(n ?? "") ? [] : [`bad min: ${c}`];

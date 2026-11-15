@@ -11,7 +11,7 @@ export type Outcome = "in_play" | "signed_up" | "door_closed" | "left_well" | "w
 export const KINDS = [
   "greet", "introduce", "compliment", "question", "problem", "transition", "solution", "factor",
   "checkin", "close", "acknowledge", "understand", "confirm", "argue", "ack_interruption",
-  "consolidate", "leave",
+  "consolidate", "leave", "slip",
 ] as const;
 export type Kind = (typeof KINDS)[number];
 
@@ -40,6 +40,9 @@ export interface ActionDef {
   factor?: string;
   method?: string;
   sub?: "reinforce" | "frequency" | "name" | "self_justify";
+  /** For a slip: the event it records, and the donor line she answers with. */
+  mark?: string;
+  line?: string;
   review: string;
 }
 
@@ -81,9 +84,15 @@ export interface Scenario {
   coaching: Record<string, { title: string; lines: string[] }>;
   eventText: Record<string, string>;
   suggestions: Record<string, string[]>;
+  /** For each example line: when it is no longer needed, and the weak lines offered beside it. */
+  choices: Record<string, Beat[]>;
   critical: Record<string, { label: string; source: string }>;
   drills: Record<string, Drill>;
 }
+
+/** A weak line a rep might say instead of the strong one. `shows` is the manual's own wording. */
+export interface WeakLine { text: string; seconds?: number; shows: string; source: string; expect?: string; review: string }
+export interface Beat { doneWhen?: string; weak: WeakLine[] }
 
 /** A practice of one stage. The prelude lines are played for the rep so the donor is in the right place. */
 export interface Drill {

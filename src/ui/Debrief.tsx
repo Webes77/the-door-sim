@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { clean, lessons, pack } from "../content/pack";
+import { weakLineFor } from "../engine/guide";
 import { debrief, type Band } from "../engine/score";
 import type { State } from "../engine/types";
 import { Curve } from "./Curve";
@@ -13,6 +14,12 @@ const OUTCOME: Record<string, string> = {
   walked_away: "You walked away without a sign-up.",
   drill_done: "Practice finished.",
 };
+
+/** When the rep tapped a weak line, show what the manual says about it. */
+function ManualNote({ text }: { text: string }) {
+  const w = weakLineFor(text, pack);
+  return w ? <p className="manual">Manual {w.source}: "{clean(w.shows)}"</p> : null;
+}
 
 export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state: State; onAgain: () => void; onJump: (turn: number) => void; onNext: () => void; onHome: () => void; go: (v: string) => void }) {
   const [read, setRead] = useState("");
@@ -67,6 +74,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
           {live.map((t) => (
             <li key={t.n}>
               {t.rep && <p className="you">You: {t.rep.text}</p>}
+              {t.rep && <ManualNote text={t.rep.text} />}
               {t.donor.length > 0 && <p className="her">Her: {t.donor.map((x) => x.text).join(" ")}</p>}
               <p className="state">{t.events.map((e) => pack.scenario.eventText[e]).filter(Boolean).join(" ")}</p>
             </li>
@@ -133,6 +141,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
           <p className="eyebrow">The turning point</p>
           <h2>{tp.title}</h2>
           {tpTurn?.rep && <p className="you">You said: {tpTurn.rep.text}</p>}
+          {tpTurn?.rep && <ManualNote text={tpTurn.rep.text} />}
           {tpTurn && tpTurn.donor.length > 0 && <p className="her">She said: {tpTurn.donor.map((x) => x.text).join(" ")}</p>}
           {tp.lines.length > 0 ? (
             <>
@@ -178,6 +187,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
         {state.turns.map((t) => (
           <li key={t.n} className={tp?.turn === t.n ? "tp" : ""}>
             {t.rep && <p className="you">You: {t.rep.text}</p>}
+            {t.rep && <ManualNote text={t.rep.text} />}
             {t.donor.length > 0 && <p className="her">Her: {t.donor.map((x) => x.text).join(" ")}</p>}
             <p className="state">
               Impulse {t.impulseBefore} to {t.impulseAfter}

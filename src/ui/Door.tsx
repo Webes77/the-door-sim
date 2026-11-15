@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { asset, clean, lessons, pack } from "../content/pack";
 import { suggestionKey, variantOf } from "../engine/engine";
+import { optionsFor } from "../engine/guide";
 import { matchActions } from "../engine/match";
 import { STAGES, type Action, type State } from "../engine/types";
 import { Donor, type Approach } from "./Donor";
@@ -111,14 +112,8 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
     const at = STAGES.indexOf(k as never), want = STAGES.indexOf(state.drill as never);
     return drill && at >= 0 && want > at ? (state.drill as string) : k;
   })();
-  const tips = (() => {
-    const s = pack.scenario.suggestions;
-    const list = [...(s[key] ?? [])];
-    const i = STAGES.indexOf(key as never);
-    if (i >= 0 && i < 3 && !drill) list.push(...(s[STAGES[i + 1]] ?? []));
-    const fresh = i >= 0 || key === "consolidation" ? list.filter((t) => !state.turns.some((x) => x.rep?.text === t)) : list;
-    return fresh.slice(0, 3);
-  })();
+  // "What would you say?" The strong line and up to two weak ones, in a mixed order.
+  const opts = optionsFor(state, pack);
 
   // The keys shown mid-conversation belong to the moment the rep is in.
   const keyLesson =
@@ -131,7 +126,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
       <div className="door-top">
         <button className="chip" onClick={onQuit}>Quit</button>
         <button className="chip" onClick={() => setKeysOpen(true)}>Keys</button>
-        <button className={`chip ${guided ? "on" : ""}`} aria-pressed={guided} onClick={() => setGuided(!guided)}>Lines {guided ? "on" : "off"}</button>
+        <button className={`chip ${guided ? "on" : ""}`} aria-pressed={guided} onClick={() => setGuided(!guided)}>Choices {guided ? "on" : "off"}</button>
         {voiceReady && <button className={`chip ${voiceOn ? "on" : ""}`} aria-pressed={voiceOn} onClick={() => { if (voiceOn) hush(); else unlock(); setVoiceOn(!voiceOn); }}>Voice {voiceOn ? "on" : "off"}</button>}
         {knocked && !over && ready && <button className="chip" onClick={() => dispatch({ type: "walk_away" })}>Walk away</button>}
       </div>
@@ -186,10 +181,18 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
             <button className="btn primary" onClick={onDebrief}>{state.outcome === "drill_done" ? "See how you went" : "See what happened"}</button>
           ) : (
             <>
-              {guided && tips.length > 0 && (
-                <div className="tips">
-                  {tips.map((t) => <button key={t} onClick={() => send(t)}>{t}</button>)}
-                </div>
+              {guided && opts.length > 0 && shownTurn === last?.n && (
+                <>
+                  <p className="ask">What would you say?</p>
+                  <div className="tips">
+                    {opts.map((o) => (
+                      <button key={o.text} onClick={() => send(o.text, o.seconds)}>
+                        {o.text}
+                        {o.seconds && <span className="long">You keep going. About {o.seconds} seconds.</span>}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
               <form className="say" onSubmit={(e) => { e.preventDefault(); send(text); }}>
                 {canListen && (

@@ -82,9 +82,12 @@ textarea { width: 100%; border: 1.5px solid var(--line); border-radius: 12px; pa
 .sheet h2 { color: #fff; margin: 0; }
 .caption { font-size: 21px; line-height: 1.25; font-weight: 400; min-height: 1.3em; text-wrap: balance; }
 .you { font-size: 14px; color: #bdb3af; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.tips { display: flex; flex-direction: column; gap: 6px; max-height: 30vh; overflow-y: auto; }
+.tips { display: flex; flex-direction: column; gap: 6px; max-height: 38vh; overflow-y: auto; }
 .tips button { text-align: left; border: 1px solid rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.07); color: #fff; border-radius: 12px; padding: 9px 12px; font-size: 14px; line-height: 1.3; }
 .tips button:active { border-color: var(--coral); }
+.tips .long { display: block; margin-top: 4px; font-size: 12px; color: #c9bfba; }
+.ask { margin: 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #c9bfba; }
+.manual { margin: 2px 0; font-size: 14px; color: var(--coral-deep); }
 .say { display: flex; gap: 8px; align-items: center; }
 .say input { flex: 1; min-width: 0; border: 1px solid rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.1); color: #fff; border-radius: 999px; padding: 12px 16px; font-size: 16px; min-height: 48px; }
 .say input::placeholder { color: #a79d99; }

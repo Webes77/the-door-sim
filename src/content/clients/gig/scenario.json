@@ -9,7 +9,7 @@
     "understandPenalty": 4,
     "arguePenalty": 15,
     "driftPenalty": 4,
-    "earlyClosePenalty": 8,
+    "earlyClosePenalty": 16,
     "refusePenalty": 8,
     "notYetPenalty": 6,
     "sameMethodPenalty": 4,
@@ -677,6 +677,71 @@
         "leave you to it"
       ],
       "review": "pending"
+    },
+    {
+      "id": "vague_pitch",
+      "kind": "slip",
+      "mark": "vague",
+      "line": "drift",
+      "describe": "Talks in general terms. No picture and no question.",
+      "keywords": [
+        "really big problem",
+        "lot of important work",
+        "important work in the community",
+        "really important cause"
+      ],
+      "impulse": -5,
+      "review": "pending"
+    },
+    {
+      "id": "program_list",
+      "kind": "slip",
+      "mark": "program_list",
+      "line": "drift",
+      "describe": "Lists programs or facts. No feeling and no question.",
+      "keywords": [
+        "several programs",
+        "other programs",
+        "outreach",
+        "education initiatives",
+        "emergency response",
+        "community support"
+      ],
+      "impulse": -5,
+      "review": "pending"
+    },
+    {
+      "id": "tentative_close",
+      "kind": "slip",
+      "mark": "tentative_close",
+      "line": "not_yet",
+      "describe": "Asks in a tentative, apologetic way.",
+      "keywords": [
+        "would you maybe",
+        "if that is okay",
+        "if thats okay",
+        "if that is ok",
+        "if thats ok",
+        "sorry to ask",
+        "i dont suppose"
+      ],
+      "impulse": -6,
+      "review": "pending"
+    },
+    {
+      "id": "celebrate_early",
+      "kind": "slip",
+      "mark": "celebrated_early",
+      "line": "listening",
+      "describe": "Celebrates the sign-up in front of the donor.",
+      "keywords": [
+        "my target",
+        "my first one today",
+        "first sign up today",
+        "smashed it"
+      ],
+      "impulse": 0,
+      "review": "pending"
     }
   ],
   "objections": [
@@ -1037,6 +1102,33 @@
       "lines": [
         "close_ask"
       ]
+    },
+    "vague": {
+      "title": "You spoke in general terms and gave her nothing to react to.",
+      "lines": [
+        "kiss_silence",
+        "kiss_focus"
+      ]
+    },
+    "program_list": {
+      "title": "You listed programs. She heard words and felt nothing.",
+      "lines": [
+        "kiss_focus",
+        "impulse_remember"
+      ]
+    },
+    "tentative_close": {
+      "title": "You asked as if you expected a no.",
+      "lines": [
+        "close_strong",
+        "close_ask"
+      ]
+    },
+    "celebrated_early": {
+      "title": "You celebrated while she was still at the door.",
+      "lines": [
+        "consolidation_strong"
+      ]
     }
   },
   "eventText": {
@@ -1066,7 +1158,11 @@
     "left_signed": "Signed up. You left on a good note.",
     "left_well": "You thanked her and left.",
     "walked_away": "You walked away.",
-    "drill_done": "End of this practice."
+    "drill_done": "End of this practice.",
+    "vague": "General words. No picture and no question.",
+    "program_list": "A list of programs. No feeling and no question.",
+    "tentative_close": "A tentative, apologetic ask.",
+    "celebrated_early": "You celebrated in front of her."
   },
   "suggestions": {
     "introduction": [
@@ -1183,5 +1279,318 @@
         "consolidation"
       ]
     }
+  },
+  "choices": {
+    "introduction": [
+      {
+        "doneWhen": "count:3:did:say_name,did:name_charity,min:questions:1",
+        "weak": [
+          {
+            "text": "Hi, my name is Alex, I am from Placeholder Animal Rescue, we are out today looking for people who might be interested in supporting the work we do, and basically what we do is provide funding for...",
+            "seconds": 35,
+            "shows": "Talking too much before asking a question",
+            "source": "p16",
+            "expect": "kill",
+            "review": "pending"
+          },
+          {
+            "text": "Hi, I love that car in the driveway. I'm Alex from Placeholder Animal Rescue.",
+            "shows": "Forcing a compliment when nothing genuine comes to mind — fake reads as fake",
+            "source": "p38",
+            "expect": "fake_compliment",
+            "review": "pending"
+          },
+          {
+            "text": "Hi, I'm Alex from Placeholder Animal Rescue. The shelters are full and animals are getting turned away. Can you help out today?",
+            "shows": "Jumping straight into the cause before they're comfortable",
+            "source": "p16",
+            "expect": "closed_early",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "problem": [
+      {
+        "doneWhen": "did:problem_1",
+        "weak": [
+          {
+            "text": "So many animals are surrendered because of funding shortages, and the shelters are stretched, and the vet bills keep going up, and the volunteers are worn out, and it gets worse every year...",
+            "seconds": 35,
+            "shows": "Overloading them with facts",
+            "source": "p18",
+            "expect": "kill",
+            "review": "pending"
+          },
+          {
+            "text": "It's a really big problem, and the rescue does a lot of important work in the community.",
+            "shows": "Forgetting to ask questions and listen to the answers between points",
+            "source": "p18",
+            "expect": "vague",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "doneWhen": "did:problem_2",
+        "weak": [
+          {
+            "text": "And the shelters are full. So can I sign you up today?",
+            "shows": "Closing before the donor is ready",
+            "source": "p22",
+            "expect": "closed_early",
+            "review": "pending"
+          },
+          {
+            "text": "And the shelters are full, and it costs a lot to run a shelter, and the staff are flat out, and there is never enough food or bedding or space, and every week there are more...",
+            "seconds": 35,
+            "shows": "Treating the pitch like a speech instead of a conversation",
+            "source": "p12",
+            "expect": "kill",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "solution": [
+      {
+        "doneWhen": "did:impact_story",
+        "weak": [
+          {
+            "text": "So the rescue runs several programs, including outreach, community support, education and emergency response...",
+            "shows": "Dumping information without checking in",
+            "source": "p20",
+            "expect": "program_list",
+            "review": "pending"
+          },
+          {
+            "text": "So, would you like to help out today?",
+            "shows": "Closing before the donor is ready",
+            "source": "p22",
+            "expect": "closed_early",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "doneWhen": "min:factors:2",
+        "weak": [
+          {
+            "text": "So yeah, the rescued animals find a home. It's a really good program.",
+            "shows": "Forgetting to use your Impulse Factors",
+            "source": "p20",
+            "expect": "drift",
+            "review": "pending"
+          },
+          {
+            "text": "Well, there are other programs as well. There are education initiatives, and there is an emergency response team...",
+            "shows": "Missing the moment when the donor is ready to move forward",
+            "source": "p20",
+            "expect": "program_list",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "close": [
+      {
+        "weak": [
+          {
+            "text": "So... would you maybe want to help out today, if that is okay?",
+            "shows": "Tentative and apologetic. It hands the donor every reason to say no.",
+            "source": "p22",
+            "expect": "tentative_close",
+            "review": "pending"
+          },
+          {
+            "text": "Anyway, that is what they do. Thanks for your time, have a great day.",
+            "shows": "If you do not ask, the donor cannot say yes.",
+            "source": "p23",
+            "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "I don't suppose you would want to sign up, if that's okay?",
+            "shows": "Tentative and apologetic. It hands the donor every reason to say no.",
+            "source": "p22",
+            "expect": "tentative_close",
+            "review": "pending"
+          },
+          {
+            "text": "That's alright. I'll leave you to it. Have a good day.",
+            "shows": "Close confidently at least three times in every full conversation.",
+            "source": "p23",
+            "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "Sorry to ask again, but would you maybe like to help out today?",
+            "shows": "Tentative and apologetic. It hands the donor every reason to say no.",
+            "source": "p22",
+            "expect": "tentative_close",
+            "review": "pending"
+          },
+          {
+            "text": "No stress. Thanks for your time, enjoy your afternoon.",
+            "shows": "Close confidently at least three times in every full conversation.",
+            "source": "p23",
+            "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "objection": [
+      {
+        "weak": [
+          {
+            "text": "I understand, but it is only a small amount and it really does make a difference...",
+            "shows": "Arguing with objections",
+            "source": "p26",
+            "expect": "argued",
+            "review": "pending"
+          },
+          {
+            "text": "So would monthly or annually work best for you?",
+            "shows": "Skipping acknowledgment",
+            "source": "p26",
+            "expect": "reclose_unhandled",
+            "review": "pending"
+          },
+          {
+            "text": "Okay, no worries. Thanks for your time, have a great day.",
+            "shows": "Giving up after one objection — the conversation is not over until the donor tells you they genuinely don't want to or are unable to help",
+            "source": "p26",
+            "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "Like I said, the rescued animals stay with foster carers until they find a home. So can I sign you up?",
+            "shows": "Repeating your pitch word for word",
+            "source": "p26",
+            "expect": "reclose_unhandled",
+            "review": "pending"
+          },
+          {
+            "text": "It's less than a cup of coffee a week. Surely you can afford that.",
+            "shows": "Arguing with objections",
+            "source": "p26",
+            "expect": "argued",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "Honestly, everyone can afford a few dollars. It's not much.",
+            "shows": "Arguing with objections",
+            "source": "p26",
+            "expect": "argued",
+            "review": "pending"
+          },
+          {
+            "text": "Okay, I'll leave it there then. Thanks for your time, take care.",
+            "shows": "Giving up after one objection — the conversation is not over until the donor tells you they genuinely don't want to or are unable to help",
+            "source": "p26",
+            "expect": "left_well",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "consolidation": [
+      {
+        "doneWhen": "detail:name",
+        "weak": [
+          {
+            "text": "Okay, thanks a lot for jumping on board, have a good day.",
+            "shows": "Leaving without reinforcing the decision",
+            "source": "p24",
+            "expect": "left_before_details",
+            "review": "pending"
+          },
+          {
+            "text": "Right. What's your last name?",
+            "shows": "Breaking rapport by becoming transactional at the end",
+            "source": "p24",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "doneWhen": "detail:frequency",
+        "weak": [
+          {
+            "text": "Perfect, that's all I need. Thanks, bye.",
+            "shows": "Rushing through sign-up and making mistakes",
+            "source": "p24",
+            "expect": "left_before_details",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "doneWhen": "flag:self_justified",
+        "weak": [
+          {
+            "text": "That's you all sorted. Have a great day.",
+            "shows": "Skipping the self-justification question",
+            "source": "p24",
+            "expect": "left_signed",
+            "review": "pending"
+          }
+        ]
+      },
+      {
+        "weak": [
+          {
+            "text": "Yes! Legend. That's my target for the day!",
+            "shows": "Celebrating too early — stay professional until you've walked away and well out of sight of the donor",
+            "source": "p24",
+            "expect": "celebrated_early",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "interruption": [
+      {
+        "weak": [
+          {
+            "text": "Anyway, as I was saying, there are a lot of animals with nowhere to go.",
+            "shows": "Ignoring their body language and facial expressions",
+            "source": "p16",
+            "expect": "talked_over",
+            "review": "pending"
+          }
+        ]
+      }
+    ],
+    "leave": [
+      {
+        "weak": [
+          {
+            "text": "Are you sure? It would mean a lot. Would you like to help out today?",
+            "shows": "the conversation is not over until the donor tells you they genuinely don't want to or are unable to help",
+            "source": "p28",
+            "expect": "pushed_after_no",
+            "review": "pending"
+          }
+        ]
+      }
+    ]
   }
 }

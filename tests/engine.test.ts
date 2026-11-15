@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { pack } from "../src/content/pack";
+import { lessons, pack } from "../src/content/pack";
 import { validate } from "../src/engine/conditions";
 import { reduce, replay, start } from "../src/engine/engine";
+import { nextMoment, optionsFor } from "../src/engine/guide";
 import { matchActions } from "../src/engine/match";
 import { debrief } from "../src/engine/score";
 import { KINDS, type Action, type State } from "../src/engine/types";
@@ -92,6 +93,125 @@ describe("recorded voice", () => {
   it("points only at files that exist", () => {
     expect(files.length).toBeGreaterThan(0);
     expect(Object.values(manifest).filter((f) => !files.includes(f))).toEqual([]);
+  });
+});
+
+describe("what would you say", () => {
+  const { suggestions, choices, eventText, actions } = pack.scenario;
+  const play = (s: State, text: string, seconds?: number) => reduce(s, { type: "rep_turn", text, ids: matchActions(text, actions), seconds }, pack);
+  const allWeak = Object.values(choices).flatMap((list) => list.flatMap((b) => b.weak));
+
+  it("has weak lines beside every example line", () => {
+    for (const [key, list] of Object.entries(suggestions)) expect(choices[key]?.length, key).toBe(list.length);
+    for (const list of Object.values(choices)) for (const b of list) expect(b.weak.length).toBeGreaterThan(0);
+  });
+
+  it("uses each line of text once only", () => {
+    const texts = [...Object.values(suggestions).flat(), ...allWeak.map((w) => w.text)];
+    expect(new Set(texts).size).toBe(texts.length);
+  });
+
+  it("understands every 'no longer needed' condition", () => {
+    const problems = Object.values(choices).flatMap((list) => list.flatMap((b) => (b.doneWhen ? validate(b.doneWhen, pack) : [])));
+    expect(problems).toEqual([]);
+  });
+
+  it("explains every weak line in the manual's own words", () => {
+    const manual = JSON.stringify(lessons) + JSON.stringify(pack.strongLines);
+    expect(allWeak.filter((w) => !manual.includes(JSON.stringify(w.shows).slice(1, -1))).map((w) => w.shows)).toEqual([]);
+    expect(allWeak.filter((w) => !/^p\d+$/.test(w.source)).map((w) => w.text)).toEqual([]);
+  });
+
+  it("names every slip in the debrief", () => {
+    const marks = actions.filter((a) => a.kind === "slip").map((a) => a.mark ?? a.id);
+    expect(marks.filter((m) => !eventText[m] || !pack.scenario.coaching[m])).toEqual([]);
+  });
+
+  it("offers the strong line and up to two weak ones, the same way for the same door", () => {
+    const s = replay(pack, P, 5, [{ type: "knock" }]);
+    const a = optionsFor(s, pack), b = optionsFor(s, pack);
+    expect(a).toEqual(b);
+    expect(a.length).toBe(3);
+    expect(a.filter((o) => !o.weak).length).toBe(1);
+  });
+
+  it("signs her up when the rep picks the strong line every time", () => {
+    for (let seed = 0; seed < 24; seed++) {
+      let s = replay(pack, P, seed, [{ type: "knock" }]);
+      for (let n = 0; n < 40 && s.outcome === "in_play"; n++) {
+        const strong = optionsFor(s, pack).find((o) => !o.weak);
+        expect(strong, `seed ${seed} turn ${n}`).toBeTruthy();
+        s = play(s, strong!.text);
+      }
+      expect(s.outcome, `seed ${seed}`).toBe("signed_up");
+      expect(debrief(s, pack).performance, `seed ${seed}`).toBe("strong");
+    }
+  });
+
+  it("makes every weak line cost what the manual says it costs", () => {
+    const seen = new Set<string>();
+    const wrong: string[] = [];
+    const probe = (s: State) => {
+      const m = nextMoment(s, pack)!;
+      for (const w of m.weak) {
+        const t = play(s, w.text, w.seconds).turns.at(-1)!;
+        seen.add(w.text);
+        if (t.events.includes("unclear")) wrong.push(`not understood: ${w.text}`);
+        if (w.expect && !t.events.includes(w.expect)) wrong.push(`${w.text} gave ${t.events.join(",")}, wanted ${w.expect}`);
+        if (t.impulseAfter > t.impulseBefore) wrong.push(`${w.text} raised impulse`);
+      }
+      return m;
+    };
+    // Every moment on the strong path, for many doors.
+    for (let seed = 0; seed < 24; seed++) {
+      let s = replay(pack, P, seed, [{ type: "knock" }]);
+      for (let n = 0; n < 40 && s.outcome === "in_play"; n++) s = play(s, probe(s).strong);
+    }
+    // The later closes only come up after an ask that did not land.
+    const S2 = suggestions;
+    let s = replay(pack, P, seedFor(0), [{ type: "knock" }]);
+    for (const line of [S2.introduction[0], S2.problem[0], S2.solution[0], "It's a really big problem.", "They do a lot of important work.", S2.close[0], S2.problem[1], S2.solution[1]]) {
+      if (s.interruptionActive) s = play(s, S2.interruption[0]);
+      s = play(s, line);
+    }
+    if (s.interruptionActive) s = play(s, S2.interruption[0]);
+    expect(probe(s).strong).toBe(S2.close[1]);
+    s = play(s, S2.close[1]);
+    s = play(s, "I hear you. Does the idea of what they are doing make sense to you?");
+    s = play(s, "That is why most people start small.");
+    expect(probe(s).strong).toBe(S2.close[2]);
+    // After a genuine no, the only strong move is to leave well.
+    let no = replay(pack, P, seedFor(0), [{ type: "knock" }]);
+    for (const line of [S2.introduction[0], S2.problem[0], S2.solution[0]]) {
+      if (no.interruptionActive) no = play(no, S2.interruption[0]);
+      no = play(no, line);
+    }
+    if (no.interruptionActive) no = play(no, S2.interruption[0]);
+    no = play(no, "It's a really big problem.");
+    no = play(no, "They do a lot of important work.");
+    for (const line of ["Would you like to help out today?", "Can I sign you up?", "So will you come on board?", "Can I get you started?"]) {
+      if (!no.genuineNo) no = play(no, line);
+    }
+    expect(no.genuineNo).toBe(true);
+    expect(probe(no).strong).toBe(S2.leave[0]);
+
+    expect(wrong).toEqual([]);
+    expect(allWeak.filter((w) => !seen.has(w.text)).map((w) => w.text)).toEqual([]);
+  });
+
+  it("brings a rep who jumps ahead back to what they skipped", () => {
+    let s = replay(pack, P, 5, [{ type: "knock" }]);
+    s = play(s, choices.introduction[0].weak[2].text); // straight to the cause and the ask
+    expect(s.turns.at(-1)!.events).toContain("closed_early");
+    expect(nextMoment(s, pack)!.strong).toBe(suggestions.problem[0]);
+  });
+
+  it("lands nothing on a KILL turn", () => {
+    let s = replay(pack, P, 5, [{ type: "knock" }]);
+    const w = choices.introduction[0].weak[0];
+    s = play(s, w.text, w.seconds);
+    expect(s.did).toEqual([]);
+    expect(nextMoment(s, pack)!.strong).toBe(suggestions.introduction[0]);
   });
 });
 
