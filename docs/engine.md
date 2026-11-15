@@ -21,7 +21,7 @@ For developers and reviewers. Code: `src/engine/`. Content: `src/content/clients
 
 The pack lists the action ids. Each id has one kind. A test fails the build if a pack uses a kind the engine does not know.
 
-`greet`, `introduce`, `compliment`, `question`, `problem`, `transition`, `solution`, `factor`, `checkin`, `close`, `acknowledge`, `understand`, `confirm`, `argue`, `ack_interruption`, `consolidate`, `leave`.
+`greet`, `introduce`, `compliment`, `question`, `problem`, `transition`, `solution`, `factor`, `checkin`, `close`, `acknowledge`, `understand`, `confirm`, `argue`, `ack_interruption`, `consolidate`, `leave`, `slip`.
 
 ## Hidden state
 
@@ -49,6 +49,17 @@ The pack lists the action ids. Each id has one kind. A test fails the build if a
 7. After agreement, details and the self-justification question.
 8. The donor's line and reaction are picked. First match wins.
 9. Low attention can close the door. The seeded interruption may fire.
+
+## What would you say
+
+`src/engine/guide.ts` is help, not rules. `nextMoment(state, pack)` finds the example line the pack would say next: the interruption, the consolidation, the objection steps, or the earliest pitch step not yet done (a step is done when its line was said or its `doneWhen` condition holds). `optionsFor(state, pack)` returns that strong line with up to two weak lines from `scenario.choices`, mixed in an order drawn from the seed and the turn number, so the same door always shows the same options. `weakLineFor(text, pack)` lets the debrief show the manual's words beside a weak line.
+
+Two engine rules came with it:
+
+- Kind `slip`: a weak habit the pack names (general talk, a list of programs, a tentative ask, celebrating early). It applies its `impulse` every time, records its `mark` as an event, and the donor answers with its `line`. The pack gives each mark its event text and coaching.
+- On a KILL turn nothing lands. Greetings, questions, problem points, solution points, factors and check-ins in that turn are not counted and gain nothing, so the rep has to say them again properly.
+
+Condition atoms now include `detail:name` and `detail:frequency`.
 
 ## Stage practice
 

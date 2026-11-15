@@ -7,6 +7,7 @@ import { STAGES, type Action, type State } from "../engine/types";
 import { Donor, type Approach } from "./Donor";
 import { Keys } from "./Screens";
 import { hasVoice, hush, knock, speak, unlock, warm } from "./sound";
+import { Hd } from "./Hd";
 
 type Recognition = { start: () => void; stop: () => void; lang: string; interimResults: boolean; continuous: boolean; onresult: ((e: any) => void) | null; onend: (() => void) | null; onerror: ((e: any) => void) | null };
 
@@ -135,7 +136,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
         <div className="keys" role="dialog" aria-label="Keys">
           <div className="keys-in">
             <p className="eyebrow">{keyLesson.stageNo ? `Stage ${keyLesson.stageNo} of 5` : keyLesson.group}</p>
-            <h2>{keyLesson.title}</h2>
+            <h2><Hd>{keyLesson.title}</Hd></h2>
             <Keys lesson={keyLesson} compact />
             <p className="cite">GIG First 4 Weeks Training Manual, from {keyLesson.source}</p>
             <button className="btn primary" onClick={() => setKeysOpen(false)}>Back to the door</button>
@@ -146,7 +147,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
       {approach === "street" && (
         <div className="sheet knock">
           <p className="eyebrow light">{drill ? drill.label : "The full pitch"}</p>
-          <h2>Walk up to the door</h2>
+          <h2><Hd on="Walk up">Walk up to the door</Hd></h2>
           {drill && <p>{drill.brief}</p>}
           <p className="small">S.E.E.N. starts now. Smile on the approach. Look for one thing you could genuinely compliment.</p>
           <button className="btn primary" onClick={() => { unlock(); setApproach("walking"); }}>Walk up</button>
@@ -156,7 +157,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
       {approach === "arrived" && !knocked && (
         <div className="sheet knock">
           <p className="eyebrow light">Before you knock</p>
-          <h2>What you notice</h2>
+          <h2><Hd on="notice">What you notice</Hd></h2>
           <ul className="notice">{v.notice.map((n) => <li key={n}>{n}</li>)}</ul>
           <p className="small">{clean("Open with the compliment if you have one, otherwise open with a question.")}</p>
           <button className="btn primary" onClick={doKnock}>Knock</button>
@@ -166,7 +167,7 @@ export function Door({ state, dispatch, onDebrief, onQuit }: { state: State; dis
       {knocked && !ready && drill && (
         <div className="sheet knock">
           <p className="eyebrow light">{drill.label}</p>
-          <h2>Where you are</h2>
+          <h2><Hd on="Where">Where you are</Hd></h2>
           <p>{drill.brief}</p>
           <p className="small">She just said: "{caption}"</p>
           <button className="btn primary" onClick={() => { unlock(); setReady(true); }}>Start</button>

@@ -40,12 +40,27 @@ Updated at the end of every session.
    - Tests: 24 engine and pack tests, including one that fails if any donor line has no recording. The headless playthrough now checks that the recorded voice plays.
    - Cost: about 34 Higgsfield credits for the 109 lines (0.23 or 0.46 a line). Account balance afterwards: 272.7 credits.
 
+9. 15 November 2026, James said the door gave only one line to choose and needed bad choices ("What would you say?"). Done:
+   - At every step of the pitch the rep is offered three lines in a mixed order: one strong, up to two weak. The donor reacts to whichever they pick.
+   - 31 weak lines, built from the manual's own weak examples and "what to avoid" lists and reworded for the placeholder charity. Each is tied to the manual wording and page it shows.
+   - The debrief shows the manual's words beside any weak line the rep tapped.
+   - Engine: a `slip` kind for weak habits the pack names (general talk, a list of programs, a tentative ask, celebrating early). Nothing lands on a KILL turn. A too-early ask costs more (16, was 8). A rep who jumps ahead is brought back to the step they skipped.
+   - Tests: 34 engine and pack tests. Every weak line is checked to cost what it should. Picking the strong line every time signs her up on 24 different doors.
+
+10. 15 November 2026, James asked whether Magnum branding would be better. Done:
+   - The app shell is now Magnum AI branded by default, in the Magnum AI house style, with the delivered mark from the design system. GIG is still named as the source of the training content.
+   - The brand is one build setting. `VITE_BRAND=gig` brings the GIG Academy look back.
+   - The house style checker flags one line in `src/brand-magnum.css`: the rule that removes rounded corners and shadows. That is a false positive.
+
 ## Known issues
 
 - Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.
-- No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key.
+- No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key. Tapped choices always work.
+- The weak lines are drafts. James and GIG's trainer have not reviewed them.
+- The Magnum heading style colours one word per heading. Where a heading comes from data, the last word is coloured.
 - The donor's voice has not been heard by the builder, which cannot hear audio. Lengths and volume were checked by measurement. James needs to listen for any line that sounds like a different person, has the wrong accent, or says a name badly (Nguyen, Petrakis). Those lines can be re-recorded one at a time.
 - The door-opening clip has a moment where the door hardware looks wrong mid-swing. Check it by eye.
+- The lessons, the manual quotes and the page references are GIG's training manual word for word. Under any branding, that content can only be shown to GIG until it is swapped for content James owns or GIG agrees.
 - The lesson examples are the manual's own (Children's Hospital, Humane Society). The campaign lines are drafts for the placeholder charity.
 - Speech recognition is the browser's own and has only been wired up, not tested on real phones.
 - The donor's mouth does not move when she speaks. Moving between two reactions always passes back through the open pose, which takes about four seconds.
@@ -57,7 +72,8 @@ Updated at the end of every session.
 
 ## Next
 
-1. James plays it with the voice on and says what feels wrong, including any line that needs re-recording.
+1. James plays it with the voice on and says what feels wrong: the weak choices, the Magnum look, and any voice line that needs re-recording.
+1a. James decides what content a Magnum-branded demo teaches when it is shown to anyone other than GIG.
 2. Deploy to Netlify behind the password gate.
 3. AI classifier (`/api/turn`).
 4. More donors (two more situations), and real conduct rules from the onboarding document.

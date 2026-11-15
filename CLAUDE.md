@@ -67,6 +67,7 @@ A practice simulator for door-to-door sales reps. The rep talks out loud to an A
 - No em dashes anywhere on screen. The display layer replaces any that arrive from source text.
 - Never name Jordan Belfort in anything a rep sees. Cite manual sections by id only, never by the author named in a heading.
 - No working-title branding on screen. "The Door" is a working title.
+- The app shell wears Magnum AI's brand by default, decided by James on 15 November 2026: the Magnum AI house style (white paper, one navy block per screen, coral as the single accent, Oswald, IBM Plex Sans and IBM Plex Mono, hard edges) and the delivered mark in `public/art/magnum/`. Never redraw or recolour the mark. `VITE_BRAND=gig` at build time gives the GIG Academy look. The brand lives in `src/content/brand.ts` and `src/brand-magnum.css`. The training content inside is still named as the client's.
 - Customers are people, not stereotypes. Their behaviour comes from their situation (time, trust, ownership, past experience), never from age, gender or background.
 - All customers are fictional. No real customer or lead data anywhere. Phone numbers spoken by customers come from a reserved fictional range `[NEEDS CONFIRMING]`.
 - Clues, not meters. No trust bar and no score on screen during play.

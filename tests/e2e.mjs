@@ -145,6 +145,28 @@ for (const [w, h] of process.env.QUICK ? [] : SIZES) {
   await page.close();
 }
 
+// ---- What would you say: three choices, and a weak one is explained in the debrief ----
+{
+  const { page, errors } = await open(390, 844);
+  await page.getByRole("button", { name: /Start: Introduction/ }).click();
+  await page.getByRole("button", { name: "Practise the Introduction" }).click();
+  await toDoor(page);
+  await page.locator(".tips button").first().waitFor({ timeout: 8000 });
+  if ((await page.locator(".tips button").count()) !== 3) fail("the door did not offer three choices");
+  await page.screenshot({ path: "tests/shots/choices-390.png" });
+  const weak = page.locator(".tips button").filter({ hasNotText: "Hey, how is your day" }).first();
+  await weak.click();
+  await page.waitForTimeout(3200);
+  if (!(await page.getByRole("button", { name: "See how you went" }).count())) await sayTip(page, "Hey, how is your day");
+  await page.getByRole("button", { name: "See how you went" }).click();
+  if ((await page.locator("h1").textContent()) === "Strong.") fail("a weak choice still scored strong");
+  if (!(await page.locator(".manual").count())) fail("the debrief did not explain the weak choice");
+  await page.screenshot({ path: "tests/shots/choices-debrief-390.png", fullPage: true });
+  if (errors.length) fail(`choices errors: ${errors.join(" | ")}`);
+  console.log("ok choices: a weak line is offered, costs the rep and is explained");
+  await page.close();
+}
+
 // ---- Dashboard, systems, script and onboarding ----
 {
   const { page, errors } = await open(390, 844);

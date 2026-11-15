@@ -1,0 +1,122 @@
+/* Magnum AI house style. White paper, one navy block per screen, coral as the single accent. Hard edges.
+   Applies when <html data-brand="magnum">. The GIG look is the base stylesheet on its own. */
+[data-brand="magnum"] {
+  --paper: #FBFBF9; --paper-2: #FFFFFF; --navy: #1F2A37; --ink: #1E1B17; --body: #2B2823; --char: #3A3630;
+  --mute: #63615C; --coral: #EF4029; --coral-deep: #C63A2A; --coral-bright: #FF6F5E; --blush: #FBE1D8;
+  --line: #DADAD5; --slate: #5B6B7A; --on-navy: #F4F1EA; --on-navy-mute: #C8CDD3; --night: #1F2A37; --good: #5B6B7A;
+  --font: "IBM Plex Sans", Arial, system-ui, sans-serif;
+  --display: "Oswald", "Arial Narrow", "Liberation Sans Narrow", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+html[data-brand="magnum"], [data-brand="magnum"] body { background: #FBFBF9; color-scheme: light; }
+[data-brand="magnum"] body { color: var(--body); line-height: 1.5; }
+[data-brand="magnum"] *:not(.ring):not(.k) { border-radius: 0 !important; box-shadow: none !important; }
+[data-brand="magnum"] button:focus-visible, [data-brand="magnum"] input:focus-visible, [data-brand="magnum"] textarea:focus-visible, [data-brand="magnum"] summary:focus-visible { outline: 3px solid var(--coral); }
+
+/* Type */
+[data-brand="magnum"] h1, [data-brand="magnum"] h2, [data-brand="magnum"] h3 { font-family: var(--display); font-weight: 600; text-transform: uppercase; line-height: 1.04; color: var(--ink); }
+[data-brand="magnum"] h1 { font-size: clamp(36px, 10.5vw, 50px); }
+[data-brand="magnum"] h2 { font-size: 27px; }
+[data-brand="magnum"] h3 { font-size: 20px; }
+[data-brand="magnum"] h1 em, [data-brand="magnum"] h2 em, [data-brand="magnum"] h3 em { color: var(--coral); }
+[data-brand="magnum"] h4 { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.2em; color: var(--coral-deep); }
+[data-brand="magnum"] .eyebrow, [data-brand="magnum"] .ask { font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; color: var(--coral-deep); display: flex; align-items: center; gap: 10px; }
+[data-brand="magnum"] .eyebrow::after, [data-brand="magnum"] .ask::after { content: ""; flex: 1; height: 1px; background: var(--ink); }
+[data-brand="magnum"] .eyebrow.light, [data-brand="magnum"] .ask { color: var(--coral-bright); }
+[data-brand="magnum"] .eyebrow.light::after, [data-brand="magnum"] .ask::after { background: var(--on-navy-mute); }
+[data-brand="magnum"] .cite, [data-brand="magnum"] .note, [data-brand="magnum"] .small.ink { color: var(--mute); }
+[data-brand="magnum"] .foot { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+[data-brand="magnum"] .callout, [data-brand="magnum"] blockquote { font-style: normal; font-weight: 600; border-left-color: var(--coral); color: var(--ink); }
+[data-brand="magnum"] .callout.light { color: var(--on-navy); }
+[data-brand="magnum"] blockquote cite { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+[data-brand="magnum"] .draft, [data-brand="magnum"] .pill { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; background: var(--blush); color: var(--ink); padding: 3px 8px; align-self: flex-start; }
+
+/* Header: the delivered mark on paper */
+[data-brand="magnum"] .bar { border-bottom: 2px solid var(--ink); }
+[data-brand="magnum"] .logo img { height: 38px; }
+[data-brand="magnum"] .bar-tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--coral-deep); }
+
+/* Buttons and cards */
+[data-brand="magnum"] .btn { border: 2px solid var(--ink); font-weight: 500; }
+[data-brand="magnum"] .btn.primary { background: var(--coral-bright); border-color: var(--ink); color: var(--ink); font-weight: 600; }
+[data-brand="magnum"] .btn.primary:active { background: var(--coral); }
+[data-brand="magnum"] .btn.ghost { border-color: transparent; color: var(--coral-deep); }
+[data-brand="magnum"] .card { background: var(--paper-2); border: 2px solid var(--ink); color: var(--char); }
+[data-brand="magnum"] button.card:hover { border-color: var(--coral); }
+[data-brand="magnum"] .card strong { font-family: var(--display); font-weight: 600; text-transform: uppercase; line-height: 1.05; color: var(--ink); }
+[data-brand="magnum"] .card .card-k { font-family: var(--mono); letter-spacing: 0.2em; color: var(--coral-deep); }
+[data-brand="magnum"] .card.dark, [data-brand="magnum"] .target { background: var(--navy); border: 2px solid var(--ink); border-bottom: 4px solid var(--coral-bright); color: var(--on-navy); }
+[data-brand="magnum"] button.card.dark:hover { border-color: var(--ink); border-bottom-color: var(--coral-bright); }
+[data-brand="magnum"] .card.dark strong { color: var(--on-navy); }
+[data-brand="magnum"] .card.dark span { color: var(--on-navy-mute); }
+[data-brand="magnum"] .card.dark .card-k, [data-brand="magnum"] .target h4 { color: var(--coral-bright); }
+[data-brand="magnum"] .list li, [data-brand="magnum"] .stages > li { border-bottom-color: var(--line); }
+[data-brand="magnum"] .row strong { font-family: var(--display); font-weight: 600; text-transform: uppercase; }
+[data-brand="magnum"] .badges i { font-family: var(--mono); letter-spacing: 0.12em; border-color: var(--line); color: var(--mute); }
+[data-brand="magnum"] .badges i.on { background: var(--blush); border-color: var(--ink); color: var(--ink); }
+[data-brand="magnum"] textarea { border: 2px solid var(--ink); background: var(--paper-2); }
+
+/* The door: the bottom sheet is the navy block */
+[data-brand="magnum"] .door { background: var(--navy); color: var(--on-navy); }
+[data-brand="magnum"] .chip { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; background: var(--navy); border: 1px solid var(--on-navy-mute); color: var(--on-navy); -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-brand="magnum"] .chip.on { border-color: var(--coral-bright); color: var(--coral-bright); }
+[data-brand="magnum"] .sheet { background: var(--navy); border-top: 4px solid var(--coral-bright); padding-top: 16px; }
+[data-brand="magnum"] .sheet h2, [data-brand="magnum"] .caption, [data-brand="magnum"] .notice { color: var(--on-navy); }
+[data-brand="magnum"] .sheet h2 em { color: var(--coral-bright); }
+[data-brand="magnum"] .sheet .you, [data-brand="magnum"] .sheet .small { color: var(--on-navy-mute); }
+[data-brand="magnum"] .tips button { background: var(--paper-2); border: 2px solid var(--ink); color: var(--char); font-size: 14.5px; }
+[data-brand="magnum"] .tips button:active { border-color: var(--coral); }
+[data-brand="magnum"] .tips .long { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral-deep); }
+[data-brand="magnum"] .say input { background: var(--paper-2); border: 2px solid var(--ink); color: var(--ink); }
+[data-brand="magnum"] .say input::placeholder { color: var(--mute); }
+[data-brand="magnum"] .mic { background: transparent; border: 2px solid var(--on-navy-mute); color: var(--on-navy); }
+[data-brand="magnum"] .mic.live { background: var(--coral-bright); border-color: var(--coral-bright); color: var(--ink); animation: none; }
+[data-brand="magnum"] .send { background: var(--coral-bright); border: 2px solid var(--ink); color: var(--ink); }
+[data-brand="magnum"] .keys-in h2 { font-weight: 600; }
+
+/* Debrief */
+[data-brand="magnum"] .verdicts div, [data-brand="magnum"] .curve, [data-brand="magnum"] .turning, [data-brand="magnum"] .scriptbox, [data-brand="magnum"] .mtable, [data-brand="magnum"] .ex { background: var(--paper-2); border: 2px solid var(--ink); }
+[data-brand="magnum"] .verdicts span, [data-brand="magnum"] .yourread span { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--coral-deep); }
+[data-brand="magnum"] .verdicts strong { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: 20px; line-height: 1.05; color: var(--ink); }
+[data-brand="magnum"] .band { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; background: var(--blush); color: var(--ink); padding: 3px 8px; flex: none; }
+[data-brand="magnum"] .band.strong { background: var(--coral-bright); border: 2px solid var(--ink); }
+[data-brand="magnum"] .band.not_tested { background: transparent; color: var(--mute); border: 1px solid var(--line); }
+[data-brand="magnum"] .verdicts strong.band { align-self: flex-start; }
+[data-brand="magnum"] .critical { background: var(--paper-2); color: var(--char); border: 2px solid var(--coral); }
+[data-brand="magnum"] .critical .cite { color: var(--mute); }
+[data-brand="magnum"] .yourread { background: var(--blush); }
+[data-brand="magnum"] .curve .att { stroke: var(--slate); }
+[data-brand="magnum"] .curve .lbl { font-family: var(--mono); font-weight: 500; }
+[data-brand="magnum"] .ticks .met::before, [data-brand="magnum"] .ticklist li::before, [data-brand="magnum"] .signoff b { color: var(--slate); }
+[data-brand="magnum"] .stats div { background: var(--navy); border: 2px solid var(--ink); color: var(--on-navy); }
+[data-brand="magnum"] .stats strong { font-family: var(--display); font-weight: 600; font-size: 34px; color: var(--coral-bright); }
+[data-brand="magnum"] .stats span { color: var(--on-navy-mute); }
+[data-brand="magnum"] .timeline li { border-left-color: var(--line); }
+[data-brand="magnum"] .timeline li.tp { border-left-color: var(--coral); }
+
+/* Reset beat */
+[data-brand="magnum"] .reset { background: var(--navy); color: var(--on-navy); }
+[data-brand="magnum"] .ring { border-color: var(--coral-bright); }
+[data-brand="magnum"] .ring.in { background: rgba(255, 111, 94, 0.14); }
+[data-brand="magnum"] .ring span { font-family: var(--display); font-weight: 600; text-transform: uppercase; }
+[data-brand="magnum"] .steps span { font-family: var(--mono); color: var(--on-navy-mute); }
+[data-brand="magnum"] .steps span.on { color: var(--coral-bright); }
+
+/* Lessons */
+[data-brand="magnum"] .stepper button { background: transparent; border: 1px solid var(--on-navy-mute); color: var(--on-navy); }
+[data-brand="magnum"] .stepper b { font-family: var(--display); font-weight: 600; color: var(--coral-bright); }
+[data-brand="magnum"] .stepper span { color: var(--on-navy); }
+[data-brand="magnum"] .stepper em { font-family: var(--mono); color: var(--on-navy-mute); }
+[data-brand="magnum"] .stepper .done { border-color: var(--coral-bright); }
+[data-brand="magnum"] .stepper .done em { color: var(--coral-bright); }
+[data-brand="magnum"] .mrow { border-bottom-color: var(--line); }
+[data-brand="magnum"] .mrow p span { font-family: var(--mono); }
+[data-brand="magnum"] .ex b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
+[data-brand="magnum"] .ex p { font-style: normal; font-weight: 500; color: var(--ink); }
+[data-brand="magnum"] .ex .why { font-weight: 400; color: var(--mute); }
+[data-brand="magnum"] .ex.strong { border-color: var(--coral); }
+[data-brand="magnum"] .ex.strong b { color: var(--coral-deep); }
+[data-brand="magnum"] .try { background: var(--blush); border: 2px solid var(--ink); }
+[data-brand="magnum"] .signoff { border: 2px solid var(--ink); }
+[data-brand="magnum"] .signoff span { font-family: var(--mono); font-weight: 500; background: var(--blush); }
+[data-brand="magnum"] .scriptbox .line { border-left-color: var(--coral); }

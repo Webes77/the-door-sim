@@ -10,7 +10,9 @@ This section overrides the rest of the plan where they differ. Sections 0 to 7 b
 
 ### What we build
 
-A GIG-branded training app for new fundraisers. Black, GIG coral (#FF554D from the logo) and cream, with the GIG logo. Australian voices.
+A training app for new fundraisers, built on GIG's manual. Australian voices.
+
+Branding (changed 15 November 2026, James): the app shell is Magnum AI branded by default, in the Magnum AI house style, with the delivered Magnum mark. GIG is named as the source of the training content. The earlier GIG look (black, GIG coral #FF554D and cream, GIG logo) is kept and comes back with `VITE_BRAND=gig` at build time.
 
 1. **Dashboard.** The rep lands here and sees two sections and their progress.
 2. **Onboarding (placeholder).** Rules of conduct for fundraisers. Placeholder cards until James supplies GIG's onboarding document. These rules become the critical errors at the door.
@@ -73,6 +75,16 @@ Reactions and what triggers them:
 | Sceptical | A fake compliment, "I understand", a close before the Problem and Solution |
 | Happy | Agreement and the sign-up steps |
 | Closes the door | Attention lost, or pushed after a genuine no |
+
+### "What would you say?" (15 November 2026, James)
+
+James said the door gave the rep only one line to pick and needed bad choices too. Now, at every step of the pitch, the rep is offered three lines in a mixed order: the pack's strong line and up to two weak ones. The donor reacts to whichever they pick, and the debrief shows the manual's own words beside any weak line they tapped.
+
+- Weak lines live in `scenario.json` under `choices`, beside each example line. Each one carries the manual wording it shows (`shows`), the page (`source`) and the event it must cause (`expect`). They are drafts for the placeholder charity, built from the manual's weak examples and "what to avoid" lists. `review: pending`.
+- 31 weak lines across the introduction, problem, solution, close, objections, consolidation, the interruption and the genuine no.
+- `src/engine/guide.ts` picks the moment and mixes the options from the door's seed. It only reads state. It never changes the rules.
+- A rep who jumps ahead (for example, asks for the sign-up in the first line) is brought back to the step they skipped.
+- The rep can still speak or type their own words. "Choices off" hides the options.
 
 ### Open items
 

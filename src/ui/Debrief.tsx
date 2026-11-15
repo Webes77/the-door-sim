@@ -5,6 +5,7 @@ import { debrief, type Band } from "../engine/score";
 import type { State } from "../engine/types";
 import { Curve } from "./Curve";
 import { Header, Keys, STAGE_LESSONS } from "./Screens";
+import { Hd } from "./Hd";
 
 const BAND: Record<Band, string> = { strong: "Strong", getting_there: "Getting there", needs_work: "Needs work", not_tested: "Not tested" };
 const OUTCOME: Record<string, string> = {
@@ -39,11 +40,11 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
       <main className="page">
         <Header onHome={onHome} />
         <p className="eyebrow">{drill.label}</p>
-        <h1>{d.performance === "strong" ? "Strong." : d.performance === "getting_there" ? "Getting there." : "Needs work."}</h1>
+        <h1><Hd>{d.performance === "strong" ? "Strong." : d.performance === "getting_there" ? "Getting there." : "Needs work."}</Hd></h1>
 
         {d.criticalErrors.length > 0 && (
           <div className="critical">
-            <h3>Critical errors</h3>
+            <h3><Hd>Critical errors</Hd></h3>
             <ul className="bullets">{d.criticalErrors.map((c, k) => <li key={k}>{c.label} <span className="cite">{c.source && `Manual ${c.source}`}</span></li>)}</ul>
           </div>
         )}
@@ -62,14 +63,14 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
         {tp && tp.title && state.outcome !== "signed_up" && d.performance !== "strong" && (
           <section className="turning">
             <p className="eyebrow">Where it slipped</p>
-            <h2>{tp.title}</h2>
+            <h2><Hd>{tp.title}</Hd></h2>
             {tp.lines.map((l) => (
               <blockquote key={l.quote}>{clean(l.quote)}<cite>GIG First 4 Weeks Training Manual, {l.source}</cite></blockquote>
             ))}
           </section>
         )}
 
-        <h2>What you said</h2>
+        <h2><Hd on="said">What you said</Hd></h2>
         <ol className="timeline">
           {live.map((t) => (
             <li key={t.n}>
@@ -81,7 +82,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
           ))}
         </ol>
 
-        <h2>The keys to {lesson.title}</h2>
+        <h2><Hd>The keys to {lesson.title}</Hd></h2>
         <Keys lesson={lesson} />
         <p className="cite">GIG First 4 Weeks Training Manual, from {lesson.source}</p>
 
@@ -102,7 +103,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
       <main className="page">
         <Header onHome={onHome} />
         <p className="eyebrow">Your read first</p>
-        <h1>Where did that door turn, and why?</h1>
+        <h1><Hd on="turn">Where did that door turn, and why?</Hd></h1>
         <textarea id="read" value={read} onChange={(e) => setRead(e.target.value)} rows={4} placeholder="One or two sentences. Your own words." />
         <button className="btn primary" onClick={() => setOpen(true)}>Show me</button>
       </main>
@@ -117,7 +118,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
     <main className="page">
       <Header onHome={onHome} />
       <p className="eyebrow">Debrief</p>
-      <h1>{OUTCOME[state.outcome]}</h1>
+      <h1><Hd>{OUTCOME[state.outcome]}</Hd></h1>
 
       <div className="verdicts">
         <div><span>What happened at the door?</span><strong>{OUTCOME[state.outcome]}</strong></div>
@@ -126,26 +127,26 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
 
       {d.criticalErrors.length > 0 && (
         <div className="critical">
-          <h3>Critical errors</h3>
+          <h3><Hd>Critical errors</Hd></h3>
           <ul className="bullets">{d.criticalErrors.map((c, i) => <li key={i}>{c.label} <span className="cite">{c.source && `Manual ${c.source}`}</span></li>)}</ul>
         </div>
       )}
 
       {read.trim() && <p className="yourread"><span>Your read</span>{read}</p>}
 
-      <h2>Her impulse, through your conversation</h2>
+      <h2><Hd on="impulse">Her impulse, through your conversation</Hd></h2>
       <Curve state={state} pack={pack} mark={tp ? tp.turn : null} />
 
       {tp && (
         <section className="turning">
           <p className="eyebrow">The turning point</p>
-          <h2>{tp.title}</h2>
+          <h2><Hd>{tp.title}</Hd></h2>
           {tpTurn?.rep && <p className="you">You said: {tpTurn.rep.text}</p>}
           {tpTurn?.rep && <ManualNote text={tpTurn.rep.text} />}
           {tpTurn && tpTurn.donor.length > 0 && <p className="her">She said: {tpTurn.donor.map((x) => x.text).join(" ")}</p>}
           {tp.lines.length > 0 ? (
             <>
-              <h3>From your manual</h3>
+              <h3><Hd on="manual">From your manual</Hd></h3>
               {tp.lines.map((l) => (
                 <blockquote key={l.quote}>{clean(l.quote)}<cite>GIG First 4 Weeks Training Manual, {l.source}</cite></blockquote>
               ))}
@@ -159,7 +160,7 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
         </section>
       )}
 
-      <h2>Stage by stage</h2>
+      <h2><Hd on="Stage">Stage by stage</Hd></h2>
       <ul className="stages">
         {d.stages.map((s) => (
           <li key={s.id}>
@@ -175,14 +176,14 @@ export function Debrief({ state, onAgain, onJump, onNext, onHome, go }: { state:
         ))}
       </ul>
 
-      <h2>KISS check</h2>
+      <h2><Hd>KISS check</Hd></h2>
       <div className="stats">
         <div><strong>{share}%</strong><span>of the words were yours</span></div>
         <div><strong>{d.questions}</strong><span>questions asked</span></div>
         <div><strong>{d.closes}</strong><span>closes, trial closes included</span></div>
       </div>
 
-      <h2>The conversation, with what she was feeling</h2>
+      <h2><Hd on="feeling">The conversation, with what she was feeling</Hd></h2>
       <ol className="timeline">
         {state.turns.map((t) => (
           <li key={t.n} className={tp?.turn === t.n ? "tp" : ""}>

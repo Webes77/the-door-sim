@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { brand, brandLogo } from "../content/brand";
 import { clean, lessons, onboarding, pack, type Block, type Lesson } from "../content/pack";
 import type { Progress } from "./store";
+import { Hd } from "./Hd";
 
 const MANUAL = "GIG First 4 Weeks Training Manual";
 export const STAGE_LESSONS = lessons.filter((l) => l.stageNo).sort((a, b) => a.stageNo! - b.stageNo!);
@@ -13,9 +15,9 @@ export function Header({ onHome }: { onHome?: () => void }) {
   return (
     <header className="bar">
       <button className="logo" onClick={onHome} aria-label="Home" disabled={!onHome}>
-        <img src={pack.client.logo} alt={pack.client.name} />
+        <img src={brandLogo} alt={brand.name} />
       </button>
-      <span className="bar-tag">The GIG Academy</span>
+      <span className="bar-tag">{brand.id === "magnum" ? `${brand.name} · ${brand.tag}` : brand.tag}</span>
     </header>
   );
 }
@@ -38,7 +40,7 @@ export function Dashboard({ progress, go }: { progress: Progress; go: (v: string
     <main className="page">
       <Header />
       <p className="eyebrow">Fundraiser development</p>
-      <h1>Your first four weeks</h1>
+      <h1><Hd on="four weeks">Your first four weeks</Hd></h1>
       <p className="callout">Master the basics. Everything is built on them.</p>
 
       <section className="card dark">
@@ -98,7 +100,7 @@ export function Onboarding({ go }: { go: (v: string) => void }) {
     <main className="page">
       <Header onHome={() => go("home")} />
       <p className="eyebrow">Onboarding</p>
-      <h1>Rules of conduct</h1>
+      <h1><Hd>Rules of conduct</Hd></h1>
       <p>{onboarding.note}</p>
       <ul className="list">
         {onboarding.sections.map((s) => (
@@ -119,11 +121,11 @@ export function Skills({ progress, go }: { progress: Progress; go: (v: string) =
     <main className="page">
       <Header onHome={() => go("home")} />
       <p className="eyebrow">Sales skills</p>
-      <h1>Your core systems</h1>
+      <h1><Hd>Your core systems</Hd></h1>
       <p>Each one gives you a specific tool for the doors. Read it, then apply it with a donor.</p>
       {groups.map((g) => (
         <section key={g}>
-          <h2>{g}</h2>
+          <h2><Hd>{g}</Hd></h2>
           <ul className="list">
             {lessons.filter((s) => s.group === g).map((s) => (
               <li key={s.id}>
@@ -145,7 +147,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.type === "list") {
     return (
       <section>
-        {b.title && <h3>{b.title}</h3>}
+        {b.title && <h3><Hd>{b.title}</Hd></h3>}
         {b.intro && <p>{clean(b.intro)}</p>}
         <ul className="ticklist">{b.items.map((i) => <li key={i}>{clean(i)}</li>)}</ul>
         {b.outro && <p>{clean(b.outro)}</p>}
@@ -155,7 +157,7 @@ function BlockView({ b }: { b: Block }) {
   if (b.type === "table") {
     return (
       <section>
-        {b.title && <h3>{b.title}</h3>}
+        {b.title && <h3><Hd>{b.title}</Hd></h3>}
         <div className="mtable">
           {b.rows.map((r) => (
             <div key={r[0]} className="mrow">
@@ -169,7 +171,7 @@ function BlockView({ b }: { b: Block }) {
   }
   return (
     <section>
-      {b.title && <h3>{b.title}</h3>}
+      {b.title && <h3><Hd>{b.title}</Hd></h3>}
       {b.paras.map((p) => <p key={p}>{clean(p)}</p>)}
     </section>
   );
@@ -191,15 +193,15 @@ export function Keys({ lesson, compact }: { lesson: Lesson; compact?: boolean })
           <div className="ex strong"><b>Strong</b><p>{clean(lesson.strong[0])}</p><p className="why">{clean(lesson.strong[1])}</p></div>
         </div>
       )}
-      <h3>What to avoid</h3>
+      <h3><Hd>What to avoid</Hd></h3>
       <ul className="bullets">{lesson.avoid.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
       {lesson.focus.length > 0 && (
         <>
-          <h3>Focus on these two things</h3>
+          <h3><Hd on="Focus">Focus on these two things</Hd></h3>
           <ul className="bullets">{lesson.focus.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
         </>
       )}
-      <h3>Remember</h3>
+      <h3><Hd>Remember</Hd></h3>
       <p>{clean(lesson.remember)}</p>
     </>
   );
@@ -216,12 +218,12 @@ export function LessonPage({ lesson, progress, mark, go }: { lesson: Lesson; pro
     <main className="page lesson">
       <Header onHome={() => go("home")} />
       <p className="eyebrow">{lesson.stageNo ? `Stage ${lesson.stageNo} of 5` : lesson.group}</p>
-      <h1>{lesson.title}</h1>
+      <h1><Hd>{lesson.title}</Hd></h1>
 
-      <h3>What it is</h3>
+      <h3><Hd on="What">What it is</Hd></h3>
       {lesson.what.map((w) => <p key={w}>{clean(w)}</p>)}
 
-      <h3>Why it matters</h3>
+      <h3><Hd on="Why">Why it matters</Hd></h3>
       <p className="callout">{clean(lesson.why.callout)}</p>
       <p>{clean(lesson.why.text)}</p>
 
@@ -229,7 +231,7 @@ export function LessonPage({ lesson, progress, mark, go }: { lesson: Lesson; pro
 
       {lesson.strong.length > 0 && (
         <>
-          <h3>What it sounds like</h3>
+          <h3><Hd on="sounds">What it sounds like</Hd></h3>
           <p>{clean(lesson.sounds)}</p>
           <div className="sounds">
             <div className="ex weak"><b>Weak</b><p>{clean(lesson.weak[0])}</p><p className="why">{clean(lesson.weak[1])}</p></div>
@@ -238,17 +240,17 @@ export function LessonPage({ lesson, progress, mark, go }: { lesson: Lesson; pro
         </>
       )}
 
-      <h3>What to avoid</h3>
+      <h3><Hd>What to avoid</Hd></h3>
       <ul className="bullets">{lesson.avoid.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
 
       {lesson.focus.length > 0 && (
         <>
-          <h3>Focus on these two things</h3>
+          <h3><Hd on="Focus">Focus on these two things</Hd></h3>
           <ul className="bullets">{lesson.focus.map((a) => <li key={a}>{clean(a)}</li>)}</ul>
         </>
       )}
 
-      <h3>Remember</h3>
+      <h3><Hd>Remember</Hd></h3>
       <p>{clean(lesson.remember)}</p>
 
       <div className="target">
@@ -264,7 +266,7 @@ export function LessonPage({ lesson, progress, mark, go }: { lesson: Lesson; pro
 
       {script.length > 0 && (
         <section className="scriptbox">
-          <h3>Your lines for {pack.campaign.charity}</h3>
+          <h3><Hd>Your lines for {pack.campaign.charity}</Hd></h3>
           <p className="draft">Draft. Built on the manual's strong examples.</p>
           {script.map((s) => <p key={s} className="line">{s}</p>)}
         </section>
@@ -296,14 +298,14 @@ export function Script({ go }: { go: (v: string) => void }) {
     <main className="page">
       <Header onHome={() => go("home")} />
       <p className="eyebrow">Your campaign</p>
-      <h1>The pitch script</h1>
+      <h1><Hd>The pitch script</Hd></h1>
       <p className="draft pill">Draft for a placeholder charity</p>
       <p>The five stages are not a script. They are the shape your conversation needs to take. These lines show the shape for this campaign. Make them yours.</p>
       {SCRIPT_ORDER.map(([key, label]) => {
         const l = lessons.find((x) => x.id === (key === "objection" ? "objections" : key));
         return (
           <section key={key} className="scriptbox">
-            <h3>{label}</h3>
+            <h3><Hd>{label}</Hd></h3>
             {l && <p className="small ink">{clean(l.target)}</p>}
             {(s[key] ?? []).map((line) => <p key={line} className="line">{line}</p>)}
             {l && <button className="btn ghost left" onClick={() => go(`lesson:${l.id}`)}>The keys to this stage</button>}
@@ -324,15 +326,15 @@ export function Brief({ go }: { go: (v: string) => void }) {
     <main className="page">
       <Header onHome={() => go("home")} />
       <p className="eyebrow">Campaign brief</p>
-      <h1>{c.charity}</h1>
+      <h1><Hd>{c.charity}</Hd></h1>
       {c.placeholder && <p className="draft pill">Placeholder charity. Not real.</p>}
-      <h3>Two problem points</h3>
+      <h3><Hd>Two problem points</Hd></h3>
       <ul className="bullets">{c.problems.map((p) => <li key={p}>{p}</li>)}</ul>
-      <h3>The impact</h3>
+      <h3><Hd>The impact</Hd></h3>
       <p>{c.impact}</p>
-      <h3>Long-term progress</h3>
+      <h3><Hd>Long-term progress</Hd></h3>
       <p>{c.progress}</p>
-      <h3>The ask</h3>
+      <h3><Hd>The ask</Hd></h3>
       <p>{c.ask}</p>
       <div className="target">
         <h4>Daily target</h4>
