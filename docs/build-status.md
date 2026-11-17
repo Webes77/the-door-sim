@@ -61,7 +61,32 @@ Updated at the end of every session.
    - Her starting impulse is 30 (was 28) so her first reaction to the problem is interest.
    - The weak lines were rewritten to match. 35 weak lines.
 
+12. 17 November 2026, James changed direction: park the GIG door, build "First shift" for The Intro and Broadbent Risk. Done on branch `claude/first-shift`:
+   - Read the six Intro Agent Hub pages in full. Wrote `docs/first-shift-plan.md`.
+   - New call engine (`src/engine/shift/`): the dialler connects a call, the learner taps one of three lines, the call ends, the learner wraps it with a code from the real list, then a debrief. Pure reducer, same golden rule.
+   - New content pack (`src/content/clients/the-intro-broadbent/`): 10 rules quoted from the sources with document and section, the 14 wrap codes from SOP 2.2, and the first two calls. Call 1: "what cover should I be on, and what would it cost?" and "can they ring me Tuesday at 3?", wrapped as Lead Submitted. Call 2: "where did you get my details?" and "don't call me again", wrapped as DNC.
+   - A missed DNC is a critical error. It is listed on its own and forces the shift to "Needs work".
+   - Debrief order: the learner's own read, the shift call by call, critical errors, results in bands, each moment with the exact rule and its section, then the wrap codes.
+   - Client names live in `client.json`, so a version with the names swapped is a settings change.
+   - Only the chosen pack is loaded in a build, so GIG's content does not ship in this one.
+   - Review pack for Hayden or Joelinda: `docs/review/first-shift-review-pack.md` and `.docx`, 60 items, tick column, changes column, sign-off block. Built by `scripts/review_pack.py`.
+   - Tests: 16 new engine and pack tests (50 in all). One fails the build if the right line stands out by length. Headless playthroughs at 390x844 and 820x1180: a clean shift, a missed DNC, a weak shift.
+
 ## Known issues
+
+First shift:
+
+- Two of the four planned calls are built. Calls 3 and 4 are in the plan.
+- Tap mode only. No voices yet and no speaking. Voices come after James has played it.
+- Nothing has been reviewed by The Intro. Every screen says "Draft for compliance review".
+- Which breaches are critical is a draft reading of the sources. See the questions in the review pack.
+- The caller's words when someone says "don't call me again" are a draft. The sources give the rule but no set words.
+- `public/` still holds the GIG art and voice files, so a Netlify deploy of this branch would publish them too. They need to move into per-pack folders that only ship with their pack. The private preview does not include them.
+- The Intro Agent Hub pages loaded from this environment with no lock code. If they are meant to be private, they need a password gate.
+- Not deployed. Private preview only.
+
+GIG door (parked):
+
 
 - Not deployed to Netlify. There is no Netlify site or password yet. A private preview copy is at https://claude.ai/artifact/SkuRsSfABmQ8gBRVDdwqi1 (built with `VITE_BASE=./`). The microphone does not work inside that preview.
 - No AI yet. The rep's words are matched by keyword lists, so wording outside the lists gets "Sorry?". The AI classifier comes with the Anthropic key. Tapped choices always work.
@@ -81,6 +106,16 @@ Updated at the end of every session.
 
 ## Next
 
+First shift:
+
+1. James plays the two calls and says what feels wrong.
+2. Calls 3 and 4. Then the review pack goes to Hayden or Joelinda.
+3. New Zealand voices for the prospects.
+4. Speaking, with the classifier, once `ANTHROPIC_API_KEY` is in Netlify.
+5. Password gate and Netlify deploy. Move the GIG assets out of the shared `public/` folder first.
+
+GIG door (parked):
+
 1. James plays it with the voice on and says what feels wrong: the weak choices, the Magnum look, and any voice line that needs re-recording.
 1a. James decides what content a Magnum-branded demo teaches when it is shown to anyone other than GIG.
 2. Deploy to Netlify behind the password gate.
@@ -89,6 +124,14 @@ Updated at the end of every session.
 5. Presenter mode and the review pack for GIG.
 
 ## Waiting on James
+
+First shift:
+
+- The four questions at the end of the review pack (wrap code after a recording refusal, the "Over 60s" code, which breaches are critical, the DNC wording).
+- The Intro's logo and colours, if the shift should wear them. It wears the Magnum look for now.
+- Whether the Agent Hub pages should be behind a password.
+
+GIG door (parked):
 
 - GIG website (colours and fonts), onboarding document (rules of conduct), campaign brief or OK for a fictional placeholder charity.
 - A Netlify site for this repo, with `SITE_PASSWORD` and `GATE_SECRET` set in its environment variables.

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "on_behalf",
+    "title": "Say who you work for",
+    "quote": "You must never represent yourself as a {{client}} employee. You work for {{employer}}. You are calling on behalf of {{client}}.",
+    "doc": "Onboarding Guide",
+    "section": "Section 04, On every call",
+    "critical": true,
+    "review": "pending"
+  },
+  {
+    "id": "recording_disclosure",
+    "title": "Give the recording disclosure",
+    "quote": "Give it in the first 30 seconds, every call.",
+    "doc": "Call Script v1.8",
+    "section": "Section 01, Recording disclosure",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "no_advice",
+    "title": "Book only. No advice, quotes or comparisons",
+    "quote": "You are not a financial adviser. Never give product recommendations, quote premiums, or suggest what level of cover a prospect needs. Your role ends at booking the appointment with a {{client}} adviser.",
+    "doc": "Onboarding Guide",
+    "section": "Section 05, Your Legal Obligations",
+    "critical": true,
+    "review": "pending"
+  },
+  {
+    "id": "no_time",
+    "title": "Never book a specific time",
+    "quote": "Never book a specific time. The broker reaches out to organise it.",
+    "doc": "Call Script v1.8",
+    "section": "Reference, Before you dial",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "lead_code",
+    "title": "Wrap a completed lead as Lead Submitted",
+    "quote": "Lead Submitted: The only code to use when a completed lead has been submitted to {{clientShort}}.",
+    "doc": "Agent Call Workflow SOP v1.4",
+    "section": "Section 2.2, Disposition Rules",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "data_source",
+    "title": "Use the approved line about their details",
+    "quote": "\"Fair question. {{clientShort}} provided your details as part of their outreach programme.\" Use this line only. Never guess where the details came from.",
+    "doc": "Agent Call Workflow SOP v1.4",
+    "section": "Section 2.3, \"Where Did You Get My Details?\"",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "data_source_push",
+    "title": "If they push, offer to pass it to the client's team",
+    "quote": "If they continue to push or become irate: Offer to pass their details to {{clientShort}} so the team can follow up on where their information originated.",
+    "doc": "Agent Call Workflow SOP v1.4",
+    "section": "Section 2.3, \"Where Did You Get My Details?\"",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "no_rebook",
+    "title": "Do not go back to the booking",
+    "quote": "Don't go back to the booking. End the call politely.",
+    "doc": "Call Script v1.8",
+    "section": "Section 09, Angry about their number or privacy",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "dnc_accept",
+    "title": "Accept a do not call request without argument",
+    "quote": "If someone asks not to be called again, accept it without argument and wrap the call as DNC.",
+    "doc": "Call Script v1.8",
+    "section": "Reference, Before you dial",
+    "critical": false,
+    "review": "pending"
+  },
+  {
+    "id": "dnc_code",
+    "title": "Wrap a do not call request as DNC",
+    "quote": "If a customer says \"don't call me again\" and you fail to disposition as DNC, that customer will be called again. This is a compliance breach.",
+    "doc": "Agent Call Workflow SOP v1.4",
+    "section": "Section 2.2, Critical: DNC",
+    "critical": true,
+    "review": "pending"
+  }
+]

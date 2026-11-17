@@ -2,6 +2,8 @@
 
 For developers and reviewers. Code: `src/engine/`. Content: `src/content/clients/gig/`.
 
+The practice shift (The Intro and Broadbent Risk) has its own small engine in `src/engine/shift/`. Its actions, hidden state and scoring are in `docs/first-shift-plan.md`. The rest of this file describes the door engine.
+
 ## The split
 
 - `reduce(state, action, pack)` is pure. It reads no clock, no random number and no network.

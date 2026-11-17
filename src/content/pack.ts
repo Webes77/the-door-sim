@@ -8,10 +8,8 @@ import lessonsJson from "./clients/gig/lessons.json";
 import onboardingJson from "./clients/gig/onboarding.json";
 
 // One client pack is loaded. Adding a client is a new folder and a line here, never an engine change.
-/** Site assets resolve against the build's base path. */
-export function asset(path: string): string {
-  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
-}
+import { asset, clean } from "./text";
+export { asset, clean };
 
 export const pack: Pack = {
   client: { ...client, logo: asset(client.logo) },
@@ -38,8 +36,3 @@ export interface Lesson {
 }
 export const lessons = lessonsJson as unknown as Lesson[];
 export const onboarding = onboardingJson;
-
-/** On-screen text never shows an em dash, whatever the source text holds. */
-export function clean(text: string): string {
-  return text.replace(/\s*—\s*/g, ", ").replace(/–/g, "-");
-}
