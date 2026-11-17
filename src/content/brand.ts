@@ -1,4 +1,4 @@
-import { asset } from "./pack";
+import { asset } from "./text";
 
 // The app shell wears the brand of whoever is showing it. The training content inside belongs to the client pack.
 // Set VITE_BRAND at build time. "magnum" is the default. "gig" gives the GIG Academy look.

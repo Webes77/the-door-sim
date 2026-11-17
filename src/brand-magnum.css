@@ -120,3 +120,22 @@ html[data-brand="magnum"], [data-brand="magnum"] body { background: #FBFBF9; col
 [data-brand="magnum"] .signoff { border: 2px solid var(--ink); }
 [data-brand="magnum"] .signoff span { font-family: var(--mono); font-weight: 500; background: var(--blush); }
 [data-brand="magnum"] .scriptbox .line { border-left-color: var(--coral); }
+
+/* Practice shift: the call. The whole call screen is the navy block. */
+[data-brand="magnum"] .call { background: var(--navy); color: var(--on-navy); }
+[data-brand="magnum"] .call-wait h2 { color: var(--on-navy); }
+[data-brand="magnum"] .call-wait h2 em { color: var(--coral-bright); }
+[data-brand="magnum"] .call-wait .small { color: var(--on-navy-mute); }
+[data-brand="magnum"] .who { border-bottom: 4px solid var(--coral-bright); }
+[data-brand="magnum"] .who strong { font-family: var(--display); font-weight: 600; text-transform: uppercase; color: var(--on-navy); }
+[data-brand="magnum"] .who span, [data-brand="magnum"] .stage, [data-brand="magnum"] .dots { color: var(--on-navy-mute); }
+[data-brand="magnum"] .bubble span { font-family: var(--mono); letter-spacing: 0.16em; }
+[data-brand="magnum"] .bubble.theirs { background: var(--paper-2); border: 2px solid var(--ink); color: var(--char); }
+[data-brand="magnum"] .bubble.mine { border: 1px solid var(--on-navy-mute); color: var(--on-navy); }
+[data-brand="magnum"] .bubble.mine span { color: var(--on-navy-mute); }
+[data-brand="magnum"] .sheet.in-call { background: var(--navy); border-top: 1px solid var(--on-navy-mute); }
+[data-brand="magnum"] .codes button { background: var(--paper-2); border: 2px solid var(--ink); color: var(--char); }
+[data-brand="magnum"] .codes button.on { background: var(--coral-bright); color: var(--ink); }
+[data-brand="magnum"] .card.dark .steps-list { color: var(--on-navy); }
+[data-brand="magnum"] .callbox { border-bottom-color: var(--line); }
+[data-brand="magnum"] .tick.met::before { color: var(--slate); }

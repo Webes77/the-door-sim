@@ -1,0 +1,86 @@
+[
+  {
+    "id": "busy",
+    "name": "Busy",
+    "when": "Customer unavailable or cannot speak right now.",
+    "review": "pending"
+  },
+  {
+    "id": "no_answer",
+    "name": "No Answer",
+    "when": "Rings out — no answer, no voicemail reached.",
+    "review": "pending"
+  },
+  {
+    "id": "callback_agent",
+    "name": "Callback — Agent",
+    "when": "Rapport built — customer expects you specifically to call back. Use manual dial if reconnecting immediately.",
+    "review": "pending"
+  },
+  {
+    "id": "callback_queue",
+    "name": "Callback — Queue",
+    "when": "Callback requested before any rapport is built. Routes to first available agent.",
+    "review": "pending"
+  },
+  {
+    "id": "disconnected",
+    "name": "Disconnected Number",
+    "when": "Number inactive or no longer in service.",
+    "review": "pending"
+  },
+  {
+    "id": "bad_data",
+    "name": "Bad Data",
+    "when": "Wrong name, incomplete, or unusable lead info.",
+    "review": "pending"
+  },
+  {
+    "id": "dnc",
+    "name": "DNC",
+    "when": "Customer explicitly asks not to be contacted again. Use only when they say it directly.",
+    "review": "pending"
+  },
+  {
+    "id": "not_interested",
+    "name": "Not Interested",
+    "when": "Customer declines but does not request removal.",
+    "review": "pending"
+  },
+  {
+    "id": "does_not_qualify",
+    "name": "Does Not Qualify",
+    "when": "Customer does not meet eligibility criteria.",
+    "review": "pending"
+  },
+  {
+    "id": "email_requested",
+    "name": "Email Requested",
+    "when": "Customer wants an info pack only.",
+    "review": "pending"
+  },
+  {
+    "id": "email_callback",
+    "name": "Email & Callback",
+    "when": "Customer wants an info pack and a callback.",
+    "review": "pending"
+  },
+  {
+    "id": "existing_client",
+    "name": "Existing Client",
+    "when": "Customer is already a {{client}} client.",
+    "review": "pending"
+  },
+  {
+    "id": "lead_submitted",
+    "name": "Lead Submitted",
+    "when": "The only code to use when a completed lead has been submitted to {{clientShort}}.",
+    "review": "pending"
+  },
+  {
+    "id": "withheld",
+    "name": "Withheld Information",
+    "when": "Customer completed the call but refused one or more non-negotiable fields.",
+    "review": "pending"
+  }
+]

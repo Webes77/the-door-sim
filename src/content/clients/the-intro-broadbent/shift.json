@@ -1,0 +1,350 @@
+{
+  "meta": {
+    "bands": {
+      "strong": 0.8,
+      "partly": 0.5
+    },
+    "plannedCalls": 4
+  },
+  "calls": [
+    {
+      "id": "call_1",
+      "prospect": {
+        "name": "Rachel Turner",
+        "first": "Rachel"
+      },
+      "brief": "She has answered. Open the call the way the script opens it.",
+      "start": "open",
+      "nodes": {
+        "open": {
+          "moment": "The opening",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "Hello, Rachel speaking."
+            }
+          ],
+          "options": [
+            {
+              "id": "c1_open_ok",
+              "text": "Hi Rachel, it's {{caller}} here. I'm calling on behalf of {{client}} Insurance. Just so you know, all my calls are recorded for quality and training.",
+              "keeps": [
+                "on_behalf",
+                "recording_disclosure"
+              ],
+              "breaks": [],
+              "next": "reason",
+              "review": "pending"
+            },
+            {
+              "id": "c1_open_from",
+              "text": "Hi Rachel, it's {{caller}} here from {{client}} Insurance, the life insurance brokers. Just so you know, all my calls are recorded for quality and training.",
+              "keeps": [
+                "recording_disclosure"
+              ],
+              "breaks": [
+                "on_behalf"
+              ],
+              "next": "reason",
+              "review": "pending"
+            },
+            {
+              "id": "c1_open_norec",
+              "text": "Hi Rachel, it's {{caller}} here. I'm calling on behalf of {{client}} Insurance about a free review of your life cover. Have you got a minute?",
+              "keeps": [
+                "on_behalf"
+              ],
+              "breaks": [
+                "recording_disclosure"
+              ],
+              "next": "reason",
+              "review": "pending"
+            }
+          ]
+        },
+        "reason": {
+          "moment": "\"What cover should I be on, and what would it cost?\"",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "Okay. What's it about?"
+            },
+            {
+              "who": "you",
+              "text": "The reason I'm calling is that the {{clientShort}} brokers are running free, no-obligation reviews on life insurance policies. Most people I speak to already have some form of life insurance in place. Is that the same for you?"
+            },
+            {
+              "who": "prospect",
+              "text": "Yeah, I've got life cover through my bank. It just rolls over each year. So what cover should I be on? And what would it cost me?"
+            }
+          ],
+          "options": [
+            {
+              "id": "c1_advice_ok",
+              "text": "That's exactly what the broker will go through with you. The review itself costs you nothing.",
+              "keeps": [
+                "no_advice"
+              ],
+              "breaks": [],
+              "next": "yes",
+              "review": "pending"
+            },
+            {
+              "id": "c1_advice_recommend",
+              "text": "At your stage of life, most people take life cover and income protection together. That's what I'd look at.",
+              "keeps": [],
+              "breaks": [
+                "no_advice"
+              ],
+              "next": "yes",
+              "review": "pending"
+            },
+            {
+              "id": "c1_advice_price",
+              "text": "I can't give an exact figure, but it's normally cheaper than going through the bank.",
+              "keeps": [],
+              "breaks": [
+                "no_advice"
+              ],
+              "next": "yes",
+              "review": "pending"
+            }
+          ]
+        },
+        "yes": {
+          "moment": "\"Can they ring me Tuesday at 3?\"",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "Fair enough. Yeah, I'd be up for that."
+            },
+            {
+              "who": "note",
+              "text": "You run the four checks and the fact finder. Rachel answers every question."
+            },
+            {
+              "who": "prospect",
+              "text": "I'm on shift most of this week. Can they ring me Tuesday at 3?"
+            }
+          ],
+          "options": [
+            {
+              "id": "c1_time_ok",
+              "text": "One of {{clientShort}}'s senior brokers will be in touch to organise a time that works for you. They'll work around your schedule.",
+              "keeps": [
+                "no_time"
+              ],
+              "breaks": [],
+              "next": "end",
+              "review": "pending"
+            },
+            {
+              "id": "c1_time_book",
+              "text": "Tuesday at 3 works. I'll book that in with the broker now, so keep your phone handy around then.",
+              "keeps": [],
+              "breaks": [
+                "no_time"
+              ],
+              "next": "end",
+              "review": "pending"
+            },
+            {
+              "id": "c1_time_note",
+              "text": "I'll put Tuesday at 3 in the notes for the broker, so you can expect their call then. I'll make sure they know it has to be 3.",
+              "keeps": [],
+              "breaks": [
+                "no_time"
+              ],
+              "next": "end",
+              "review": "pending"
+            }
+          ]
+        },
+        "end": {
+          "end": true,
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "Okay, sounds good."
+            },
+            {
+              "who": "you",
+              "text": "Thanks so much for your time, Rachel. Enjoy the rest of your day."
+            },
+            {
+              "who": "note",
+              "text": "The call ends. You check every field and submit the lead form."
+            }
+          ]
+        }
+      },
+      "disposition": {
+        "correct": [
+          "lead_submitted"
+        ],
+        "rule": "lead_code",
+        "missIsCritical": false
+      },
+      "review": "pending"
+    },
+    {
+      "id": "call_2",
+      "prospect": {
+        "name": "Grant Wilson",
+        "first": "Grant"
+      },
+      "brief": "He picks up on the first ring.",
+      "start": "open",
+      "nodes": {
+        "open": {
+          "moment": "\"Where did you get my details?\"",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "Yeah?"
+            },
+            {
+              "who": "you",
+              "text": "Hi, is that Grant? It's {{caller}} here. I'm calling on behalf of {{client}} Insurance. Just so you know, all my calls are recorded for quality and training."
+            },
+            {
+              "who": "prospect",
+              "text": "Hang on. Where did you get my details?"
+            }
+          ],
+          "options": [
+            {
+              "id": "c2_source_ok",
+              "text": "Fair question. {{clientShort}} provided your details as part of their outreach programme.",
+              "keeps": [
+                "data_source"
+              ],
+              "breaks": [],
+              "next": "push",
+              "review": "pending"
+            },
+            {
+              "id": "c2_source_guess",
+              "text": "You'd have filled in a form or entered a competition online at some point. That's normally how it happens.",
+              "keeps": [],
+              "breaks": [
+                "data_source"
+              ],
+              "next": "push",
+              "review": "pending"
+            },
+            {
+              "id": "c2_source_unsure",
+              "text": "I'm not sure, sorry. The numbers just come up on my screen from the dialler.",
+              "keeps": [],
+              "breaks": [
+                "data_source"
+              ],
+              "next": "push",
+              "review": "pending"
+            }
+          ]
+        },
+        "push": {
+          "moment": "He pushes for more",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "That's not good enough. How did they get my number?"
+            }
+          ],
+          "options": [
+            {
+              "id": "c2_push_ok",
+              "text": "What I can do is pass your details directly to the {{clientShort}} team and they'll reach out to clarify exactly where that came from.",
+              "keeps": [
+                "data_source_push"
+              ],
+              "breaks": [],
+              "next": "dnc",
+              "review": "pending"
+            },
+            {
+              "id": "c2_push_speculate",
+              "text": "It will have come off a marketing list somewhere. It's all above board, I can promise you that.",
+              "keeps": [],
+              "breaks": [
+                "data_source_push"
+              ],
+              "next": "dnc",
+              "review": "pending"
+            },
+            {
+              "id": "c2_push_rebook",
+              "text": "I hear you. Can I just take two minutes to tell you about the free review, and then you can decide?",
+              "keeps": [],
+              "breaks": [
+                "no_rebook"
+              ],
+              "next": "dnc",
+              "review": "pending"
+            }
+          ]
+        },
+        "dnc": {
+          "moment": "\"Don't call me again.\"",
+          "lines": [
+            {
+              "who": "prospect",
+              "text": "No. Don't bother. Just don't call me again."
+            }
+          ],
+          "options": [
+            {
+              "id": "c2_dnc_ok",
+              "text": "Understood, Grant. I'll make sure you're not called again. Thanks for your time.",
+              "keeps": [
+                "dnc_accept"
+              ],
+              "breaks": [],
+              "next": "end",
+              "review": "pending"
+            },
+            {
+              "id": "c2_dnc_argue",
+              "text": "Before I do that, can I ask what put you off? The review really is free and there's no catch.",
+              "keeps": [],
+              "breaks": [
+                "dnc_accept"
+              ],
+              "next": "end",
+              "review": "pending"
+            },
+            {
+              "id": "c2_dnc_later",
+              "text": "No worries. I'll try you again in a few months when it's a better time.",
+              "keeps": [],
+              "breaks": [
+                "dnc_accept"
+              ],
+              "next": "end",
+              "review": "pending"
+            }
+          ]
+        },
+        "end": {
+          "end": true,
+          "lines": [
+            {
+              "who": "note",
+              "text": "Grant hangs up."
+            }
+          ]
+        }
+      },
+      "disposition": {
+        "correct": [
+          "dnc"
+        ],
+        "rule": "dnc_code",
+        "missIsCritical": true
+      },
+      "review": "pending"
+    }
+  ]
+}

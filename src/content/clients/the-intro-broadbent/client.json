@@ -1,0 +1,14 @@
+{
+  "id": "the-intro-broadbent",
+  "employer": "The Intro",
+  "client": "Broadbent Risk",
+  "clientShort": "Broadbent",
+  "caller": "Sam",
+  "campaign": "{{client}} campaign",
+  "title": "Practice shift",
+  "draftLabel": "Draft for compliance review",
+  "footer": "Draft for compliance review. Not yet approved by {{employer}}. Every prospect is fictional.",
+  "sorry": "Sorry, what was that?",
+  "reviewers": "Hayden or Joelinda",
+  "review": "pending"
+}

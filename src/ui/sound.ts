@@ -1,4 +1,4 @@
-import { asset } from "../content/pack";
+import { asset } from "../content/text";
 
 // Sound is always extra. Captions carry the conversation if any of this fails.
 let ctx: AudioContext | null = null;
@@ -38,6 +38,22 @@ export function knock(): void {
     o.connect(g).connect(a.destination);
     o.start(t); o.stop(t + 0.16);
   });
+}
+
+/** The dialler's beep when a live person connects. Call it from a tap. */
+export function beep(): void {
+  const a = audio();
+  if (!a) return;
+  const t = a.currentTime + 0.25;
+  const o = a.createOscillator();
+  const g = a.createGain();
+  o.type = "sine";
+  o.frequency.setValueAtTime(880, t);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(0.25, t + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+  o.connect(g).connect(a.destination);
+  o.start(t); o.stop(t + 0.25);
 }
 
 // Recorded donor lines, looked up by their exact text. An empty manifest means captions only.
